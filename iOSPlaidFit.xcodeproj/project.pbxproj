@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16C39A9E162A9E8A5DBA4C46 /* Pods_iOSPlaidFit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895FB73989A61C58351B4AFD /* Pods_iOSPlaidFit.framework */; };
 		D1065525218BC58200F55820 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1065524218BC58200F55820 /* AppDelegate.swift */; };
 		D1065527218BC58200F55820 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1065526218BC58200F55820 /* ViewController.swift */; };
 		D106552A218BC58200F55820 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1065528218BC58200F55820 /* Main.storyboard */; };
@@ -14,6 +15,12 @@
 		D106552F218BC58300F55820 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D106552E218BC58300F55820 /* Assets.xcassets */; };
 		D1065532218BC58300F55820 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1065530218BC58300F55820 /* LaunchScreen.storyboard */; };
 		D106553D218BC58300F55820 /* iOSPlaidFitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D106553C218BC58300F55820 /* iOSPlaidFitTests.swift */; };
+		D1065548218BC68C00F55820 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1065547218BC68C00F55820 /* HomeViewController.swift */; };
+		D106554A218BC6AD00F55820 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1065549218BC6AD00F55820 /* ProfileViewController.swift */; };
+		D106554C218BC6B800F55820 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D106554B218BC6B800F55820 /* SignupViewController.swift */; };
+		D106554E218BC6C100F55820 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D106554D218BC6C100F55820 /* LoginViewController.swift */; };
+		D1065550218BC6CF00F55820 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D106554F218BC6CF00F55820 /* User.swift */; };
+		E397E8895364E71A2E5B4DEA /* Pods_iOSPlaidFitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C52ACBBE9489F9C4FC859E /* Pods_iOSPlaidFitTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +34,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A99109D9D942A614F849A4C /* Pods-iOSPlaidFit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSPlaidFit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSPlaidFit/Pods-iOSPlaidFit.debug.xcconfig"; sourceTree = "<group>"; };
+		1D69CD85C9E8B099DE258068 /* Pods-iOSPlaidFitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSPlaidFitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSPlaidFitTests/Pods-iOSPlaidFitTests.release.xcconfig"; sourceTree = "<group>"; };
+		5CD8379E10741D7C0FD468AA /* Pods-iOSPlaidFit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSPlaidFit.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSPlaidFit/Pods-iOSPlaidFit.release.xcconfig"; sourceTree = "<group>"; };
+		5DAE606E1163FCA1ADAC6015 /* Pods-iOSPlaidFitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSPlaidFitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSPlaidFitTests/Pods-iOSPlaidFitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		895FB73989A61C58351B4AFD /* Pods_iOSPlaidFit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSPlaidFit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6C52ACBBE9489F9C4FC859E /* Pods_iOSPlaidFitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSPlaidFitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1065521218BC58200F55820 /* iOSPlaidFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSPlaidFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1065524218BC58200F55820 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1065526218BC58200F55820 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +51,11 @@
 		D1065538218BC58300F55820 /* iOSPlaidFitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSPlaidFitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D106553C218BC58300F55820 /* iOSPlaidFitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSPlaidFitTests.swift; sourceTree = "<group>"; };
 		D106553E218BC58300F55820 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1065547218BC68C00F55820 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D1065549218BC6AD00F55820 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D106554B218BC6B800F55820 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		D106554D218BC6C100F55820 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D106554F218BC6CF00F55820 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C39A9E162A9E8A5DBA4C46 /* Pods_iOSPlaidFit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,18 +71,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E397E8895364E71A2E5B4DEA /* Pods_iOSPlaidFitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D204F7E94DAACE98900D5DF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1A99109D9D942A614F849A4C /* Pods-iOSPlaidFit.debug.xcconfig */,
+				5CD8379E10741D7C0FD468AA /* Pods-iOSPlaidFit.release.xcconfig */,
+				5DAE606E1163FCA1ADAC6015 /* Pods-iOSPlaidFitTests.debug.xcconfig */,
+				1D69CD85C9E8B099DE258068 /* Pods-iOSPlaidFitTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B10525CE5575BCF576B5C13D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				895FB73989A61C58351B4AFD /* Pods_iOSPlaidFit.framework */,
+				A6C52ACBBE9489F9C4FC859E /* Pods_iOSPlaidFitTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D1065518218BC58200F55820 = {
 			isa = PBXGroup;
 			children = (
 				D1065523218BC58200F55820 /* iOSPlaidFit */,
 				D106553B218BC58300F55820 /* iOSPlaidFitTests */,
 				D1065522218BC58200F55820 /* Products */,
+				9D204F7E94DAACE98900D5DF /* Pods */,
+				B10525CE5575BCF576B5C13D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,10 +122,10 @@
 			isa = PBXGroup;
 			children = (
 				D1065524218BC58200F55820 /* AppDelegate.swift */,
-				D1065526218BC58200F55820 /* ViewController.swift */,
-				D1065528218BC58200F55820 /* Main.storyboard */,
+				D1065551218BC7B500F55820 /* View Controllers */,
+				D1065554218BC7D300F55820 /* Views */,
+				D1065552218BC7C200F55820 /* Models */,
 				D106552E218BC58300F55820 /* Assets.xcassets */,
-				D1065530218BC58300F55820 /* LaunchScreen.storyboard */,
 				D1065533218BC58300F55820 /* Info.plist */,
 				D106552B218BC58200F55820 /* iOSPlaidFit.xcdatamodeld */,
 			);
@@ -99,6 +141,35 @@
 			path = iOSPlaidFitTests;
 			sourceTree = "<group>";
 		};
+		D1065551218BC7B500F55820 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D1065547218BC68C00F55820 /* HomeViewController.swift */,
+				D106554B218BC6B800F55820 /* SignupViewController.swift */,
+				D1065526218BC58200F55820 /* ViewController.swift */,
+				D106554D218BC6C100F55820 /* LoginViewController.swift */,
+				D1065549218BC6AD00F55820 /* ProfileViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		D1065552218BC7C200F55820 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D106554F218BC6CF00F55820 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D1065554218BC7D300F55820 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D1065528218BC58200F55820 /* Main.storyboard */,
+				D1065530218BC58300F55820 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,9 +177,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1065541218BC58300F55820 /* Build configuration list for PBXNativeTarget "iOSPlaidFit" */;
 			buildPhases = (
+				2C799BB79531C2F11A304196 /* [CP] Check Pods Manifest.lock */,
 				D106551D218BC58200F55820 /* Sources */,
 				D106551E218BC58200F55820 /* Frameworks */,
 				D106551F218BC58200F55820 /* Resources */,
+				16D2D1C52E514AB7C0094960 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,6 +196,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1065544218BC58300F55820 /* Build configuration list for PBXNativeTarget "iOSPlaidFitTests" */;
 			buildPhases = (
+				54FC78B16688A200CC5277F9 /* [CP] Check Pods Manifest.lock */,
 				D1065534218BC58300F55820 /* Sources */,
 				D1065535218BC58300F55820 /* Frameworks */,
 				D1065536218BC58300F55820 /* Resources */,
@@ -195,14 +269,90 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		16D2D1C52E514AB7C0094960 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iOSPlaidFit/Pods-iOSPlaidFit-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOSPlaidFit/Pods-iOSPlaidFit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2C799BB79531C2F11A304196 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iOSPlaidFit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		54FC78B16688A200CC5277F9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iOSPlaidFitTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D106551D218BC58200F55820 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D106554E218BC6C100F55820 /* LoginViewController.swift in Sources */,
+				D106554C218BC6B800F55820 /* SignupViewController.swift in Sources */,
 				D106552D218BC58200F55820 /* iOSPlaidFit.xcdatamodeld in Sources */,
 				D1065527218BC58200F55820 /* ViewController.swift in Sources */,
+				D1065550218BC6CF00F55820 /* User.swift in Sources */,
+				D106554A218BC6AD00F55820 /* ProfileViewController.swift in Sources */,
 				D1065525218BC58200F55820 /* AppDelegate.swift in Sources */,
+				D1065548218BC68C00F55820 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +512,7 @@
 		};
 		D1065542218BC58300F55820 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A99109D9D942A614F849A4C /* Pods-iOSPlaidFit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -379,6 +530,7 @@
 		};
 		D1065543218BC58300F55820 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CD8379E10741D7C0FD468AA /* Pods-iOSPlaidFit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -396,6 +548,7 @@
 		};
 		D1065545218BC58300F55820 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5DAE606E1163FCA1ADAC6015 /* Pods-iOSPlaidFitTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -416,6 +569,7 @@
 		};
 		D1065546218BC58300F55820 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D69CD85C9E8B099DE258068 /* Pods-iOSPlaidFitTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
