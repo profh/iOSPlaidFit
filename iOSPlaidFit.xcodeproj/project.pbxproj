@@ -20,6 +20,9 @@
 		D106554C218BC6B800F55820 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D106554B218BC6B800F55820 /* SignupViewController.swift */; };
 		D106554E218BC6C100F55820 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D106554D218BC6C100F55820 /* LoginViewController.swift */; };
 		D1065550218BC6CF00F55820 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D106554F218BC6CF00F55820 /* User.swift */; };
+		D1396C02218BDEC70087E0EE /* TeamPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1396C01218BDEC70087E0EE /* TeamPickerDelegate.swift */; };
+		D1396C04218BDEE10087E0EE /* ClassPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1396C03218BDEE10087E0EE /* ClassPickerDelegate.swift */; };
+		D1396C06218BE0730087E0EE /* MajorPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1396C05218BE0730087E0EE /* MajorPickerDelegate.swift */; };
 		E397E8895364E71A2E5B4DEA /* Pods_iOSPlaidFitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C52ACBBE9489F9C4FC859E /* Pods_iOSPlaidFitTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +59,9 @@
 		D106554B218BC6B800F55820 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		D106554D218BC6C100F55820 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D106554F218BC6CF00F55820 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D1396C01218BDEC70087E0EE /* TeamPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPickerDelegate.swift; sourceTree = "<group>"; };
+		D1396C03218BDEE10087E0EE /* ClassPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassPickerDelegate.swift; sourceTree = "<group>"; };
+		D1396C05218BE0730087E0EE /* MajorPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorPickerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				D1065524218BC58200F55820 /* AppDelegate.swift */,
+				D1396C00218BDEAE0087E0EE /* Delegates */,
 				D1065551218BC7B500F55820 /* View Controllers */,
 				D1065554218BC7D300F55820 /* Views */,
 				D1065552218BC7C200F55820 /* Models */,
@@ -168,6 +175,16 @@
 				D1065530218BC58300F55820 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D1396C00218BDEAE0087E0EE /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				D1396C01218BDEC70087E0EE /* TeamPickerDelegate.swift */,
+				D1396C03218BDEE10087E0EE /* ClassPickerDelegate.swift */,
+				D1396C05218BE0730087E0EE /* MajorPickerDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,8 +362,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1396C02218BDEC70087E0EE /* TeamPickerDelegate.swift in Sources */,
+				D1396C06218BE0730087E0EE /* MajorPickerDelegate.swift in Sources */,
 				D106554E218BC6C100F55820 /* LoginViewController.swift in Sources */,
 				D106554C218BC6B800F55820 /* SignupViewController.swift in Sources */,
+				D1396C04218BDEE10087E0EE /* ClassPickerDelegate.swift in Sources */,
 				D106552D218BC58200F55820 /* iOSPlaidFit.xcdatamodeld in Sources */,
 				D1065527218BC58200F55820 /* ViewController.swift in Sources */,
 				D1065550218BC6CF00F55820 /* User.swift in Sources */,
