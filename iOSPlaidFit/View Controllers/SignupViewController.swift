@@ -62,6 +62,7 @@ class SignupViewController: UIViewController {
     }
     
     @IBAction func signupPressed(_ sender: Any) {
+        self.view.bringSubviewToFront(loadingView)
         loadingView.startAnimating() // start the loading animation for the duration of the API call
         createUser(sender: sender)
     }

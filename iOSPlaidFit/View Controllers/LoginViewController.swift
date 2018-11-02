@@ -28,11 +28,13 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadingView.hidesWhenStopped = true // hide the loading animation when nothing is loading
+        self.errorField.text = ""
     }
     
     override func viewWillAppear(_ animated: Bool) {
         // hide the nav bar so users can't go back to home page if they log out
         self.navigationController?.isNavigationBarHidden = true
+        self.errorField.text = ""
     }
     
     @IBAction func loginPressed(_ sender: Any) {
@@ -45,10 +47,14 @@ class LoginViewController: UIViewController {
             "Authorization": "Basic \(base64LoginString)"
         ]
         Alamofire.request(login_url, headers: headers).responseJSON{ response in
-            // need to handle errors too!
+            if let status = response.response?.statusCode {
+                if status == 401 {
+                    self.errorField.text = "Incorrect email/password."
+                    self.loadingView.stopAnimating()
+                }
+            }
             if let result = response.result.value {
                 let JSON = result as! NSDictionary
-                print(JSON)
                 // only athletes (players) can log in
                 if (JSON["role"]! as! String) != "Player" {
                     self.errorField.text = "Sorry! Only athletes can log in."
