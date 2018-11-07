@@ -45,8 +45,9 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
             
             //convert json data to string
             let jsonString = String(data: jsonData!, encoding: .utf8)
-            
+            print("hello")
             print(jsonString)
+            print(currentUser)
             
         }
         taskViewController.dismiss(animated: true, completion: nil)

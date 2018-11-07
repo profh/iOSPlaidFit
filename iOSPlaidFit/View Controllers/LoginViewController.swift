@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
 
     // MARK: - Properties
     
-    let login_url = "128.237.223.84:3000/v1/users"
+    let login_url = "http://localhost:3000/v1/token"
     var loggedInUser: User? = nil
     var teams = [(String, Int)]()
     @IBOutlet weak var emailField: UITextField!
@@ -72,7 +72,7 @@ class LoginViewController: UIViewController {
     @IBAction func signupPressed(_ sender: Any) {
         loadingView.startAnimating() // start the loading animation for the duration of the API call
         // prep the team picker here
-        let get_teams_url = "128.237.223.84:3000/v1/teams"
+        let get_teams_url = "http://localhost:3000/v1/teams"
         let headers: HTTPHeaders = [
             // hard-coding token value as user ID 1's value for now
             // b/c can't authorize creation when signing up a new user

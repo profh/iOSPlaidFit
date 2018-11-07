@@ -8,6 +8,7 @@ target 'iOSPlaidFit' do
   # Pods for iOSPlaidFit
   pod 'Alamofire', '~> 4.0'
   pod 'SwiftyJSON'
+  pod 'ResearchKit', '~> 2.0'
   
   target 'iOSPlaidFitTests' do
     inherit! :search_paths

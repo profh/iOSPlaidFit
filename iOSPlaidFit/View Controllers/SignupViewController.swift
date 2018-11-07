@@ -15,8 +15,8 @@ class SignupViewController: UIViewController {
 
     // MARK: - Properties
 
-    let create_users_url = "128.237.223.84:3000/v1/users"
-    let create_team_assignments_url = "128.237.223.84:3000/v1/team_assignments"
+    let create_users_url = "http://localhost:3000/v1/users"
+    let create_team_assignments_url = "http://localhost:3000/v1/team_assignments"
     let headers: HTTPHeaders = [
         // hard-coding token value as user ID 1's value for now
         // b/c can't authorize creation when signing up a new user
