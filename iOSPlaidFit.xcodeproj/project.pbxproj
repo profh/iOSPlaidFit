@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		16C39A9E162A9E8A5DBA4C46 /* Pods_iOSPlaidFit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895FB73989A61C58351B4AFD /* Pods_iOSPlaidFit.framework */; };
+		5C37C0B82193710000C95AE0 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C37C0B5219370E800C95AE0 /* ResearchKit.framework */; };
+		5C37C0B92193710000C95AE0 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5C37C0B5219370E800C95AE0 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5C37C0C02193720200C95AE0 /* DailyWellnessSurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C37C0BF2193720200C95AE0 /* DailyWellnessSurveyTask.swift */; };
+		5C37C0C22193722800C95AE0 /* PostPracticeSurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C37C0C12193722800C95AE0 /* PostPracticeSurveyTask.swift */; };
 		D1065525218BC58200F55820 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1065524218BC58200F55820 /* AppDelegate.swift */; };
 		D1065527218BC58200F55820 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1065526218BC58200F55820 /* ViewController.swift */; };
 		D106552A218BC58200F55820 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1065528218BC58200F55820 /* Main.storyboard */; };
@@ -27,6 +31,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5C37C0B4219370E800C95AE0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C37C0AE219370E800C95AE0 /* ResearchKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B183A5951A8535D100C76870;
+			remoteInfo = ResearchKit;
+		};
+		5C37C0B6219370E800C95AE0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C37C0AE219370E800C95AE0 /* ResearchKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
+			remoteInfo = ResearchKitTests;
+		};
+		5C37C0BA2193710000C95AE0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C37C0AE219370E800C95AE0 /* ResearchKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B183A4731A8535D100C76870;
+			remoteInfo = ResearchKit;
+		};
 		D1065539218BC58300F55820 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D1065519218BC58200F55820 /* Project object */;
@@ -36,9 +61,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5C37C0BC2193710000C95AE0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5C37C0B92193710000C95AE0 /* ResearchKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1A99109D9D942A614F849A4C /* Pods-iOSPlaidFit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSPlaidFit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSPlaidFit/Pods-iOSPlaidFit.debug.xcconfig"; sourceTree = "<group>"; };
 		1D69CD85C9E8B099DE258068 /* Pods-iOSPlaidFitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSPlaidFitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSPlaidFitTests/Pods-iOSPlaidFitTests.release.xcconfig"; sourceTree = "<group>"; };
+		5C37C0AE219370E800C95AE0 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = "../../Downloads/ResearchKit-master 6/ResearchKit.xcodeproj"; sourceTree = "<group>"; };
+		5C37C0BF2193720200C95AE0 /* DailyWellnessSurveyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWellnessSurveyTask.swift; sourceTree = "<group>"; };
+		5C37C0C12193722800C95AE0 /* PostPracticeSurveyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPracticeSurveyTask.swift; sourceTree = "<group>"; };
 		5CD8379E10741D7C0FD468AA /* Pods-iOSPlaidFit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSPlaidFit.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSPlaidFit/Pods-iOSPlaidFit.release.xcconfig"; sourceTree = "<group>"; };
 		5DAE606E1163FCA1ADAC6015 /* Pods-iOSPlaidFitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSPlaidFitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSPlaidFitTests/Pods-iOSPlaidFitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		895FB73989A61C58351B4AFD /* Pods_iOSPlaidFit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSPlaidFit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C37C0B82193710000C95AE0 /* ResearchKit.framework in Frameworks */,
 				16C39A9E162A9E8A5DBA4C46 /* Pods_iOSPlaidFit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +127,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C37C0AF219370E800C95AE0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5C37C0B5219370E800C95AE0 /* ResearchKit.framework */,
+				5C37C0B7219370E800C95AE0 /* ResearchKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5C37C0BE219371F100C95AE0 /* Surveys */ = {
+			isa = PBXGroup;
+			children = (
+				5C37C0BF2193720200C95AE0 /* DailyWellnessSurveyTask.swift */,
+				5C37C0C12193722800C95AE0 /* PostPracticeSurveyTask.swift */,
+			);
+			path = Surveys;
+			sourceTree = "<group>";
+		};
 		9D204F7E94DAACE98900D5DF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +168,7 @@
 		D1065518218BC58200F55820 = {
 			isa = PBXGroup;
 			children = (
+				5C37C0AE219370E800C95AE0 /* ResearchKit.xcodeproj */,
 				D1065523218BC58200F55820 /* iOSPlaidFit */,
 				D106553B218BC58300F55820 /* iOSPlaidFitTests */,
 				D1065522218BC58200F55820 /* Products */,
@@ -127,6 +189,7 @@
 		D1065523218BC58200F55820 /* iOSPlaidFit */ = {
 			isa = PBXGroup;
 			children = (
+				5C37C0BE219371F100C95AE0 /* Surveys */,
 				D1065524218BC58200F55820 /* AppDelegate.swift */,
 				D1396C00218BDEAE0087E0EE /* Delegates */,
 				D1065551218BC7B500F55820 /* View Controllers */,
@@ -199,10 +262,12 @@
 				D106551E218BC58200F55820 /* Frameworks */,
 				D106551F218BC58200F55820 /* Resources */,
 				16D2D1C52E514AB7C0094960 /* [CP] Embed Pods Frameworks */,
+				5C37C0BC2193710000C95AE0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5C37C0BB2193710000C95AE0 /* PBXTargetDependency */,
 			);
 			name = iOSPlaidFit;
 			productName = iOSPlaidFit;
@@ -258,6 +323,12 @@
 			mainGroup = D1065518218BC58200F55820;
 			productRefGroup = D1065522218BC58200F55820 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5C37C0AF219370E800C95AE0 /* Products */;
+					ProjectRef = 5C37C0AE219370E800C95AE0 /* ResearchKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D1065520218BC58200F55820 /* iOSPlaidFit */,
@@ -265,6 +336,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		5C37C0B5219370E800C95AE0 /* ResearchKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ResearchKit.framework;
+			remoteRef = 5C37C0B4219370E800C95AE0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5C37C0B7219370E800C95AE0 /* ResearchKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ResearchKitTests.xctest;
+			remoteRef = 5C37C0B6219370E800C95AE0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D106551F218BC58200F55820 /* Resources */ = {
@@ -369,8 +457,10 @@
 				D1396C04218BDEE10087E0EE /* ClassPickerDelegate.swift in Sources */,
 				D106552D218BC58200F55820 /* iOSPlaidFit.xcdatamodeld in Sources */,
 				D1065527218BC58200F55820 /* ViewController.swift in Sources */,
+				5C37C0C22193722800C95AE0 /* PostPracticeSurveyTask.swift in Sources */,
 				D1065550218BC6CF00F55820 /* User.swift in Sources */,
 				D106554A218BC6AD00F55820 /* ProfileViewController.swift in Sources */,
+				5C37C0C02193720200C95AE0 /* DailyWellnessSurveyTask.swift in Sources */,
 				D1065525218BC58200F55820 /* AppDelegate.swift in Sources */,
 				D1065548218BC68C00F55820 /* HomeViewController.swift in Sources */,
 			);
@@ -387,6 +477,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5C37C0BB2193710000C95AE0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ResearchKit;
+			targetProxy = 5C37C0BA2193710000C95AE0 /* PBXContainerItemProxy */;
+		};
 		D106553A218BC58300F55820 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D1065520218BC58200F55820 /* iOSPlaidFit */;
@@ -534,6 +629,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1A99109D9D942A614F849A4C /* Pods-iOSPlaidFit.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = iOSPlaidFit/Info.plist;
@@ -552,6 +648,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5CD8379E10741D7C0FD468AA /* Pods-iOSPlaidFit.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = iOSPlaidFit/Info.plist;
