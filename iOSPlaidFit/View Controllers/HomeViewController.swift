@@ -11,7 +11,10 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 import ResearchKit
+
 class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
+    
+    let input_survey_url = "http://localhost:3000/v1/surveys"
 
     func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
         
