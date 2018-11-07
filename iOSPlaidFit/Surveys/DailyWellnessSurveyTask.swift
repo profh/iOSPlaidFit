@@ -33,8 +33,8 @@ public var DailyWellnessSurveyTask: ORKOrderedTask {
     let questionStep5 = ORKQuestionStep(identifier: "soreness", title: surveyTitle, question: "Please rate the level of soreness you are experiencing today", answer: step5AnswerFormat)
     
     //question 6
-    let step6AnswerFormat = ORKContinuousScaleAnswerFormat.init(maximumValue: 12, minimumValue: 0, defaultValue: 0, maximumFractionDigits: 0)
-    let questionStep6 = ORKQuestionStep(identifier: "ounces of water consumed", title: surveyTitle, question: "Approximately how many cups of water did you consume yesterday?", answer: step6AnswerFormat)
+    let step6AnswerFormat = ORKContinuousScaleAnswerFormat.init(maximumValue: 128, minimumValue: 0, defaultValue: 0, maximumFractionDigits: 0)
+    let questionStep6 = ORKQuestionStep(identifier: "ounces of water consumed", title: surveyTitle, question: "Approximately how many ounces of water did you consume yesterday?", answer: step6AnswerFormat)
     
     //question 7
     let step7AnswerFormat = ORKBooleanAnswerFormat()
