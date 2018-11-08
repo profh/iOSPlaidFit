@@ -70,12 +70,15 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
             // daily wellness survey has 7 questions
             if resDictionary.count == 7 {
                 sendDailyWellnessSurvey(headers: headers, resDictionary: resDictionary)
+            } else {
+                // taking post-practice survey
+                sendPostPracticeSurvey(headers: headers, resDictionary: resDictionary)
             }
         }
         taskViewController.dismiss(animated: true, completion: nil)
     }
     
-    func sendDailyWellnessSurvey(headers: HTTPHeaders, resDictionary: [String:Any]) {
+    func sendDailyWellnessSurvey(headers: HTTPHeaders, resDictionary: [String : Any]) {
         let parameters: [String : Any] = [
             "user_id" : currentUser?.id!,
             "team_id" : currentUser?.team_id!,
@@ -90,6 +93,26 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
             // hardcoding season as Fall for now
             "season" : "Fall"
         ]
+        pushToAPI(parameters: parameters, headers: headers)
+    }
+    
+    func sendPostPracticeSurvey(headers: HTTPHeaders, resDictionary: [String : Any]) {
+        let parameters: [String : Any] = [
+            "user_id" : currentUser?.id!,
+            "team_id" : currentUser?.team_id!,
+            "survey_type" : "Post-Practice",
+            "player_rpe_rating" : resDictionary["player_rpe_rating"] as! Int,
+            "player_personal_performance" : resDictionary["player_personal_performance"] as! Int,
+            "participated_in_full_practice" : resDictionary["participated_in_full_practice"] as! Bool,
+            "minutes_participated" : resDictionary["minutes_participated"] as! Int,
+            // hardcoding season and practice ID for now
+            "season" : "Fall",
+            "practice_id" : 1
+        ]
+        pushToAPI(parameters: parameters, headers: headers)
+    }
+    
+    func pushToAPI(parameters: [String : Any], headers: HTTPHeaders) {
         Alamofire.request(input_survey_url, method: .post, parameters: parameters, headers: headers).responseJSON{ response in
             if response.result.value != nil {
                 print("success! survey created")

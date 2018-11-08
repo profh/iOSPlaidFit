@@ -76,7 +76,7 @@ class LoginViewController: UIViewController {
         let headers: HTTPHeaders = [
             // hard-coding token value as user ID 1's value for now
             // b/c can't authorize creation when signing up a new user
-            "Authorization": "Token token=5dca21ab4c47b167a955f7670c5b0e17"
+            "Authorization": "Token token=45306c0f66c295a8b134128b12769879"
         ]
         Alamofire.request(get_teams_url, headers: headers).responseJSON{ response in
             if let result = response.result.value as? [[String: Any]] {
