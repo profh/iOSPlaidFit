@@ -34,6 +34,12 @@ public var PostPracticeSurveyTask: ORKOrderedTask {
     let completionStep = ORKCompletionStep(identifier: "Completion Step")
     completionStep.title = "You have completed your Post-Practice Survey"
     
+    // mark all questions as mandatory
+    questionStep1.isOptional = false
+    questionStep2.isOptional = false
+    questionStep3.isOptional = false
+    questionStep4.isOptional = false
+    
     return ORKOrderedTask(identifier: "Post-Practice Survey", steps: [
         questionStep1,
         questionStep2,
