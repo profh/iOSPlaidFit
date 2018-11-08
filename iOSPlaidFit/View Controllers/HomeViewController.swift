@@ -25,12 +25,8 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
         }
     }
     
-    fileprivate func extractedFunc() -> ORKTaskViewController {
-        return ORKTaskViewController(task: DailyWellnessSurveyTask, taskRun: nil)
-    }
-    
     @IBAction func dailyWellnessSurveyTapped(sender : AnyObject) {
-        let taskViewController = extractedFunc()
+        let taskViewController = ORKTaskViewController(task: DailyWellnessSurveyTask, taskRun: nil)
         taskViewController.delegate = self
         present(taskViewController, animated: true, completion: nil)
     }
