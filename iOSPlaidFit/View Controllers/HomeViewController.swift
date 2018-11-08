@@ -78,6 +78,7 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     func sendDailyWellnessSurvey(headers: HTTPHeaders, resDictionary: [String:Any]) {
         let parameters: [String : Any] = [
             "user_id" : currentUser?.id!,
+            "team_id" : currentUser?.team_id!,
             "survey_type" : "Daily Wellness",
             "hours_of_sleep" : resDictionary["hours_of_sleep"] as! Int,
             "quality_of_sleep" : resDictionary["quality_of_sleep"] as! Int,

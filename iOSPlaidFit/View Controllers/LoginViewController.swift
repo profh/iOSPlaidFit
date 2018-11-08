@@ -60,7 +60,7 @@ class LoginViewController: UIViewController {
                     self.errorField.text = "Sorry! Only athletes can log in."
                     self.loadingView.stopAnimating()
                 } else {
-                    self.loggedInUser = User(id: JSON["id"]! as! Int, first_name: JSON["first_name"]! as! String, last_name: JSON["last_name"]! as! String, andrew_id: JSON["andrew_id"]! as! String, email: JSON["email"]! as! String, phone_number: JSON["phone"]! as! String, role: JSON["role"]! as! String, year: JSON["year"]! as! String, missing_daily_boolean: JSON["missing_daily_boolean"]! as! Bool, missing_post_boolean: JSON["missing_post_boolean"]! as! Bool, api_key: JSON["api_key"]! as! String)
+                    self.loggedInUser = User(id: JSON["id"]! as! Int, team_id: (JSON["team_assignments"] as? [[String:Any]])?.first?["team_id"] as! Int, first_name: JSON["first_name"]! as! String, last_name: JSON["last_name"]! as! String, andrew_id: JSON["andrew_id"]! as! String, email: JSON["email"]! as! String, phone_number: JSON["phone"]! as! String, role: JSON["role"]! as! String, year: JSON["year"]! as! String, missing_daily_boolean: JSON["missing_daily_boolean"]! as! Bool, missing_post_boolean: JSON["missing_post_boolean"]! as! Bool, api_key: JSON["api_key"]! as! String)
                     self.loadingView.stopAnimating() // stop the loading animation after a user has logged in and the API call is done
                     self.performSegue(withIdentifier: "loginSegue", sender: sender)
                     
@@ -76,7 +76,7 @@ class LoginViewController: UIViewController {
         let headers: HTTPHeaders = [
             // hard-coding token value as user ID 1's value for now
             // b/c can't authorize creation when signing up a new user
-            "Authorization": "Token token=b8b254b72f725987677f0a00f80c0017"
+            "Authorization": "Token token=5dca21ab4c47b167a955f7670c5b0e17"
         ]
         Alamofire.request(get_teams_url, headers: headers).responseJSON{ response in
             if let result = response.result.value as? [[String: Any]] {

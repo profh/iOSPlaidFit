@@ -12,6 +12,7 @@ class User {
     
     // MARK: - Properties
     var id: Int?
+    var team_id: Int?
     var first_name: String?
     var last_name: String?
     var andrew_id: String?
@@ -25,8 +26,9 @@ class User {
     
     // MARK: - General
     
-    init(id: Int, first_name: String, last_name: String, andrew_id: String, email: String, phone_number: String, role: String, year: String, missing_daily_boolean: Bool, missing_post_boolean: Bool, api_key: String) {
+    init(id: Int, team_id: Int, first_name: String, last_name: String, andrew_id: String, email: String, phone_number: String, role: String, year: String, missing_daily_boolean: Bool, missing_post_boolean: Bool, api_key: String) {
         self.id = id
+        self.team_id = team_id
         self.first_name = first_name
         self.last_name = last_name
         self.andrew_id = andrew_id

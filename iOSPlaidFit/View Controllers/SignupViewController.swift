@@ -20,7 +20,7 @@ class SignupViewController: UIViewController {
     let headers: HTTPHeaders = [
         // hard-coding token value as user ID 1's value for now
         // b/c can't authorize creation when signing up a new user
-        "Authorization": "Token token=b8b254b72f725987677f0a00f80c0017"
+        "Authorization": "Token token=5dca21ab4c47b167a955f7670c5b0e17"
     ]
     var loggedInUser: User? = nil
     var teams = [(String, Int)]()
@@ -86,7 +86,8 @@ class SignupViewController: UIViewController {
         Alamofire.request(create_users_url, method: .post, parameters: parameters, headers: headers).responseJSON{ response in
             if let result = response.result.value {
                 let JSON = result as! NSDictionary
-                self.loggedInUser = User(id: JSON["id"]! as! Int, first_name: JSON["first_name"]! as! String, last_name: JSON["last_name"]! as! String, andrew_id: JSON["andrew_id"]! as! String, email: JSON["email"]! as! String, phone_number: JSON["phone"]! as! String, role: JSON["role"]! as! String, year: JSON["year"]! as! String, missing_daily_boolean: JSON["missing_daily_boolean"]! as! Bool, missing_post_boolean: JSON["missing_post_boolean"]! as! Bool, api_key: JSON["api_key"]! as! String)
+                let team_id = self.teamPickerDelegate.teams[self.teamPicker.selectedRow(inComponent: 0)].1
+                self.loggedInUser = User(id: JSON["id"]! as! Int, team_id: team_id, first_name: JSON["first_name"]! as! String, last_name: JSON["last_name"]! as! String, andrew_id: JSON["andrew_id"]! as! String, email: JSON["email"]! as! String, phone_number: JSON["phone"]! as! String, role: JSON["role"]! as! String, year: JSON["year"]! as! String, missing_daily_boolean: JSON["missing_daily_boolean"]! as! Bool, missing_post_boolean: JSON["missing_post_boolean"]! as! Bool, api_key: JSON["api_key"]! as! String)
                 self.createTeamAssignment(sender: sender)
             }
         }
