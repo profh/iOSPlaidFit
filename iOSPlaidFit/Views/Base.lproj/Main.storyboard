@@ -253,6 +253,7 @@
                         <outlet property="passwordConfField" destination="qD1-ku-YoF" id="z8J-bY-Nth"/>
                         <outlet property="passwordField" destination="Dfg-fh-CyB" id="LnX-t5-s1v"/>
                         <outlet property="phoneField" destination="eGc-M8-OlF" id="j1m-FZ-8O0"/>
+                        <outlet property="signupButton" destination="MIW-83-uwV" id="aJv-aQ-GIz"/>
                         <outlet property="teamPicker" destination="fuD-Tt-HeB" id="9Sk-ei-xDC"/>
                     </connections>
                 </viewController>
@@ -285,7 +286,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Welcome to PlaidFit" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nst-eE-5VS">
-                                <rect key="frame" x="88" y="154" width="199" height="193"/>
+                                <rect key="frame" x="88" y="198" width="199" height="149"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -294,7 +295,7 @@
                                 <rect key="frame" x="88" y="399" width="199" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l5j-40-7k5">
                                 <rect key="frame" x="88" y="437" width="199" height="30"/>
@@ -368,6 +369,7 @@
                         <outlet property="emailField" destination="rUI-Fq-z4q" id="KwO-9t-oCn"/>
                         <outlet property="errorField" destination="YUj-Y0-5bL" id="fH0-SQ-lpC"/>
                         <outlet property="loadingView" destination="76i-ag-GV6" id="XtD-qd-cUa"/>
+                        <outlet property="loginButton" destination="gxt-O5-Quu" id="8xv-sd-DXz"/>
                         <outlet property="passwordField" destination="l5j-40-7k5" id="VgN-vZ-UeE"/>
                     </connections>
                 </viewController>

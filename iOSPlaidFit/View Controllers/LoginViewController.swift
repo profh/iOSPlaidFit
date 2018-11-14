@@ -11,17 +11,18 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - Properties
     
-    let login_url = "http://128.237.196.9:3000/v1/token"
+    let login_url = "http://128.237.181.172:3000/v1/token"
     var loggedInUser: User? = nil
     var teams = [(String, Int)]()
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
     @IBOutlet weak var errorField: UILabel!
+    @IBOutlet weak var loginButton: UIButton!
     
     // MARK: - Functional
     
@@ -29,6 +30,9 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         loadingView.hidesWhenStopped = true // hide the loading animation when nothing is loading
         self.errorField.text = ""
+        self.emailField.delegate = self
+        self.passwordField.delegate = self
+        loginButton.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +76,7 @@ class LoginViewController: UIViewController {
     @IBAction func signupPressed(_ sender: Any) {
         loadingView.startAnimating() // start the loading animation for the duration of the API call
         // prep the team picker here
-        let get_teams_url = "http://128.237.196.9:3000/v1/teams"
+        let get_teams_url = "http://128.237.181.172:3000/v1/teams"
         let headers: HTTPHeaders = [
             // hard-coding token value as user ID 1's value for now
             // b/c can't authorize creation when signing up a new user
@@ -92,8 +96,18 @@ class LoginViewController: UIViewController {
         }
     }
     
-    // MARK: - Keyboard functions
+    @objc func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        validateTextFields()
+        return true
+    }
     
+    func validateTextFields() {
+        if (passwordField.text == "") || (emailField.text == "") {
+            loginButton.isEnabled = false
+        } else {
+            loginButton.isEnabled = true
+        }
+    }
 
     // MARK: - Navigation
 

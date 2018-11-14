@@ -11,12 +11,12 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 
-class SignupViewController: UIViewController {
+class SignupViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - Properties
 
-    let create_users_url = "http://128.237.196.9:3000/v1/users"
-    let create_team_assignments_url = "http://128.237.196.9:3000/v1/team_assignments"
+    let create_users_url = "http://128.237.181.172:3000/v1/users"
+    let create_team_assignments_url = "http://128.237.181.172:3000/v1/team_assignments"
     let headers: HTTPHeaders = [
         // hard-coding token value as user ID 1's value for now
         // b/c can't authorize creation when signing up a new user
@@ -35,6 +35,7 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var classPicker: UIPickerView!
     @IBOutlet weak var majorPicker: UIPickerView!
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
+    @IBOutlet weak var signupButton: UIButton!
     
     // MARK: - Picker Delegates
     
@@ -55,6 +56,14 @@ class SignupViewController: UIViewController {
         classPicker.dataSource = classPickerDelegate
         majorPicker.delegate = majorPickerDelegate
         majorPicker.dataSource = majorPickerDelegate
+        andrewIdField.delegate = self
+        firstNameField.delegate = self
+        lastNameField.delegate = self
+        phoneField.delegate = self
+        emailField.delegate = self
+        passwordField.delegate = self
+        passwordConfField.delegate = self
+        signupButton.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -116,6 +125,19 @@ class SignupViewController: UIViewController {
         let date = Date()
         let dateString = dateFormatter.string(from: date)
         return dateString
+    }
+    
+    @objc func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        validateTextFields()
+        return true
+    }
+    
+    func validateTextFields() {
+        if (andrewIdField.text == "") || (firstNameField.text == "") || (lastNameField.text == "") || (phoneField.text == "") || (emailField.text == "") || (passwordField.text == "") || (passwordConfField.text == "") {
+            signupButton.isEnabled = false
+        } else {
+            signupButton.isEnabled = true
+        }
     }
     
     // MARK: - Navigation
