@@ -9,6 +9,7 @@ target 'iOSPlaidFit' do
   pod 'Alamofire', '~> 4.0'
   pod 'SwiftyJSON'
   pod 'ResearchKit', '~> 2.0'
+  pod 'IQKeyboardManagerSwift'
   
   target 'iOSPlaidFitTests' do
     inherit! :search_paths
