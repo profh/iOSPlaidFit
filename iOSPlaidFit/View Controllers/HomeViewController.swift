@@ -16,7 +16,7 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     
     // MARK: - Properties
     
-    let input_survey_url = "http://128.237.181.172:3000/v1/surveys"
+    let input_survey_url = "http://128.237.125.16:3000/v1/surveys"
     @IBOutlet weak var nameLabel: UILabel!
     var currentUser: User? {
         didSet {

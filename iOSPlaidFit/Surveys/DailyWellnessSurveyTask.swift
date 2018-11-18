@@ -17,19 +17,19 @@ public var DailyWellnessSurveyTask: ORKOrderedTask {
     let questionStep1 = ORKQuestionStep(identifier: "hours_of_sleep", title: surveyTitle, question: "How many hours of sleep did you get last night?", answer: step1AnswerFormat)
     
     //question 2
-    let step2AnswerFormat = ORKAnswerFormat.scale(withMaximumValue: 5, minimumValue: 1, defaultValue: 3, step: 1, vertical: true, maximumValueDescription: "Very Good", minimumValueDescription: "Very Bad")
+    let step2AnswerFormat = ORKAnswerFormat.scale(withMaximumValue: 5, minimumValue: 1, defaultValue: 3, step: 1, vertical: false, maximumValueDescription: "Very Good", minimumValueDescription: "Very Bad")
     let questionStep2 = ORKQuestionStep(identifier: "quality_of_sleep", title: surveyTitle, question: "Please rate the quality of sleep you received last night", answer: step2AnswerFormat)
     
     //question 3
-    let step3AnswerFormat = ORKAnswerFormat.scale(withMaximumValue: 5, minimumValue: 1, defaultValue: 3, step: 1, vertical: true, maximumValueDescription: "Very Stressed", minimumValueDescription: "Not Stressed At All")
+    let step3AnswerFormat = ORKAnswerFormat.scale(withMaximumValue: 5, minimumValue: 1, defaultValue: 3, step: 1, vertical: false, maximumValueDescription: "Very Stressed", minimumValueDescription: "Not Stressed At All")
     let questionStep3 = ORKQuestionStep(identifier: "academic_stress", title: surveyTitle, question: "Please rate the level of academic stress you are experiencing today", answer: step3AnswerFormat)
     
     //question 4
-    let step4AnswerFormat = ORKAnswerFormat.scale(withMaximumValue: 5, minimumValue: 1, defaultValue: 3, step: 1, vertical: true, maximumValueDescription: "Very Stressed", minimumValueDescription: "Not Stressed At All")
+    let step4AnswerFormat = ORKAnswerFormat.scale(withMaximumValue: 5, minimumValue: 1, defaultValue: 3, step: 1, vertical: false, maximumValueDescription: "Very Stressed", minimumValueDescription: "Not Stressed At All")
     let questionStep4 = ORKQuestionStep(identifier: "life_stress", title: surveyTitle, question: "Please rate the level of general life stress you are experiencing today", answer: step4AnswerFormat)
     
     //question 5
-    let step5AnswerFormat = ORKAnswerFormat.scale(withMaximumValue: 5, minimumValue: 1, defaultValue: 3, step: 1, vertical: true, maximumValueDescription: "Very Sore", minimumValueDescription: "Not Sore At All")
+    let step5AnswerFormat = ORKAnswerFormat.scale(withMaximumValue: 5, minimumValue: 1, defaultValue: 3, step: 1, vertical: false, maximumValueDescription: "Very Sore", minimumValueDescription: "Not Sore At All")
     let questionStep5 = ORKQuestionStep(identifier: "soreness", title: surveyTitle, question: "Please rate the level of soreness you are experiencing today", answer: step5AnswerFormat)
     
     //question 6

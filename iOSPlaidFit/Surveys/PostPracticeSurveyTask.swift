@@ -13,11 +13,11 @@ public var PostPracticeSurveyTask: ORKOrderedTask {
     let surveyTitle = "Post-Practice Survey"
     
     //question 1
-    let step1AnswerFormat = ORKAnswerFormat.scale(withMaximumValue: 10, minimumValue: 0, defaultValue: 5, step: 1, vertical: true, maximumValueDescription: "Very Hard", minimumValueDescription: "Very Easy")
+    let step1AnswerFormat = ORKAnswerFormat.scale(withMaximumValue: 10, minimumValue: 0, defaultValue: 5, step: 1, vertical: false, maximumValueDescription: "Very Hard", minimumValueDescription: "Very Easy")
     let questionStep1 = ORKQuestionStep(identifier: "player_rpe_rating", title: surveyTitle, question: "Rate today's difficulty of practice", answer: step1AnswerFormat)
     
     //question 2
-    let step2AnswerFormat = ORKAnswerFormat.scale(withMaximumValue: 10, minimumValue: 0, defaultValue: 5, step: 1, vertical: true, maximumValueDescription: "Very Good", minimumValueDescription: "Very Bad")
+    let step2AnswerFormat = ORKAnswerFormat.scale(withMaximumValue: 10, minimumValue: 0, defaultValue: 5, step: 1, vertical: false, maximumValueDescription: "Very Good", minimumValueDescription: "Very Bad")
     let questionStep2 = ORKQuestionStep(identifier: "player_personal_performance", title: surveyTitle, question: "Rate your personal performance today", answer: step2AnswerFormat)
     
     //question 3
