@@ -11,6 +11,7 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 import ResearchKit
+import CoreData
 
 class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     
@@ -137,12 +138,30 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    func deleteUser() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                // if the contact we are deleting is the same as this one in CoreData {
+                context.delete(data)
+                try context.save()
+            }
+        } catch {
+            print("Failed")
+        }
+    }
 
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "logoutSegue" {
             // go back to login screen and clear the current user
+            self.deleteUser()
             self.currentUser = nil
             _ = navigationController?.popToRootViewController(animated: true)
         } else if segue.identifier == "profileSegue" {
