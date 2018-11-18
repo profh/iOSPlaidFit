@@ -37,6 +37,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
     @IBOutlet weak var signupButton: UIButton!
     
+    @IBOutlet weak var pwImage: UIImageView!
+    @IBOutlet weak var pwConfImage: UIImageView!
     // MARK: - Picker Delegates
     
     let teamPickerDelegate = TeamPickerDelegate()
@@ -137,6 +139,29 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             signupButton.isEnabled = false
         } else {
             signupButton.isEnabled = true
+        }
+    }
+    
+    @IBAction func pwTextChanged(_ sender: Any) {
+        confirmPasswords()
+    }
+    
+    @IBAction func pwConfTextChanged(_ sender: Any) {
+        confirmPasswords()
+    }
+    
+    func confirmPasswords() {
+        if (passwordField.text != "" && passwordConfField.text != "") {
+            if (passwordField.text == passwordConfField.text) {
+                pwImage.image = UIImage(named: "green_confirm")
+                pwConfImage.image = UIImage(named: "green_confirm")
+            } else {
+                pwImage.image = UIImage(named: "red_error")
+                pwConfImage.image = UIImage(named: "red_error")
+            }
+        } else {
+            pwImage.image = nil
+            pwConfImage.image = nil
         }
     }
     
