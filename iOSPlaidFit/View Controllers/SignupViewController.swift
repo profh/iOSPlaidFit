@@ -34,11 +34,10 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var teamPicker: UIPickerView!
     @IBOutlet weak var classPicker: UIPickerView!
     @IBOutlet weak var majorPicker: UIPickerView!
-    @IBOutlet weak var loadingView: UIActivityIndicatorView!
     @IBOutlet weak var signupButton: UIButton!
-    
     @IBOutlet weak var pwImage: UIImageView!
     @IBOutlet weak var pwConfImage: UIImageView!
+    
     // MARK: - Picker Delegates
     
     let teamPickerDelegate = TeamPickerDelegate()
@@ -49,8 +48,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadingView.hidesWhenStopped = true // hide the loading animation when nothing is loading
-        loadingView.hidesWhenStopped = true // hide the loading animation when nothing is loading
         teamPickerDelegate.teams = self.teams
         teamPicker.delegate = teamPickerDelegate
         teamPicker.dataSource = teamPickerDelegate
@@ -73,8 +70,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signupPressed(_ sender: Any) {
-        self.view.bringSubviewToFront(loadingView)
-        loadingView.startAnimating() // start the loading animation for the duration of the API call
         createUser(sender: sender)
     }
     
@@ -115,7 +110,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         ]
         Alamofire.request(create_team_assignments_url, method: .post, parameters: parameters, headers: headers).responseJSON{ response in
             if response.result.value != nil { // team assignment was created successfully
-                self.loadingView.stopAnimating()
                 self.performSegue(withIdentifier: "signupSegue", sender: sender)
             }
         }
