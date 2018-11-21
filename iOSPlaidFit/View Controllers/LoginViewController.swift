@@ -105,6 +105,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func loginPressed(_ sender: Any) {
+        self.errorField.text = ""
         loadingView.startAnimating() // start the loading animation for the duration of the API call
         // format the string that will be encoded with Base64 encoding and then encode it
         let loginString = NSString(format: "%@:%@", emailField.text!, passwordField.text!)
@@ -114,23 +115,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             "Authorization": "Basic \(base64LoginString)"
         ]
         Alamofire.request(login_url, headers: headers).responseJSON{ response in
-            if let status = response.response?.statusCode {
-                if status == 401 {
-                    self.errorField.text = "Incorrect email/password."
-                    self.loadingView.stopAnimating()
+            if let error = response.error {
+                self.errorField.text = error.localizedDescription
+                self.loadingView.stopAnimating()
+            } else {
+                if let status = response.response?.statusCode {
+                    print(status)
+                    if status == 401 {
+                        self.errorField.text = "Incorrect email/password."
+                        self.loadingView.stopAnimating()
+                    }
                 }
-            }
-            if let result = response.result.value {
-                let JSON = result as! NSDictionary
-                // only athletes (players) can log in
-                if (JSON["role"]! as! String) != "Player" {
-                    self.errorField.text = "Sorry! Only athletes can log in."
-                    self.loadingView.stopAnimating()
-                } else {
-                    self.loggedInUser = User(id: JSON["id"]! as! Int, team_id: (JSON["team_assignments"] as? [[String:Any]])?.first?["team_id"] as! Int, first_name: JSON["first_name"]! as! String, last_name: JSON["last_name"]! as! String, andrew_id: JSON["andrew_id"]! as! String, email: JSON["email"]! as! String, phone_number: JSON["phone"]! as! String, role: JSON["role"]! as! String, year: JSON["year"]! as! String, missing_daily_boolean: JSON["missing_daily_boolean"]! as! Bool, missing_post_boolean: JSON["missing_post_boolean"]! as! Bool, api_key: JSON["api_key"]! as! String)
-                    self.saveUser(self.loggedInUser!)
-                    self.loadingView.stopAnimating() // stop the loading animation after a user has logged in and the API call is done
-                    self.performSegue(withIdentifier: "loginSegue", sender: sender)
+                if let result = response.result.value {
+                    let JSON = result as! NSDictionary
+                    // only athletes (players) can log in
+                    if (JSON["role"]! as! String) != "Player" {
+                        self.errorField.text = "Sorry! Only athletes can log in."
+                        self.loadingView.stopAnimating()
+                    } else {
+                        self.loggedInUser = User(id: JSON["id"]! as! Int, team_id: (JSON["team_assignments"] as? [[String:Any]])?.first?["team_id"] as! Int, first_name: JSON["first_name"]! as! String, last_name: JSON["last_name"]! as! String, andrew_id: JSON["andrew_id"]! as! String, email: JSON["email"]! as! String, phone_number: JSON["phone"]! as! String, role: JSON["role"]! as! String, year: JSON["year"]! as! String, missing_daily_boolean: JSON["missing_daily_boolean"]! as! Bool, missing_post_boolean: JSON["missing_post_boolean"]! as! Bool, api_key: JSON["api_key"]! as! String)
+                        self.saveUser(self.loggedInUser!)
+                        self.loadingView.stopAnimating() // stop the loading animation after a user has logged in and the API call is done
+                        self.performSegue(withIdentifier: "loginSegue", sender: sender)
+                    }
                 }
             }
         }
