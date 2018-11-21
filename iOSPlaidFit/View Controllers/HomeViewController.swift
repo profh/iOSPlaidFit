@@ -17,8 +17,10 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     
     // MARK: - Properties
     
-    let input_survey_url = "http://128.237.181.39:3000/v1/surveys"
+    let input_survey_url = "http://localhost:3000/v1/surveys"
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var daily_wellness_button: UIButton!
+    @IBOutlet weak var post_practice_button: UIButton!
     var currentUser: User? {
         didSet {
             // Update the view.
@@ -116,7 +118,14 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     func pushToAPI(parameters: [String : Any], headers: HTTPHeaders) {
         Alamofire.request(input_survey_url, method: .post, parameters: parameters, headers: headers).responseJSON{ response in
             if response.result.value != nil {
-                print("success! survey created")
+                if let survey_type = parameters["survey_type"] as? String {
+                    if survey_type == "Post-Practice" {
+                        self.currentUser?.missing_post_boolean = false
+                    } else {
+                        self.currentUser?.missing_daily_boolean = false
+                    }
+                }
+                
             }
         }
     }
@@ -133,6 +142,12 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        daily_wellness_button.isEnabled = (currentUser?.missing_daily_boolean)!
+        post_practice_button.isEnabled = (currentUser?.missing_post_boolean)!
     }
     
     override func didReceiveMemoryWarning() {

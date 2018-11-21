@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LeN-hX-QLz">
-                                <rect key="frame" x="0.0" y="64" width="375" height="736"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="780"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogt-nX-Lqo" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="736"/>
@@ -364,13 +364,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlaidFit_tartan_border" translatesAutoresizingMaskIntoConstraints="NO" id="tyk-Up-X4Z">
-                                <rect key="frame" x="16" y="82" width="342" height="137"/>
+                                <rect key="frame" x="16" y="38" width="342" height="137"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="137" id="Y01-fn-xPY"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tartan_logo" translatesAutoresizingMaskIntoConstraints="NO" id="SAV-Gk-Y93">
-                                <rect key="frame" x="67" y="227" width="240" height="225"/>
+                                <rect key="frame" x="67" y="183" width="240" height="269"/>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="76i-ag-GV6">
                                 <rect key="frame" x="177" y="458" width="20" height="20"/>
@@ -471,7 +471,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="daily_wellness_button" destination="do1-7M-ah5" id="dfe-oO-bGb"/>
                         <outlet property="nameLabel" destination="r5l-zQ-SlM" id="oe7-Vr-Gpr"/>
+                        <outlet property="post_practice_button" destination="Sjd-Sa-FuO" id="dan-7C-Lf1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDZ-PI-PF0" userLabel="First Responder" sceneMemberID="firstResponder"/>
