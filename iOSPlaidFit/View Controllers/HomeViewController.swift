@@ -22,6 +22,7 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var daily_wellness_button: UIButton!
     @IBOutlet weak var post_practice_button: UIButton!
+    let center = UNUserNotificationCenter.current()
     var currentUser: User? {
         didSet {
             // Update the view.
@@ -140,12 +141,7 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.configureView()
-        print("hello")
-        // Notifcation stuff here
-        let center = UNUserNotificationCenter.current()
+    func setupNotifications() {
         // Request permission to display alerts and play sounds.
         center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
             // Enable or disable features based on authorization.
@@ -164,7 +160,16 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
         let uuidString = UUID().uuidString
         let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
         center.add(request, withCompletionHandler: nil)
-        print(center)
+    }
+    
+    func tearDownNotifications() {
+        center.removeAllPendingNotificationRequests()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.configureView()
+        self.setupNotifications()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -200,6 +205,7 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
         if segue.identifier == "logoutSegue" {
             // go back to login screen and clear the current user
             self.deleteUser()
+            self.tearDownNotifications()
             self.currentUser = nil
             _ = navigationController?.popToRootViewController(animated: true)
         } else if segue.identifier == "profileSegue" {
