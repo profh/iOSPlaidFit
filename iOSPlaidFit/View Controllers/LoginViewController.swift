@@ -153,15 +153,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             "Authorization": "Token token=45306c0f66c295a8b134128b12769879"
         ]
         Alamofire.request(get_teams_url, headers: headers).responseJSON{ response in
-            if let result = response.result.value as? [[String: Any]] {
-                for team in result {
-                    let gender = team["gender"]! as! String
-                    let sport = team["sport"]! as! String
-                    let team_id = team["id"]! as! Int
-                    self.teams.append((gender + "'s " + sport, team_id))
+            if let error = response.error {
+                self.errorField.text = error.localizedDescription
+                self.loadingView.stopAnimating()
+            } else {
+                if let result = response.result.value as? [[String: Any]] {
+                    for team in result {
+                        let gender = team["gender"]! as! String
+                        let sport = team["sport"]! as! String
+                        let team_id = team["id"]! as! Int
+                        self.teams.append((gender + "'s " + sport, team_id))
+                    }
+                    self.loadingView.stopAnimating() // stop the loading animation after the teams have been fetched from the API
+                    self.performSegue(withIdentifier: "goToSignupScreenSegue", sender: sender)
                 }
-                self.loadingView.stopAnimating() // stop the loading animation after the teams have been fetched from the API
-                self.performSegue(withIdentifier: "goToSignupScreenSegue", sender: sender)
             }
         }
     }
