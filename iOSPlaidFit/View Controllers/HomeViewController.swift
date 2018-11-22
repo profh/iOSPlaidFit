@@ -149,11 +149,10 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
         let content = UNMutableNotificationContent()
         content.title = "Good Morning!"
         content.body = "Please complete your Daily Wellness Survey"
-        // Configure the recurring date.
+        // Configure the recurring date to send notifications at 8:00 AM everyday.
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
-        dateComponents.hour = 14
-        dateComponents.minute = 26
+        dateComponents.hour = 8
         // Create the trigger as a repeating event.
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         // Create the request
