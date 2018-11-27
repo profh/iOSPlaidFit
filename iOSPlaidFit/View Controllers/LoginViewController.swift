@@ -128,6 +128,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }
             if let result = response.result.value {
                 let JSON = result as! NSDictionary
+                // Use this "JSON" variable to access the weekly survey objects
+                // daily_wellness_survey_weekly_objects
+                // post_practice_survey_weekly_objects
+                print(JSON)
                 // only athletes (players) can log in
                 if (JSON["role"]! as! String) != "Player" {
                     self.errorField.text = "Sorry! Only athletes can log in."

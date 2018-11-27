@@ -152,7 +152,8 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
         // Configure the recurring date to send notifications at 8:00 AM everyday.
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
-        dateComponents.hour = 8
+        dateComponents.hour = 14
+        dateComponents.minute = 24
         // Create the trigger as a repeating event.
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         // Create the request
