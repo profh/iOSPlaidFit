@@ -705,7 +705,7 @@
                     </view>
                     <connections>
                         <outlet property="avgStress" destination="N2g-o5-O6c" id="Kdc-Yt-bi7"/>
-                        <outlet property="todayStress" destination="Vmg-nf-hQV" id="4EQ-fJ-pg3"/>
+                        <outlet property="todayStress" destination="fC7-eB-8mG" id="9fX-D3-UJW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vEn-0n-1Uw" userLabel="First Responder" sceneMemberID="firstResponder"/>

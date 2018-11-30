@@ -29,24 +29,26 @@ class SleepViewController: UIViewController {
             user_id = "\(user.id)"
         }
         
-        let get_user_url = "http://localhost:3000/v1/users/" + user_id
+        let get_user_url = "http://localhost:3000/v1/users/4"
         
         let githubURL: NSURL = NSURL(string: get_user_url)!
         
         let data = NSData(contentsOf: githubURL as URL)!
         
-        let swiftyjson = try? JSON(data: data as Data)
-        print(swiftyjson?.string)
+        let swiftyjson = try! JSON(data: data as Data)
+//        print("\n****************************\n")
+//        print(swiftyjson["daily_wellness_survey_today_objects"][0]["hours_of_sleep"])
+//        print("\n****************************\n")
         
         if let tsleep = self.todaySleep {
-            tsleep.text = swiftyjson!["daily_wellness_survey_today_objects"][0]["hours_of_sleep"].string
+            tsleep.text = swiftyjson["daily_wellness_survey_today_objects"][0]["hours_of_sleep"].rawString()
         }
         
         var total_sleep = 0
         var counter = 0
         
         for i in 0..<6 {
-            if let this_sleep = swiftyjson!["daily_wellness_survey_weekly_objects"][i]["hours_of_sleep"].string {
+            if let this_sleep = swiftyjson["daily_wellness_survey_weekly_objects"][i]["hours_of_sleep"].rawString() {
                 total_sleep = total_sleep + Int(this_sleep)!
             }
             counter = counter + 1

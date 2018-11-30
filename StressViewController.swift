@@ -14,7 +14,8 @@ import CoreData
 
 class StressViewController: UIViewController {
 
-    @IBOutlet var todayStress: UIView!
+    
+    @IBOutlet weak var todayStress: UILabel!
     @IBOutlet weak var avgStress: UILabel!
     var currentUser: User? {
         didSet {
@@ -30,7 +31,7 @@ class StressViewController: UIViewController {
             user_id = "\(user.id)"
         }
         
-        let get_user_url = "http://localhost:3000/v1/users/" + user_id
+        let get_user_url = "http://localhost:3000/v1/users/4"
         
         let githubURL: NSURL = NSURL(string: get_user_url)!
         
@@ -39,14 +40,14 @@ class StressViewController: UIViewController {
         let swiftyjson = try? JSON(data: data as Data)
         
         if let tstress = self.todayStress {
-            tstress.text = swiftyjson!["daily_wellness_survey_today_objects"][0]["life_stress"].string
+            tstress.text = swiftyjson!["daily_wellness_survey_today_objects"][0]["life_stress"].rawString()
         }
         
         var total_stress = 0
         var counter = 0
         
         for i in 0..<6 {
-            if let this_stress = swiftyjson!["daily_wellness_survey_weekly_objects"][i]["life_stress"].string {
+            if let this_stress = swiftyjson!["daily_wellness_survey_weekly_objects"][i]["life_stress"].rawString() {
                 total_stress = total_stress + Int(this_stress)!
             }
             counter = counter + 1

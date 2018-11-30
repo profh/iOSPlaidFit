@@ -30,7 +30,7 @@ class SorenessViewController: UIViewController {
             user_id = "\(user.id)"
         }
         
-        let get_user_url = "http://localhost:3000/v1/users/" + user_id
+        let get_user_url = "http://localhost:3000/v1/users/4"
         
         let githubURL: NSURL = NSURL(string: get_user_url)!
         
@@ -40,14 +40,14 @@ class SorenessViewController: UIViewController {
         
         
         if let tsoreness = self.todaySoreness {
-            tsoreness.text = swiftyjson!["post_practice_survey_yesterday_objects"][0]["daily_strain"].string
+            tsoreness.text = swiftyjson!["post_practice_survey_yesterday_objects"][0]["player_rpe_rating"].rawString()
         }
         
         var total_soreness = 0
         var counter = 0
         
         for i in 0..<6 {
-            if let this_soreness = swiftyjson!["post_practice_survey_weekly_objects"][i]["daily_strain"].string {
+            if let this_soreness = swiftyjson!["post_practice_survey_weekly_objects"][i]["player_rpe_rating"].rawString() {
                 total_soreness = total_soreness + Int(this_soreness)!
             }
             counter = counter + 1

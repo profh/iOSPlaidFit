@@ -30,7 +30,7 @@ class HydrationViewController: UIViewController {
             user_id = "\(user.id)"
         }
         
-        let get_user_url = "http://localhost:3000/v1/users/" + user_id
+        let get_user_url = "http://localhost:3000/v1/users/4"
         
         let githubURL: NSURL = NSURL(string: get_user_url)!
         
@@ -39,14 +39,14 @@ class HydrationViewController: UIViewController {
         let swiftyjson = try? JSON(data: data as Data)
         
         if let thydrate = self.todayHydrate {
-            thydrate.text = swiftyjson!["daily_wellness_survey_today_objects"][0]["ounces_of_water_consumed"].string
+            thydrate.text = swiftyjson!["daily_wellness_survey_today_objects"][0]["ounces_of_water_consumed"].rawString()
         }
         
         var total_hydrate = 0
         var counter = 0
         
         for i in 0..<6 {
-            if let this_hydrate = swiftyjson!["daily_wellness_survey_weekly_objects"][i]["ounces_of_water_consumed"].string {
+            if let this_hydrate = swiftyjson!["daily_wellness_survey_weekly_objects"][i]["ounces_of_water_consumed"].rawString() {
                 total_hydrate = total_hydrate + Int(this_hydrate)!
             }
             counter = counter + 1
