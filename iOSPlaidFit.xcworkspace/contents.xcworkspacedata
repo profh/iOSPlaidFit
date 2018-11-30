@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:SleepViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:iOSPlaidFit.xcodeproj">
    </FileRef>
    <FileRef

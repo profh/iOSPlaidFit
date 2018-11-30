@@ -20,7 +20,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     let headers: HTTPHeaders = [
         // hard-coding token value as user ID 1's value for now
         // b/c can't authorize creation when signing up a new user
-        "Authorization": "Token token=45306c0f66c295a8b134128b12769879"
+        "Authorization": "Token token=1977ec368318a5fddc09f8191aacf39b"
     ]
     var loggedInUser: User? = nil
     var teams = [(String, Int)]()

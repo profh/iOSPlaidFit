@@ -22,6 +22,7 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var daily_wellness_button: UIButton!
     @IBOutlet weak var post_practice_button: UIButton!
+    @IBOutlet weak var results_button: UIButton!
     let center = UNUserNotificationCenter.current()
     var currentUser: User? {
         didSet {
@@ -40,6 +41,10 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
         let taskViewController = ORKTaskViewController(task: PostPracticeSurveyTask, taskRun: nil)
         taskViewController.delegate = self
         present(taskViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func resultsTapped(sender : AnyObject) {
+        
     }
     
     // MARK: - Functional
@@ -136,7 +141,8 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
         // Update the user interface for the current user.
         if let user: User = self.currentUser {
             if let name = self.nameLabel {
-                name.text = user.first_name! + " " + user.last_name!
+//                name.text = user.first_name! + " " + user.last_name!
+                name.text = "Welcome " + user.first_name! + "!"
             }
         }
     }
@@ -152,6 +158,8 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
         // Configure the recurring date to send notifications at 8:00 AM everyday.
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
+        
+        // CHANGE THIS FOR NOTIFICATION DEMO
         dateComponents.hour = 14
         dateComponents.minute = 24
         // Create the trigger as a repeating event.
