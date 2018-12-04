@@ -28,7 +28,7 @@ public var PostPracticeSurveyTask: ORKOrderedTask {
     let step4AnswerFormatUnit = NSLocalizedString("Minutes", comment: "")
     let step4AnswerFormat = ORKAnswerFormat.decimalAnswerFormat(withUnit: step4AnswerFormatUnit)
     
-    let questionStep4 = ORKQuestionStep(identifier: "minutes_participated", title: NSLocalizedString("Numeric", comment: ""), question: "How many minutes of practice did you participate in?", answer: step4AnswerFormat)
+    let questionStep4 = ORKQuestionStep(identifier: "minutes_participated", title: NSLocalizedString("Post-Practice Survey", comment: ""), question: "How many minutes of practice did you participate in?", answer: step4AnswerFormat)
     
     //completion step
     let completionStep = ORKCompletionStep(identifier: "Completion Step")

@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		16C39A9E162A9E8A5DBA4C46 /* Pods_iOSPlaidFit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895FB73989A61C58351B4AFD /* Pods_iOSPlaidFit.framework */; };
 		5C166F4621B10D590081FD08 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C166F4521B10D590081FD08 /* ResultsViewController.swift */; };
-		5C166F5021B1140D0081FD08 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C166F4D21B113EE0081FD08 /* Charts.framework */; };
-		5C166F5121B1140D0081FD08 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5C166F4D21B113EE0081FD08 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5C166F5F21B1378B0081FD08 /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C166F5E21B1378B0081FD08 /* SleepViewController.swift */; };
 		5C166F6121B147880081FD08 /* HydrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C166F6021B147880081FD08 /* HydrationViewController.swift */; };
 		5C166F6521B14A4D0081FD08 /* StressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C166F6421B14A4D0081FD08 /* StressViewController.swift */; };
@@ -36,27 +34,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5C166F4C21B113EE0081FD08 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5C166F4721B113ED0081FD08 /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
-			remoteInfo = Charts;
-		};
-		5C166F4E21B113EE0081FD08 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5C166F4721B113ED0081FD08 /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
-			remoteInfo = ChartsTests;
-		};
-		5C166F5221B1140D0081FD08 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5C166F4721B113ED0081FD08 /* Charts.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = A58A4ED274A941CA248EA921;
-			remoteInfo = Charts;
-		};
 		D1065539218BC58300F55820 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D1065519218BC58200F55820 /* Project object */;
@@ -73,7 +50,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5C166F5121B1140D0081FD08 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,7 +60,6 @@
 		1A99109D9D942A614F849A4C /* Pods-iOSPlaidFit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSPlaidFit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSPlaidFit/Pods-iOSPlaidFit.debug.xcconfig"; sourceTree = "<group>"; };
 		1D69CD85C9E8B099DE258068 /* Pods-iOSPlaidFitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSPlaidFitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSPlaidFitTests/Pods-iOSPlaidFitTests.release.xcconfig"; sourceTree = "<group>"; };
 		5C166F4521B10D590081FD08 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
-		5C166F4721B113ED0081FD08 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Downloads/Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 		5C166F5E21B1378B0081FD08 /* SleepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SleepViewController.swift; path = ../../SleepViewController.swift; sourceTree = "<group>"; };
 		5C166F6021B147880081FD08 /* HydrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationViewController.swift; sourceTree = "<group>"; };
 		5C166F6421B14A4D0081FD08 /* StressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StressViewController.swift; path = ../../StressViewController.swift; sourceTree = "<group>"; };
@@ -122,7 +97,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				16C39A9E162A9E8A5DBA4C46 /* Pods_iOSPlaidFit.framework in Frameworks */,
-				5C166F5021B1140D0081FD08 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,15 +111,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5C166F4821B113ED0081FD08 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				5C166F4D21B113EE0081FD08 /* Charts.framework */,
-				5C166F4F21B113EE0081FD08 /* ChartsTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		5C37C0BE219371F100C95AE0 /* Surveys */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,7 +143,6 @@
 		D1065518218BC58200F55820 = {
 			isa = PBXGroup;
 			children = (
-				5C166F4721B113ED0081FD08 /* Charts.xcodeproj */,
 				D1065523218BC58200F55820 /* iOSPlaidFit */,
 				D106553B218BC58300F55820 /* iOSPlaidFitTests */,
 				D1065522218BC58200F55820 /* Products */,
@@ -282,7 +246,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				5C166F5321B1140D0081FD08 /* PBXTargetDependency */,
 			);
 			name = iOSPlaidFit;
 			productName = iOSPlaidFit;
@@ -338,12 +301,6 @@
 			mainGroup = D1065518218BC58200F55820;
 			productRefGroup = D1065522218BC58200F55820 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 5C166F4821B113ED0081FD08 /* Products */;
-					ProjectRef = 5C166F4721B113ED0081FD08 /* Charts.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				D1065520218BC58200F55820 /* iOSPlaidFit */,
@@ -351,23 +308,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		5C166F4D21B113EE0081FD08 /* Charts.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Charts.framework;
-			remoteRef = 5C166F4C21B113EE0081FD08 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		5C166F4F21B113EE0081FD08 /* ChartsTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ChartsTests.xctest;
-			remoteRef = 5C166F4E21B113EE0081FD08 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D106551F218BC58200F55820 /* Resources */ = {
@@ -501,11 +441,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5C166F5321B1140D0081FD08 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Charts;
-			targetProxy = 5C166F5221B1140D0081FD08 /* PBXContainerItemProxy */;
-		};
 		D106553A218BC58300F55820 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D1065520218BC58200F55820 /* iOSPlaidFit */;
