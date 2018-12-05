@@ -318,48 +318,62 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rUI-Fq-z4q">
-                                <rect key="frame" x="16" y="517" width="342" height="30"/>
+                                <rect key="frame" x="16" y="512" width="342" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="tiY-d1-fr2"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l5j-40-7k5">
-                                <rect key="frame" x="16" y="555" width="342" height="30"/>
+                                <rect key="frame" x="16" y="550" width="342" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="hyX-ek-y5g"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxt-O5-Quu">
-                                <rect key="frame" x="16" y="605" width="160" height="30"/>
+                                <rect key="frame" x="16" y="600" width="160" height="35"/>
+                                <color key="backgroundColor" red="0.92102748155593872" green="0.75033491849899292" blue="0.59853947162628174" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="iJq-Y7-8uN"/>
                                 </constraints>
-                                <state key="normal" title="Login"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="3"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="loginPressed:" destination="mtV-xZ-FXJ" eventType="touchUpInside" id="5gg-dS-x2j"/>
                                     <segue destination="ePQ-Lj-oa8" kind="show" identifier="loginSegue" id="b4L-42-zC3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Cn-fa-IKQ">
-                                <rect key="frame" x="199" y="605" width="160" height="30"/>
-                                <state key="normal" title="Sign Up"/>
+                                <rect key="frame" x="199" y="600" width="160" height="35"/>
+                                <color key="backgroundColor" red="0.92102748155593872" green="0.75033491849899292" blue="0.59853947162628174" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="3"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signupPressed:" destination="mtV-xZ-FXJ" eventType="touchUpInside" id="heb-ST-F5E"/>
                                     <segue destination="3Eh-zd-LC3" kind="show" identifier="goToSignupScreenSegue" id="h88-En-2RV"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUj-Y0-5bL">
-                                <rect key="frame" x="16" y="486" width="342" height="23"/>
+                                <rect key="frame" x="16" y="481" width="342" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="RZ2-KN-vlX"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -370,10 +384,10 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tartan_logo" translatesAutoresizingMaskIntoConstraints="NO" id="SAV-Gk-Y93">
-                                <rect key="frame" x="67" y="183" width="240" height="269"/>
+                                <rect key="frame" x="67" y="183" width="240" height="264"/>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="76i-ag-GV6">
-                                <rect key="frame" x="177" y="458" width="20" height="20"/>
+                                <rect key="frame" x="177" y="453" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="PKe-Ir-a8c"/>
                                 </constraints>
@@ -431,39 +445,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="do1-7M-ah5">
-                                <rect key="frame" x="16" y="318" width="150" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="do1-7M-ah5">
+                                <rect key="frame" x="16" y="258" width="165" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Daily Wellness Survey"/>
+                                <state key="normal" image="daily_wellness"/>
                                 <connections>
                                     <action selector="dailyWellnessSurveyTappedWithSender:" destination="Nmk-8l-yON" eventType="touchUpInside" id="KQp-Xt-9Cu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sjd-Sa-FuO">
-                                <rect key="frame" x="214" y="318" width="145" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sjd-Sa-FuO">
+                                <rect key="frame" x="194" y="258" width="165" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Post-Practice Survey"/>
+                                <state key="normal" title="Post-Practice Survey" image="post_practice"/>
                                 <connections>
                                     <action selector="postPracticeSurveyTappedWithSender:" destination="Nmk-8l-yON" eventType="touchUpInside" id="HA7-cV-I5e"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5l-zQ-SlM">
-                                <rect key="frame" x="45" y="209" width="285" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5l-zQ-SlM">
+                                <rect key="frame" x="16" y="190" width="343" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="23"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aka-f1-sAo">
-                                <rect key="frame" x="162" y="389" width="51" height="30"/>
+                                <rect key="frame" x="162" y="517" width="51" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Results"/>
                                 <connections>
                                     <segue destination="ZvG-xB-zvd" kind="show" id="6cH-P4-Ic2"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PlaidFit_tartan_border" translatesAutoresizingMaskIntoConstraints="NO" id="gI6-pX-QMJ">
+                                <rect key="frame" x="16" y="88" width="184" height="78"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="da4-bc-vuI">
+                                <rect key="frame" x="215" y="102" width="144" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Label">
+                                        <attributes>
+                                            <font key="NSFont" size="15" name="Futura-Medium"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <viewLayoutGuide key="safeArea" id="taE-ii-vrI"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="i9s-ja-2o2">
@@ -480,6 +512,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="daily_wellness_button" destination="do1-7M-ah5" id="dfe-oO-bGb"/>
+                        <outlet property="dateLabel" destination="da4-bc-vuI" id="RmL-iP-k1r"/>
                         <outlet property="nameLabel" destination="r5l-zQ-SlM" id="oe7-Vr-Gpr"/>
                         <outlet property="post_practice_button" destination="Sjd-Sa-FuO" id="dan-7C-Lf1"/>
                     </connections>
@@ -884,10 +917,12 @@
     </scenes>
     <resources>
         <image name="PlaidFit_tartan_border" width="600" height="204"/>
+        <image name="daily_wellness" width="322" height="262"/>
+        <image name="post_practice" width="315" height="261"/>
         <image name="tartan_logo" width="720" height="720"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="L3H-A4-4Ak"/>
+        <segue reference="b4L-42-zC3"/>
         <segue reference="msC-9Q-Mc6"/>
     </inferredMetricsTieBreakers>
 </document>

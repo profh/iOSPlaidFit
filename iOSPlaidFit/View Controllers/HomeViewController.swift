@@ -20,6 +20,7 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     
     let input_survey_url = "http://localhost:3000/v1/surveys"
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var daily_wellness_button: UIButton!
     @IBOutlet weak var post_practice_button: UIButton!
     @IBOutlet weak var results_button: UIButton!
@@ -30,7 +31,7 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
             self.configureView()
         }
     }
-    
+
     @IBAction func dailyWellnessSurveyTapped(sender : AnyObject) {
         let taskViewController = ORKTaskViewController(task: DailyWellnessSurveyTask, taskRun: nil)
         taskViewController.delegate = self
@@ -142,7 +143,7 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
         if let user: User = self.currentUser {
             if let name = self.nameLabel {
 //                name.text = user.first_name! + " " + user.last_name!
-                name.text = "Welcome " + user.first_name! + "!"
+                name.text = "Welcome, " + user.first_name! + "!"
             }
         }
     }
@@ -178,6 +179,12 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
         super.viewDidLoad()
         self.configureView()
         self.setupNotifications()
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        let dateString = dateFormatter.string(from: currentDate)
+        self.dateLabel.numberOfLines = 2
+        self.dateLabel.text = dateString
     }
     
     override func viewDidAppear(_ animated: Bool) {
