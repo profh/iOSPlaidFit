@@ -150,7 +150,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             if let result = response.result.value {
                 let JSON = result as! NSDictionary
                 let team_id = self.teamPickerDelegate.teams[self.teamPicker.selectedRow(inComponent: 0)].1
-                self.loggedInUser = User(id: JSON["id"]! as! Int, team_id: team_id, first_name: JSON["first_name"]! as! String, last_name: JSON["last_name"]! as! String, andrew_id: JSON["andrew_id"]! as! String, email: JSON["email"]! as! String, phone_number: JSON["phone"]! as! String, role: JSON["role"]! as! String, year: JSON["year"]! as! String, missing_daily_boolean: JSON["missing_daily_boolean"]! as! Bool, missing_post_boolean: JSON["missing_post_boolean"]! as! Bool, api_key: JSON["api_key"]! as! String)
+                self.loggedInUser = User(id: JSON["id"]! as! Int, team_id: team_id, first_name: JSON["first_name"]! as! String, last_name: JSON["last_name"]! as! String, andrew_id: JSON["andrew_id"]! as! String, email: JSON["email"]! as! String, phone_number: JSON["phone"]! as! String, role: JSON["role"]! as! String, year: JSON["year"]! as! String, major: JSON["major"]! as! String, missing_daily_boolean: JSON["missing_daily_boolean"]! as! Bool, missing_post_boolean: JSON["missing_post_boolean"]! as! Bool, api_key: JSON["api_key"]! as! String)
                 self.createTeamAssignment(sender: sender)
             }
         }

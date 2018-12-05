@@ -12,11 +12,17 @@ class ProfileViewController: UIViewController {
     
     // MARK: - Properties
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var andrewIdLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var profileLabel: UILabel!
+    @IBOutlet weak var athleteLabel: UILabel!
+    
+    @IBOutlet weak var teamLabel: UILabel!
+    @IBOutlet weak var andrewIDLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var majorLabel: UILabel!
+    
     var currentUser: User? {
         didSet {
             // Update the view.
@@ -29,10 +35,7 @@ class ProfileViewController: UIViewController {
     func configureView() {
         // Update the user interface for the current user.
         if let user: User = self.currentUser {
-            if let name = self.nameLabel {
-                name.text = user.first_name! + " " + user.last_name!
-            }
-            if let andrewID = self.andrewIdLabel {
+            if let andrewID = self.andrewIDLabel {
                 andrewID.text = user.andrew_id
             }
             if let email = self.emailLabel {
@@ -43,6 +46,15 @@ class ProfileViewController: UIViewController {
             }
             if let year = self.yearLabel {
                 year.text = user.year
+            }
+            if let major = self.majorLabel {
+                major.text = user.major
+            }
+            if let profile = self.profileLabel {
+                profile.text = user.first_name! + "'s Profile"
+            }
+            if let athlete = self.athleteLabel {
+                athlete.text = "Athlete: " + user.first_name! + " " + user.last_name!
             }
         }
     }
