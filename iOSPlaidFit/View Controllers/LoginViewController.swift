@@ -48,6 +48,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         newUser.setValue(user.missing_post_boolean, forKey: "missing_post_boolean")
         newUser.setValue(user.missing_daily_boolean, forKey: "missing_daily_boolean")
         newUser.setValue(user.api_key, forKey: "api_key")
+        newUser.setValue(user.team_string, forKey: "team_string")
         do {
             try context.save()
             print("successfully saved user!")
@@ -70,7 +71,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let missing_post_boolean = data.value(forKey: "missing_post_boolean") as! Bool
         let missing_daily_boolean = data.value(forKey: "missing_daily_boolean") as! Bool
         let api_key = data.value(forKey: "api_key") as! String
-        self.loggedInUser = User(id: id, team_id: team_id, first_name: first_name, last_name: last_name, andrew_id: andrew_id, email: email, phone_number: phone_number, role: role, year: year, major: major, missing_daily_boolean: missing_daily_boolean, missing_post_boolean: missing_post_boolean, api_key: api_key)
+        let team_string = data.value(forKey: "team_string") as! String
+        self.loggedInUser = User(id: id, team_id: team_id, first_name: first_name, last_name: last_name, andrew_id: andrew_id, email: email, phone_number: phone_number, role: role, year: year, major: major, missing_daily_boolean: missing_daily_boolean, missing_post_boolean: missing_post_boolean, api_key: api_key, team_string: team_string)
     }
     
     // MARK: - Functional
@@ -147,7 +149,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.errorField.text = "Sorry! Only athletes can log in."
                     self.loadingView.stopAnimating()
                 } else {
-                    self.loggedInUser = User(id: JSON["id"]! as! Int, team_id: (JSON["team_assignments"] as? [[String:Any]])?.first?["team_id"] as! Int, first_name: JSON["first_name"]! as! String, last_name: JSON["last_name"]! as! String, andrew_id: JSON["andrew_id"]! as! String, email: JSON["email"]! as! String, phone_number: JSON["phone"]! as! String, role: JSON["role"]! as! String, year: JSON["year"]! as! String, major: JSON["major"]! as! String, missing_daily_boolean: JSON["missing_daily_boolean"]! as! Bool, missing_post_boolean: JSON["missing_post_boolean"]! as! Bool, api_key: JSON["api_key"]! as! String)
+                    self.loggedInUser = User(id: JSON["id"]! as! Int, team_id: (JSON["team_assignments"] as? [[String:Any]])?.first?["team_id"] as! Int, first_name: JSON["first_name"]! as! String, last_name: JSON["last_name"]! as! String, andrew_id: JSON["andrew_id"]! as! String, email: JSON["email"]! as! String, phone_number: JSON["phone"]! as! String, role: JSON["role"]! as! String, year: JSON["year"]! as! String, major: JSON["major"]! as! String, missing_daily_boolean: JSON["missing_daily_boolean"]! as! Bool, missing_post_boolean: JSON["missing_post_boolean"]! as! Bool, api_key: JSON["api_key"]! as! String, team_string: "")
                     self.saveUser(self.loggedInUser!)
                     self.loadingView.stopAnimating() // stop the loading animation after a user has logged in and the API call is done
                     self.performSegue(withIdentifier: "loginSegue", sender: sender)

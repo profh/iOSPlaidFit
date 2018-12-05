@@ -19,6 +19,7 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     // MARK: - Properties
     
     let input_survey_url = "http://localhost:3000/v1/surveys"
+    let get_team_url = "http://localhost:3000/v1/teams/"
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var daily_wellness_button: UIButton!
@@ -174,10 +175,30 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
         center.removeAllPendingNotificationRequests()
     }
     
+    func getTeamName() {
+        if let team_id = currentUser?.team_id, let api_key = currentUser?.api_key {
+            print(get_team_url + String(team_id))
+            let headers: HTTPHeaders = [
+                "Authorization": "Token token=" + api_key
+            ]
+            Alamofire.request(get_team_url + String(team_id), headers: headers).responseJSON{ response in
+                if let result = response.result.value {
+                    let JSON = result as! NSDictionary
+                    let gender = JSON["gender"]! as! String
+                    let sport = JSON["sport"]! as! String
+                    self.currentUser?.team_string = gender + "'s " + sport
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
         self.setupNotifications()
+        self.getTeamName()
+        // set the date label
+        // not sure why if you take out this logic from viewDidLoad(), build will fail
         let currentDate = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .full
@@ -226,6 +247,18 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
             // go to profile view and set the current user to display info
             (segue.destination as! ProfileViewController).currentUser = self.currentUser
         }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String?, sender: Any?) -> Bool {
+        if let ident = identifier {
+            if ident == "profileSegue" {
+                // do not perform segue if, for any reason, user failed to log in
+                if currentUser?.team_string == "" {
+                    return false
+                }
+            }
+        }
+        return true
     }
 
 }

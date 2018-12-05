@@ -24,10 +24,11 @@ class User {
     var missing_daily_boolean: Bool?
     var missing_post_boolean: Bool?
     var api_key: String?
+    var team_string: String?
     
     // MARK: - General
     
-    init(id: Int, team_id: Int, first_name: String, last_name: String, andrew_id: String, email: String, phone_number: String, role: String, year: String, major: String, missing_daily_boolean: Bool, missing_post_boolean: Bool, api_key: String) {
+    init(id: Int, team_id: Int, first_name: String, last_name: String, andrew_id: String, email: String, phone_number: String, role: String, year: String, major: String, missing_daily_boolean: Bool, missing_post_boolean: Bool, api_key: String, team_string: String) {
         self.id = id
         self.team_id = team_id
         self.first_name = first_name
@@ -41,6 +42,7 @@ class User {
         self.missing_daily_boolean = missing_daily_boolean
         self.missing_post_boolean = missing_post_boolean
         self.api_key = api_key
+        self.team_string = team_string
     }
     
 }

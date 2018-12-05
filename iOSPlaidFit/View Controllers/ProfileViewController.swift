@@ -35,6 +35,9 @@ class ProfileViewController: UIViewController {
     func configureView() {
         // Update the user interface for the current user.
         if let user: User = self.currentUser {
+            if let team = self.teamLabel {
+                team.text = user.team_string
+            }
             if let andrewID = self.andrewIDLabel {
                 andrewID.text = user.andrew_id
             }
@@ -62,6 +65,14 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
+        // set the date label
+        // not sure why if you take out this logic from viewDidLoad(), build will fail
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        let dateString = dateFormatter.string(from: currentDate)
+        self.dateLabel.numberOfLines = 2
+        self.dateLabel.text = dateString
     }
     
     // https://stackoverflow.com/questions/32364055/formattting-phone-number-in-swift
