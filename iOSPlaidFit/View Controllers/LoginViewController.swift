@@ -96,6 +96,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         } catch {
             print("Failed")
         }
+        // background image
+        let backgroundImage = UIImage(named: "pic_background")
+        let backgroundImageView = UIImageView(frame: self.view.frame)
+        backgroundImageView.image = backgroundImage
+        self.view.insertSubview(backgroundImageView, at: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {

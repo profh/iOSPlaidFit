@@ -149,6 +149,7 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     }
     
     func setupNotifications() {
+        center.removeAllPendingNotificationRequests()
         // Request permission to display alerts and play sounds.
         center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
             // Enable or disable features based on authorization.
@@ -161,8 +162,8 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
         dateComponents.calendar = Calendar.current
         
         // CHANGE THIS FOR NOTIFICATION DEMO
-        dateComponents.hour = 14
-        dateComponents.minute = 24
+        dateComponents.hour = 12
+        dateComponents.minute = 11
         // Create the trigger as a repeating event.
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         // Create the request
