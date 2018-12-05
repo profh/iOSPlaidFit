@@ -52,6 +52,40 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         setupDelegates()
         setBackgroundImage()
         setupPickerBorders()
+        
+        let pwConfTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        let pwTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        pwImage.isUserInteractionEnabled = true
+        pwImage.addGestureRecognizer(pwTapGestureRecognizer)
+        pwConfImage.isUserInteractionEnabled = true
+        pwConfImage.addGestureRecognizer(pwConfTapGestureRecognizer)
+    }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        var text = ""
+        if passwordField.text != "" && passwordConfField.text != "" {
+            if passwordField.text == passwordConfField.text && (passwordField.text?.count)! >= 6 {
+                text = "Passwords match."
+            } else {
+                if passwordField.text != passwordConfField.text {
+                    text = "Passwords do not match."
+                }
+                if (passwordField.text?.count)! < 6 {
+                    text = "Password must be at least 6 characters."
+                }
+                if passwordField.text != passwordConfField.text && (passwordField.text?.count)! < 6 {
+                    text = "Passwords do not match and must be at least 6 characters."
+                }
+                
+            }
+        }
+        if text != "" {
+            let alert = UIAlertController(title: "Password Confirmation", message: text, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                NSLog("The \"OK\" alert occured.")
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func setupDelegates() {
@@ -152,7 +186,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     }
     
     func validateTextFields() {
-        if (andrewIdField.text == "") || (firstNameField.text == "") || (lastNameField.text == "") || (phoneField.text == "") || (emailField.text == "") || (passwordField.text == "") || (passwordConfField.text == "") {
+        if (andrewIdField.text == "") || (firstNameField.text == "") || (lastNameField.text == "") || (phoneField.text == "") || (emailField.text == "") || (passwordField.text == "") || (passwordConfField.text == "") || (passwordField.text != passwordConfField.text) || ((passwordField.text?.count)! < 6) || ((passwordConfField.text?.count)! < 6) {
             signupButton.isEnabled = false
         } else {
             signupButton.isEnabled = true
@@ -168,8 +202,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     }
     
     func confirmPasswords() {
-        if (passwordField.text != "" && passwordConfField.text != "") {
-            if (passwordField.text == passwordConfField.text) {
+        if passwordField.text != "" && passwordConfField.text != "" {
+            // passwords must match and be at least 6 characters
+            if passwordField.text == passwordConfField.text && (passwordField.text?.count)! >= 6 {
                 pwImage.image = UIImage(named: "green_confirm")
                 pwConfImage.image = UIImage(named: "green_confirm")
             } else {
@@ -181,7 +216,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             pwConfImage.image = nil
         }
     }
-    
+
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
