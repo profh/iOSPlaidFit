@@ -75,10 +75,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // setup the loading animation
         loadingView.hidesWhenStopped = true // hide the loading animation when nothing is loading
+        // set the text fields
         self.errorField.text = ""
         self.emailField.delegate = self
         self.passwordField.delegate = self
+        // disable button for now
         loginButton.isEnabled = false
         // Loading user from CoreData if exists
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -152,28 +155,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signupPressed(_ sender: Any) {
-        loadingView.startAnimating() // start the loading animation for the duration of the API call
-        // prep the team picker here
-        let get_teams_url = "http://localhost:3000/v1/teams"
-        let headers: HTTPHeaders = [
-            // hard-coding token value as user ID 1's value for now
-            // b/c can't authorize creation when signing up a new user
-            "Authorization": "Token token=1977ec368318a5fddc09f8191aacf39b"
-        ]
-        Alamofire.request(get_teams_url, headers: headers).responseJSON{ response in
-            if let error = response.error {
-                self.errorField.text = error.localizedDescription
-                self.loadingView.stopAnimating()
-            } else {
-                if let result = response.result.value as? [[String: Any]] {
-                    for team in result {
-                        let gender = team["gender"]! as! String
-                        let sport = team["sport"]! as! String
-                        let team_id = team["id"]! as! Int
-                        self.teams.append((gender + "'s " + sport, team_id))
+        if self.teams.isEmpty {
+            loadingView.startAnimating() // start the loading animation for the duration of the API call
+            let get_teams_url = "http://localhost:3000/v1/teams"
+            let headers: HTTPHeaders = [
+                // hard-coding token value as user ID 1's value for now
+                // b/c can't authorize creation when signing up a new user
+                "Authorization": "Token token=1977ec368318a5fddc09f8191aacf39b"
+            ]
+            Alamofire.request(get_teams_url, headers: headers).responseJSON{ response in
+                if let error = response.error {
+                    self.errorField.text = error.localizedDescription
+                    self.loadingView.stopAnimating()
+                } else {
+                    if let result = response.result.value as? [[String: Any]] {
+                        for team in result {
+                            let gender = team["gender"]! as! String
+                            let sport = team["sport"]! as! String
+                            let team_id = team["id"]! as! Int
+                            self.teams.append((gender + "'s " + sport, team_id))
+                        }
+                        self.loadingView.stopAnimating() // stop the loading animation after the teams have been fetched from the API
+                        self.performSegue(withIdentifier: "goToSignupScreenSegue", sender: sender)
                     }
-                    self.loadingView.stopAnimating() // stop the loading animation after the teams have been fetched from the API
-                    self.performSegue(withIdentifier: "goToSignupScreenSegue", sender: sender)
                 }
             }
         }
@@ -202,7 +206,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             hvc.currentUser = loggedInUser
         } else if segue.identifier == "goToSignupScreenSegue" {
             let nav = segue.destination as! SignupViewController
-            nav.teams.removeAll()
             nav.teams = teams
         }
     }
