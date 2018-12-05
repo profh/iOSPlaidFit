@@ -142,7 +142,6 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
         // Update the user interface for the current user.
         if let user: User = self.currentUser {
             if let name = self.nameLabel {
-//                name.text = user.first_name! + " " + user.last_name!
                 name.text = "Welcome, " + user.first_name! + "!"
             }
         }
@@ -160,10 +159,9 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
         // Configure the recurring date to send notifications at 8:00 AM everyday.
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
-        
         // CHANGE THIS FOR NOTIFICATION DEMO
-        dateComponents.hour = 12
-        dateComponents.minute = 11
+        dateComponents.hour = 9
+        dateComponents.minute = 0
         // Create the trigger as a repeating event.
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         // Create the request
