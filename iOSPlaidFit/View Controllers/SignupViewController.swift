@@ -37,17 +37,24 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var pwImage: UIImageView!
     @IBOutlet weak var pwConfImage: UIImageView!
+    @IBOutlet weak var contentView: UIView!
     
     // MARK: - Picker Delegates
     
     let teamPickerDelegate = TeamPickerDelegate()
     let classPickerDelegate = ClassPickerDelegate()
     let majorPickerDelegate = MajorPickerDelegate()
-    
+
     // MARK: - Functional
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupDelegates()
+        setBackgroundImage()
+        setupPickerBorders()
+    }
+    
+    func setupDelegates() {
         teamPickerDelegate.teams = self.teams
         teamPicker.delegate = teamPickerDelegate
         teamPicker.dataSource = teamPickerDelegate
@@ -63,6 +70,22 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         passwordField.delegate = self
         passwordConfField.delegate = self
         signupButton.isEnabled = false
+    }
+    
+    func setBackgroundImage() {
+        let backgroundImage = UIImage(named: "pic_background")
+        let backgroundImageView = UIImageView(frame: self.contentView.frame)
+        backgroundImageView.image = backgroundImage
+        self.contentView.insertSubview(backgroundImageView, at: 0)
+    }
+    
+    func setupPickerBorders() {
+        teamPicker.layer.borderWidth = 3
+        teamPicker.layer.borderColor = UIColor.white.cgColor
+        classPicker.layer.borderWidth = 3
+        classPicker.layer.borderColor = UIColor.white.cgColor
+        majorPicker.layer.borderWidth = 3
+        majorPicker.layer.borderColor = UIColor.white.cgColor
     }
     
     override func viewWillAppear(_ animated: Bool) {

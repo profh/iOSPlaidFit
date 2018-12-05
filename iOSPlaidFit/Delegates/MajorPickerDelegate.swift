@@ -24,4 +24,15 @@ class MajorPickerDelegate: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return majors[row]
     }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var label = UILabel()
+        if let v = view as? UILabel { label = v }
+        label.font = UIFont (name: "Futura-Bold", size: 16)
+        label.text =  majors[row]
+        label.textColor = UIColor.white
+        label.textAlignment = .center
+        return label
+    }
+    
 }
