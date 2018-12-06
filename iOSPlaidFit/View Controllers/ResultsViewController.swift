@@ -20,6 +20,7 @@ class ResultsViewController: UIViewController {
     var currentUser: User? {
         didSet {
             // Update the view.
+            print("set user")
             self.configureView()
         }
     }
@@ -49,6 +50,7 @@ class ResultsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("asdasasdsadadsadsa")
         self.configureView()
     }
     

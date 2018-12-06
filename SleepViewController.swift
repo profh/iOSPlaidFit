@@ -18,16 +18,25 @@ class SleepViewController: UIViewController {
     @IBOutlet weak var todaySleep: UILabel!
     @IBOutlet weak var avgSleep: UILabel!
     
+    var currentUser: User? {
+        didSet {
+            // Update the view.
+            self.configureView()
+        }
+    }
+    
     func setChartValues() {
         let dataEntries = getWeeklySleep()
         let size = dataEntries.count
-//        let values = (0..<size).map { (i) -> ChartDataEntry in
-        let values = (0..<7).map { (i) -> BarChartDataEntry in
-//            let val = dataEntries[i]
-            let val = i
+        print(size)
+        let values = (0..<size).map { (i) -> BarChartDataEntry in
+//        let values = (0..<7).map { (i) -> BarChartDataEntry in
+            let val = dataEntries[i]
+//            let val = i
             return BarChartDataEntry(x: Double(i), y: Double(val))
         }
         
+//        let dates = getDates()
         let dates = ["12/1","12/2","12/3","12/4","12/5","12/6","12/6"]
         
         let set1 = BarChartDataSet(values: values, label: "Sleep")
@@ -59,8 +68,7 @@ class SleepViewController: UIViewController {
             "Authorization": "Token token=1977ec368318a5fddc09f8191aacf39b"
         ]
         var weeklyHours : [Int] = []
-        let param : [String: Any] = [:]
-        Alamofire.request(user_url, parameters: param, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+        Alamofire.request(user_url, headers: headers).responseJSON { response in
             if let error = response.error {
                 print(error.localizedDescription)
             } else {
@@ -79,6 +87,11 @@ class SleepViewController: UIViewController {
         }
         return weeklyHours
     }
+    
+    //result -> daily_wellness_survey_weekly_objects or post_practice_survey_weekly_objects -> completed_time
+//    func getDates() -> Array<String> {
+//
+//    }
     
     // returns hours of sleep for today
     func getTodaySleep() -> Int {

@@ -24,9 +24,9 @@ class StressViewController: UIViewController {
         if let tStress = self.todayStress {
             tStress.text = String(getTodayStress())
         }
-        if let aStress = self.avgStress {
-            aStress.text = String(getAverageStress())
-        }
+//        if let aStress = self.avgStress {
+//            aStress.text = String(getAverageStress())
+//        }
     }
     
     override func viewDidLoad() {
@@ -39,15 +39,34 @@ class StressViewController: UIViewController {
     func setChartValues() {
         let dataEntries = getWeeklyStress()
         let size = dataEntries.count
-        let values = (0..<size).map { (i) -> ChartDataEntry in
-            let val = dataEntries[i]
-            return ChartDataEntry(x: Double(i), y: Double(val))
+        //        let values = (0..<size).map { (i) -> BarChartDataEntry in
+        let values = (0..<7).map { (i) -> BarChartDataEntry in
+            //            let val = dataEntries[i]
+            let val = i
+            return BarChartDataEntry(x: Double(i), y: Double(val))
         }
+        
+        //        let dates = getDates()
+        let dates = ["12/1","12/2","12/3","12/4","12/5","12/6","12/6"]
         
         let set1 = BarChartDataSet(values: values, label: "Stress")
         let data = BarChartData(dataSet: set1)
         
         self.barChartView.data = data
+        
+        self.barChartView.rightAxis.enabled = false
+        
+        self.barChartView.xAxis.labelPosition = .bottom
+        self.barChartView.xAxis.axisMaximum = 7
+        self.barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: dates)
+        self.barChartView.xAxis.granularity = 1
+        
+        let leftAxisFormatter = NumberFormatter()
+        leftAxisFormatter.minimumFractionDigits = 0
+        leftAxisFormatter.maximumFractionDigits = 1
+        
+        self.barChartView.leftAxis.axisMaximum = 10
+        self.barChartView.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
     }
     
     func getWeeklyStress() -> Array<Int> {
