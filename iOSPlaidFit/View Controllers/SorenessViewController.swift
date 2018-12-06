@@ -18,37 +18,42 @@ class SorenessViewController: UIViewController {
     @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var todaySoreness: UILabel!
     @IBOutlet weak var avgSoreness: UILabel!
-    
+    var weeklySoreness : [Int] = []
+    var average_soreness : String = ""
+    var today_soreness : String = ""
+    var dates : [Date] = []
     var currentUser: User?
     
     func configureView() {
         if let tSoreness = self.todaySoreness {
-            tSoreness.text = String(getTodaySoreness())
+            tSoreness.text = today_soreness
         }
-//        if let aSoreness = self.avgSoreness {
-//            aSoreness.text = String(getAverageSoreness())
-//        }
+        if let aSoreness = self.avgSoreness {
+            aSoreness.text = average_soreness
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(currentUser?.first_name)
-        self.configureView()
-        self.setChartValues()
-        // Do any additional setup after loading the view.
+        getWeeklySoreness()
+    }
+    
+    func populateDates() {
+        let currentDate = Date()
+        var dateComponent = DateComponents()
+        dateComponent.month = 0
+        dateComponent.year = 0
+        Calendar.current.date
     }
     
     func setChartValues() {
-        let dataEntries = getWeeklySoreness()
+        let dataEntries = weeklySoreness
         let size = dataEntries.count
-        //        let values = (0..<size).map { (i) -> BarChartDataEntry in
-        let values = (0..<7).map { (i) -> BarChartDataEntry in
-            //            let val = dataEntries[i]
-            let val = i
+        let values = (0..<size).map { (i) -> BarChartDataEntry in
+            let val = dataEntries[i]
             return BarChartDataEntry(x: Double(i), y: Double(val))
         }
         
-        //        let dates = getDates()
         let dates = ["12/1","12/2","12/3","12/4","12/5","12/6","12/6"]
         
         let set1 = BarChartDataSet(values: values, label: "Soreness")
@@ -73,71 +78,50 @@ class SorenessViewController: UIViewController {
         self.barChartView.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
     }
     
-    func getWeeklySoreness() -> Array<Int> {
-        let user_url = "http://localhost:3000/v1/token"
-        let headers: HTTPHeaders = [
-            "Authorization": "Token token=1977ec368318a5fddc09f8191aacf39b"
-        ]
-        var weeklySoreness : [Int] = []
-        Alamofire.request(user_url, headers:headers).responseJSON { response in
-            if let error = response.error {
-                print("error")
-            } else {
-                if let result = response.result.value as? [String: Any] {
-                    if let weeklySore = result["post_practice_survey_weekly_objects"] as? [[String: Any]] {
+    func getWeeklySoreness() {
+        if let user_id = currentUser?.id, let api_key = currentUser?.api_key {
+            let user_url = "http://localhost:3000/v1/users/" + String(user_id)
+            let headers: HTTPHeaders = [
+                "Authorization": "Token token=\(api_key)"
+            ]
+            Alamofire.request(user_url, headers: headers).responseJSON { response in
+                if let error = response.error {
+                    print(error.localizedDescription)
+                }
+                if let result = response.result.value {
+                    let JSON = result as! NSDictionary
+                    if let weeklySore = JSON["daily_wellness_survey_weekly_objects"] as? [[String: Any]] {
                         for survey in weeklySore {
                             if let this_soreness = survey["soreness"] {
-                                let soreness = this_soreness as! Int
-                                weeklySoreness.append(soreness)
+                                self.weeklySoreness.append(this_soreness as! Int)
                             }
                         }
                     }
                 }
+                self.setChartValues()
+                self.getAverageSoreness()
+                self.getTodaySoreness()
+                self.configureView()
             }
         }
-        return weeklySoreness
     }
     
-    func getTodaySoreness() -> Int {
-        let user_url = "http://localhost:3000/v1/token"
-        let headers: HTTPHeaders = [
-            "Authorization": "Token token=1977ec368318a5fddc09f8191aacf39b"
-        ]
-        var today_soreness = 0
-        Alamofire.request(user_url, headers:headers).responseJSON { response in
-            if let error = response.error {
-                print("error")
-            } else {
-                if let result = response.result.value as? [String: Any] {
-                    if let tSoreness = result["post_practice_survey_yesterday_objects"] as? [String: Any] {
-                        today_soreness = tSoreness["soreness"] as! Int
-                    }
-                }
-            }
+    func getTodaySoreness() {
+        if weeklySoreness.count < 7 {
+            today_soreness = "N/A"
+        } else {
+            today_soreness = String(weeklySoreness[6])
         }
-        return today_soreness
     }
     
-    func getAverageSoreness() -> Int {
-        let weeklySoreness = getWeeklySoreness()
+    func getAverageSoreness() {
+        let weeklySore = weeklySoreness
         var total_soreness = 0
         var days = 0
-        for day in weeklySoreness {
+        for day in weeklySore {
             total_soreness = total_soreness + day
             days = days + 1
         }
-        return total_soreness/days
+        average_soreness = String(total_soreness / days)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
