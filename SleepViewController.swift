@@ -17,26 +17,19 @@ class SleepViewController: UIViewController {
     @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var todaySleep: UILabel!
     @IBOutlet weak var avgSleep: UILabel!
-    
-    var currentUser: User? {
-        didSet {
-            // Update the view.
-            self.configureView()
-        }
-    }
+    var weeklyHours : [Int] = []
+    var average_sleep : String = ""
+    var today_sleep : String = ""
+    var currentUser: User?
     
     func setChartValues() {
-        let dataEntries = getWeeklySleep()
+        let dataEntries = weeklyHours
         let size = dataEntries.count
         print(size)
         let values = (0..<size).map { (i) -> BarChartDataEntry in
-//        let values = (0..<7).map { (i) -> BarChartDataEntry in
             let val = dataEntries[i]
-//            let val = i
             return BarChartDataEntry(x: Double(i), y: Double(val))
         }
-        
-//        let dates = getDates()
         let dates = ["12/1","12/2","12/3","12/4","12/5","12/6","12/6"]
         
         let set1 = BarChartDataSet(values: values, label: "Sleep")
@@ -62,94 +55,66 @@ class SleepViewController: UIViewController {
     }
     
     // returns array of hours of sleep from the past week
-    func getWeeklySleep() -> Array<Int> {
-        let user_url = "http://localhost:3000/v1/token"
-        let headers: HTTPHeaders = [
-            "Authorization": "Token token=1977ec368318a5fddc09f8191aacf39b"
-        ]
-        var weeklyHours : [Int] = []
-        Alamofire.request(user_url, headers: headers).responseJSON { response in
-            if let error = response.error {
-                print(error.localizedDescription)
-            } else {
-                if let result = response.result.value as? [String: Any] {
-                    print(result)
-                    if let weeklySleep = result["daily_wellness_survey_weekly_objects"] as? [[String: Any]] {
+    func getWeeklySleep() {
+        if let user_id = currentUser?.id, let api_key = currentUser?.api_key {
+            let user_url = "http://localhost:3000/v1/users/" + String(user_id)
+            let headers: HTTPHeaders = [
+                "Authorization": "Token token=\(api_key)"
+            ]
+            Alamofire.request(user_url, headers: headers).responseJSON { response in
+                if let error = response.error {
+                    print(error.localizedDescription)
+                }
+                if let result = response.result.value {
+                    let JSON = result as! NSDictionary
+                    if let weeklySleep = JSON["daily_wellness_survey_weekly_objects"] as? [[String: Any]] {
                         for survey in weeklySleep {
                             if let this_sleep = survey["hours_of_sleep"] {
-                                let sleep = this_sleep as! Int
-                                weeklyHours.append(sleep)
+                                self.weeklyHours.append(this_sleep as! Int)
                             }
                         }
                     }
                 }
+                self.setChartValues()
+                self.getAverageSleep()
+                self.getTodaySleep()
+                self.configureView()
             }
         }
-        return weeklyHours
     }
-    
-    //result -> daily_wellness_survey_weekly_objects or post_practice_survey_weekly_objects -> completed_time
-//    func getDates() -> Array<String> {
-//
-//    }
     
     // returns hours of sleep for today
-    func getTodaySleep() -> Int {
-        let user_url = "http://localhost:3000/v1/token"
-        let headers: HTTPHeaders = [
-            "Authorization": "Token token=1977ec368318a5fddc09f8191aacf39b"
-        ]
-        var today_sleep = 0
-        Alamofire.request(user_url, headers:headers).responseJSON { response in
-            if let error = response.error {
-                print(error.localizedDescription)
-            } else {
-                if let result = response.result.value as? [String: Any] {
-                    if let tSleep = result["daily_wellness_survey_today_objects"] as? [String: Any] {
-                        today_sleep = tSleep["hours_of_sleep"] as! Int
-                    }
-                }
-            }
+    func getTodaySleep() {
+        if weeklyHours.count < 7 {
+            today_sleep = "N/A"
+        } else {
+            today_sleep = String(weeklyHours[6])
         }
-        return today_sleep
     }
     
-    func getAverageSleep() -> Int {
-        let weeklySleep = getWeeklySleep()
+    func getAverageSleep() {
+        let weeklySleep = weeklyHours
         var total_sleep = 0
-        var days = 0
+        var days = 1
         for day in weeklySleep {
             total_sleep = total_sleep + day
             days = days + 1
         }
-        return total_sleep/days
+        average_sleep = String(total_sleep / days)
     }
 
     func configureView() {
         if let tSleep = self.todaySleep {
-            tSleep.text = String(getTodaySleep())
+            tSleep.text = today_sleep + " hours"
         }
-//        if let aSleep = self.avgSleep {
-//            aSleep.text = String(getAverageSleep())
-//        }
+        if let aSleep = self.avgSleep {
+            aSleep.text = average_sleep + " hours"
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureView()
-        self.setChartValues()
-        // Do any additional setup after loading the view.
+        getWeeklySleep()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

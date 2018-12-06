@@ -18,8 +18,8 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     
     // MARK: - Properties
     
-    let input_survey_url = "http://128.237.116.88:3000/v1/surveys"
-    let get_team_url = "http://128.237.116.88:3000/v1/teams/"
+    let input_survey_url = "http:/localhost:3000/v1/surveys"
+    let get_team_url = "http://localhost:3000/v1/teams/"
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var daily_wellness_button: UIButton!
@@ -246,6 +246,8 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
         } else if segue.identifier == "profileSegue" {
             // go to profile view and set the current user to display info
             (segue.destination as! ProfileViewController).currentUser = self.currentUser
+        } else if segue.identifier == "resultSegue" {
+            (segue.destination as! ResultsViewController).currentUser = self.currentUser
         }
     }
     

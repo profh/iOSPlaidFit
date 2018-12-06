@@ -100,6 +100,10 @@ class ResultsViewController: UIViewController {
     
     // leaving this function here in case we want to add the ability to edit users
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "sleepSegue" {
+            // go to profile view and set the current user to display info
+            (segue.destination as! SleepViewController).currentUser = self.currentUser
+        }
     }
     
 }

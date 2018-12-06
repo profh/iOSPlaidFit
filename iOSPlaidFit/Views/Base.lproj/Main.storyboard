@@ -506,7 +506,7 @@
                                 <rect key="frame" x="105" y="454.5" width="165" height="148.5"/>
                                 <state key="normal" title="Results" image="my_data"/>
                                 <connections>
-                                    <segue destination="ZvG-xB-zvd" kind="show" id="6cH-P4-Ic2"/>
+                                    <segue destination="ZvG-xB-zvd" kind="show" identifier="resultSegue" id="6cH-P4-Ic2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -574,7 +574,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sleep"/>
                                 <connections>
-                                    <segue destination="eFx-bQ-FAa" kind="show" id="1db-eG-QnJ"/>
+                                    <segue destination="eFx-bQ-FAa" kind="show" identifier="sleepSegue" id="1db-eG-QnJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A82-ef-twb">
@@ -582,7 +582,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Hydration"/>
                                 <connections>
-                                    <segue destination="raj-lK-fdc" kind="show" id="Anm-lc-ke5"/>
+                                    <segue destination="raj-lK-fdc" kind="show" identifier="hydrationSegue" id="Anm-lc-ke5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctb-hQ-y5G">
@@ -590,7 +590,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Stress"/>
                                 <connections>
-                                    <segue destination="VTg-t6-jbV" kind="show" id="EwL-n1-jCT"/>
+                                    <segue destination="VTg-t6-jbV" kind="show" identifier="stressSegue" id="EwL-n1-jCT"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9l-xQ-ovE">
@@ -598,7 +598,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Soreness"/>
                                 <connections>
-                                    <segue destination="UDm-o3-x6r" kind="show" id="8u4-XF-IkY"/>
+                                    <segue destination="UDm-o3-x6r" kind="show" identifier="sorenessSegue" id="8u4-XF-IkY"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IoZ-8z-719">

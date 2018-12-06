@@ -19,6 +19,13 @@ class SorenessViewController: UIViewController {
     @IBOutlet weak var todaySoreness: UILabel!
     @IBOutlet weak var avgSoreness: UILabel!
     
+    var currentUser: User? {
+        didSet {
+            // Update the view.
+            self.configureView()
+        }
+    }
+    
     func configureView() {
         if let tSoreness = self.todaySoreness {
             tSoreness.text = String(getTodaySoreness())

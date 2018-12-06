@@ -19,6 +19,13 @@ class HydrationViewController: UIViewController {
     @IBOutlet weak var todayHydrate: UILabel!
     @IBOutlet weak var avgHydrate: UILabel!
     
+    var currentUser: User? {
+        didSet {
+            // Update the view.
+            self.configureView()
+        }
+    }
+    
     func configureView() {
         if let tHydrate = self.todayHydrate {
             tHydrate.text = String(getTodayHydration())

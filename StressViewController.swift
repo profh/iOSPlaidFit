@@ -20,6 +20,13 @@ class StressViewController: UIViewController {
     @IBOutlet weak var todayStress: UILabel!
     @IBOutlet weak var avgStress: UILabel!
     
+    var currentUser: User? {
+        didSet {
+            // Update the view.
+            self.configureView()
+        }
+    }
+    
     func configureView() {
         if let tStress = self.todayStress {
             tStress.text = String(getTodayStress())
