@@ -19,12 +19,7 @@ class SorenessViewController: UIViewController {
     @IBOutlet weak var todaySoreness: UILabel!
     @IBOutlet weak var avgSoreness: UILabel!
     
-    var currentUser: User? {
-        didSet {
-            // Update the view.
-            self.configureView()
-        }
-    }
+    var currentUser: User?
     
     func configureView() {
         if let tSoreness = self.todaySoreness {
@@ -37,6 +32,7 @@ class SorenessViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(currentUser?.first_name)
         self.configureView()
         self.setChartValues()
         // Do any additional setup after loading the view.

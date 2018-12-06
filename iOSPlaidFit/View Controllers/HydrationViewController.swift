@@ -19,12 +19,7 @@ class HydrationViewController: UIViewController {
     @IBOutlet weak var todayHydrate: UILabel!
     @IBOutlet weak var avgHydrate: UILabel!
     
-    var currentUser: User? {
-        didSet {
-            // Update the view.
-            self.configureView()
-        }
-    }
+    var currentUser: User?
     
     func configureView() {
         if let tHydrate = self.todayHydrate {
@@ -37,6 +32,7 @@ class HydrationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(currentUser?.first_name)
         self.configureView()
         self.setChartValues()
         // Do any additional setup after loading the view.

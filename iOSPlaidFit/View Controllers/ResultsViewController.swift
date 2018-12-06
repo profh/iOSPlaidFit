@@ -103,6 +103,15 @@ class ResultsViewController: UIViewController {
         if segue.identifier == "sleepSegue" {
             // go to profile view and set the current user to display info
             (segue.destination as! SleepViewController).currentUser = self.currentUser
+        } else if segue.identifier == "stressSegue" {
+            // go to profile view and set the current user to display info
+            (segue.destination as! StressViewController).currentUser = self.currentUser
+        } else if segue.identifier == "sorenessSegue" {
+            // go to profile view and set the current user to display info
+            (segue.destination as! SorenessViewController).currentUser = self.currentUser
+        } else if segue.identifier == "hydrationSegue" {
+            // go to profile view and set the current user to display info
+            (segue.destination as! HydrationViewController).currentUser = self.currentUser
         }
     }
     

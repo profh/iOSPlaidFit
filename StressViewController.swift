@@ -20,12 +20,7 @@ class StressViewController: UIViewController {
     @IBOutlet weak var todayStress: UILabel!
     @IBOutlet weak var avgStress: UILabel!
     
-    var currentUser: User? {
-        didSet {
-            // Update the view.
-            self.configureView()
-        }
-    }
+    var currentUser: User?
     
     func configureView() {
         if let tStress = self.todayStress {
@@ -38,6 +33,7 @@ class StressViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(currentUser?.first_name)
         self.configureView()
         self.setChartValues()
         // Do any additional setup after loading the view.
