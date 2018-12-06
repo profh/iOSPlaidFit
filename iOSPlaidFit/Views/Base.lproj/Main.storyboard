@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LeN-hX-QLz">
-                                <rect key="frame" x="0.0" y="20" width="375" height="780"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="736"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogt-nX-Lqo" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="738"/>
@@ -393,7 +393,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlaidFit_white" translatesAutoresizingMaskIntoConstraints="NO" id="tyk-Up-X4Z">
-                                <rect key="frame" x="16" y="38" width="343" height="137"/>
+                                <rect key="frame" x="16" y="82" width="343" height="137"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="137" id="ec6-D6-jPh"/>
                                 </constraints>
@@ -1025,7 +1025,7 @@
         <image name="post_practice" width="315" height="261"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="L3H-A4-4Ak"/>
+        <segue reference="b4L-42-zC3"/>
         <segue reference="msC-9Q-Mc6"/>
     </inferredMetricsTieBreakers>
 </document>

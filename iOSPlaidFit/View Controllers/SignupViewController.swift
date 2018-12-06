@@ -15,8 +15,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - Properties
 
-    let create_users_url = "http://localhost:3000/v1/users"
-    let create_team_assignments_url = "http://localhost:3000/v1/team_assignments"
+    let create_users_url = "http://128.237.116.88:3000/v1/users"
+    let create_team_assignments_url = "http://128.237.116.88:3000/v1/team_assignments"
     let headers: HTTPHeaders = [
         // hard-coding token value as user ID 1's value for now
         // b/c can't authorize creation when signing up a new user
@@ -52,7 +52,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         setupDelegates()
         setBackgroundImage()
         setupPickerBorders()
-        
+        signupButton.setTitleColor(UIColor.lightGray, for: .disabled)
         let pwConfTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         let pwTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         pwImage.isUserInteractionEnabled = true
@@ -186,7 +186,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     }
     
     func validateTextFields() {
-        if (andrewIdField.text == "") || (firstNameField.text == "") || (lastNameField.text == "") || (phoneField.text == "") || (emailField.text == "") || (passwordField.text == "") || (passwordConfField.text == "") || (passwordField.text != passwordConfField.text) || ((passwordField.text?.count)! < 6) || ((passwordConfField.text?.count)! < 6) {
+        if (andrewIdField.text == "") || (firstNameField.text == "") || (lastNameField.text == "") || (phoneField.text == "") || (emailField.text == "") || (passwordField.text == "") || (passwordConfField.text == "") {
             signupButton.isEnabled = false
         } else {
             signupButton.isEnabled = true
@@ -210,6 +210,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             } else {
                 pwImage.image = UIImage(named: "red_error")
                 pwConfImage.image = UIImage(named: "red_error")
+                signupButton.isEnabled = false
             }
         } else {
             pwImage.image = nil
