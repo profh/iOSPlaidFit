@@ -68,10 +68,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let role = data.value(forKey: "role") as! String
         let year = data.value(forKey: "year") as! String
         let major = data.value(forKey: "major") as! String
+//        let major = ""
         let missing_post_boolean = data.value(forKey: "missing_post_boolean") as! Bool
         let missing_daily_boolean = data.value(forKey: "missing_daily_boolean") as! Bool
         let api_key = data.value(forKey: "api_key") as! String
         let team_string = data.value(forKey: "team_string") as! String
+//        let team_string = ""
         self.loggedInUser = User(id: id, team_id: team_id, first_name: first_name, last_name: last_name, andrew_id: andrew_id, email: email, phone_number: phone_number, role: role, year: year, major: major, missing_daily_boolean: missing_daily_boolean, missing_post_boolean: missing_post_boolean, api_key: api_key, team_string: team_string)
     }
     
