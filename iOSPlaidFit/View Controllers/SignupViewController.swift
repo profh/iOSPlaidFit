@@ -15,7 +15,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - Properties
 
-    let create_users_url = "http://128.237.116.88:3000/v1/users"
+    let create_users_url = "http://localhost:3000/v1/users"
     let create_team_assignments_url = "http://128.237.116.88:3000/v1/team_assignments"
     let headers: HTTPHeaders = [
         // hard-coding token value as user ID 1's value for now

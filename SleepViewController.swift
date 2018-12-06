@@ -10,60 +10,99 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 import CoreData
+import Charts
 
 class SleepViewController: UIViewController {
 
+    @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var todaySleep: UILabel!
     @IBOutlet weak var avgSleep: UILabel!
-    var currentUser: User? {
-        didSet {
-            // Update the view.
-            self.configureView()
+    
+    func setChartValues() {
+        let dataEntries = getWeeklySleep()
+        let size = dataEntries.count
+        let values = (0..<size).map { (i) -> ChartDataEntry in
+            let val = dataEntries[i]
+            return ChartDataEntry(x: Double(i), y: Double(val))
         }
+        
+        let set1 = BarChartDataSet(values: values, label: "Sleep")
+        let data = BarChartData(dataSet: set1)
+        
+        self.barChartView.data = data
     }
     
-    func configureView() {
-        // Update the user interface for the current user.
-        var user_id = ""
-        if let user: User = self.currentUser {
-            user_id = "\(user.id)"
-        }
-        
-        let get_user_url = "http://localhost:3000/v1/users/4"
-        
-        let githubURL: NSURL = NSURL(string: get_user_url)!
-        
-        let data = NSData(contentsOf: githubURL as URL)!
-        
-        let swiftyjson = try! JSON(data: data as Data)
-//        print("\n****************************\n")
-//        print(swiftyjson["daily_wellness_survey_today_objects"][0]["hours_of_sleep"])
-//        print("\n****************************\n")
-        
-        if let tsleep = self.todaySleep {
-            tsleep.text = swiftyjson["daily_wellness_survey_today_objects"][0]["hours_of_sleep"].rawString()
-        }
-        
-        var total_sleep = 0
-        var counter = 0
-        
-        for i in 0..<6 {
-            if let this_sleep = swiftyjson["daily_wellness_survey_weekly_objects"][i]["hours_of_sleep"].rawString() {
-                total_sleep = total_sleep + Int(this_sleep)!
+    // returns array of hours of sleep from the past week
+    func getWeeklySleep() -> Array<Int> {
+        let user_url = "http://localhost:3000/v1/token"
+        let headers: HTTPHeaders = [
+            "Authorization": "Token token=1977ec368318a5fddc09f8191aacf39b"
+        ]
+        var weeklyHours : [Int] = []
+        Alamofire.request(user_url, headers:headers).responseJSON { response in
+            if let error = response.error {
+                print("error")
+            } else {
+                if let result = response.result.value as? [String: Any] {
+                    if let weeklySleep = result["daily_wellness_survey_weekly_objects"] as? [[String: Any]] {
+                        for survey in weeklySleep {
+                            if let this_sleep = survey["hours_of_sleep"] {
+                                let sleep = this_sleep as! Int
+                                weeklyHours.append(sleep)
+                            }
+                        }
+                    }
+                }
             }
-            counter = counter + 1
         }
-        
-        let avgS = total_sleep/counter
-        
-        if let asleep = self.avgSleep {
-            asleep.text = "\(avgS)"
+        return weeklyHours
+    }
+    
+    // returns hours of sleep for today
+    func getTodaySleep() -> Int {
+        let user_url = "http://localhost:3000/v1/token"
+        let headers: HTTPHeaders = [
+            "Authorization": "Token token=1977ec368318a5fddc09f8191aacf39b"
+        ]
+        var today_sleep = 0
+        Alamofire.request(user_url, headers:headers).responseJSON { response in
+            if let error = response.error {
+                print("error")
+            } else {
+                if let result = response.result.value as? [String: Any] {
+                    if let tSleep = result["daily_wellness_survey_today_objects"] as? [String: Any] {
+                        today_sleep = tSleep["hours_of_sleep"] as! Int
+                    }
+                }
+            }
+        }
+        return today_sleep
+    }
+    
+    func getAverageSleep() -> Int {
+        let weeklySleep = getWeeklySleep()
+        var total_sleep = 0
+        var days = 0
+        for day in weeklySleep {
+            total_sleep = total_sleep + day
+            days = days + 1
+        }
+        return total_sleep/days
+    }
+
+    func configureView() {
+        if let tSleep = self.todaySleep {
+            tSleep.text = String(getTodaySleep())
+        }
+        if let aSleep = self.avgSleep {
+            aSleep.text = String(getAverageSleep())
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
+        self.setChartValues()
         // Do any additional setup after loading the view.
     }
     
