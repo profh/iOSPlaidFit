@@ -51,6 +51,7 @@ class StressViewController: UIViewController {
         let data = BarChartData(dataSet: set1)
         
         self.barChartView.data = data
+        self.barChartView.backgroundColor = UIColor.lightGray
         
         self.barChartView.rightAxis.enabled = false
         

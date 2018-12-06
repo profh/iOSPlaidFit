@@ -37,15 +37,7 @@ class SorenessViewController: UIViewController {
         super.viewDidLoad()
         getWeeklySoreness()
     }
-    
-    func populateDates() {
-        let currentDate = Date()
-        var dateComponent = DateComponents()
-        dateComponent.month = 0
-        dateComponent.year = 0
-        Calendar.current.date
-    }
-    
+
     func setChartValues() {
         let dataEntries = weeklySoreness
         let size = dataEntries.count
@@ -60,6 +52,7 @@ class SorenessViewController: UIViewController {
         let data = BarChartData(dataSet: set1)
         
         self.barChartView.data = data
+        self.barChartView.backgroundColor = UIColor.lightGray
         
         self.barChartView.rightAxis.enabled = false
         

@@ -18,6 +18,7 @@ class HydrationViewController: UIViewController {
     @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var todayHydrate: UILabel!
     @IBOutlet weak var avgHydrate: UILabel!
+    
     var weeklyWater : [Int] = []
     var average_water : String = ""
     var today_water : String = ""
@@ -50,6 +51,7 @@ class HydrationViewController: UIViewController {
         let data = BarChartData(dataSet: set1)
         
         self.barChartView.data = data
+        self.barChartView.backgroundColor = UIColor.lightGray
         
         self.barChartView.rightAxis.enabled = false
         
