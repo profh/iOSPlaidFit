@@ -46,7 +46,7 @@ class SorenessViewController: UIViewController {
             return BarChartDataEntry(x: Double(i), y: Double(val))
         }
         
-        let dates = ["12/1","12/2","12/3","12/4","12/5","12/6","12/6"]
+        let dates = self.getDates()
         
         let set1 = BarChartDataSet(values: values, label: "Soreness")
         set1.colors = [UIColor(red: 184/255, green: 27/255, blue: 17/255, alpha: 1.0)]
@@ -70,6 +70,21 @@ class SorenessViewController: UIViewController {
         
         self.barChartView.leftAxis.axisMaximum = 10
         self.barChartView.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
+    }
+    
+    // gets a date array of the past week, formatted for the bar chart
+    // https://stackoverflow.com/questions/26996330/swift-get-last-7-days-starting-from-today-in-array
+    func getDates() -> [String] {
+        let cal = Calendar.current
+        var date = cal.startOfDay(for: Date())
+        var days = [String]()
+        for _ in 1 ... 7 {
+            let day = cal.component(.day, from: date)
+            let month = cal.component(.month, from: date)
+            days.append(String(month) + "/" + String(day))
+            date = cal.date(byAdding: .day, value: -1, to: date)!
+        }
+        return days.reversed()
     }
     
     func getWeeklySoreness() {
