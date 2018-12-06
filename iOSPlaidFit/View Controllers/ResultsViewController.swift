@@ -11,12 +11,10 @@ import UIKit
 class ResultsViewController: UIViewController {
     
     // MARK: - Properties
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var athleteLabel: UILabel!
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var andrewIdLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var phoneLabel: UILabel!
-    @IBOutlet weak var yearLabel: UILabel!
     var currentUser: User? {
         didSet {
             // Update the view.
@@ -30,28 +28,26 @@ class ResultsViewController: UIViewController {
     func configureView() {
         // Update the user interface for the current user.
         if let user: User = self.currentUser {
-            if let name = self.nameLabel {
-                name.text = user.first_name! + " " + user.last_name!
+            if let result = self.resultLabel {
+                result.text = user.first_name! + "'s Data"
             }
-            if let andrewID = self.andrewIdLabel {
-                andrewID.text = user.andrew_id
-            }
-            if let email = self.emailLabel {
-                email.text = user.email
-            }
-            if let phone = self.phoneLabel {
-                phone.text = format(phoneNumber: user.phone_number!)
-            }
-            if let year = self.yearLabel {
-                year.text = user.year
+            if let athlete = self.athleteLabel {
+                athlete.text = "Athlete: " + user.first_name! + " " + user.last_name!
             }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("asdasasdsadadsadsa")
         self.configureView()
+        // set the date label
+        // not sure why if you take out this logic from viewDidLoad(), build will fail
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        let dateString = dateFormatter.string(from: currentDate)
+        self.dateLabel.numberOfLines = 2
+        self.dateLabel.text = dateString
     }
     
     // https://stackoverflow.com/questions/32364055/formattting-phone-number-in-swift
@@ -97,20 +93,15 @@ class ResultsViewController: UIViewController {
     }
     
     // MARK: - Navigation
-    
-    // leaving this function here in case we want to add the ability to edit users
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "sleepSegue" {
-            // go to profile view and set the current user to display info
             (segue.destination as! SleepViewController).currentUser = self.currentUser
         } else if segue.identifier == "stressSegue" {
-            // go to profile view and set the current user to display info
             (segue.destination as! StressViewController).currentUser = self.currentUser
         } else if segue.identifier == "sorenessSegue" {
-            // go to profile view and set the current user to display info
             (segue.destination as! SorenessViewController).currentUser = self.currentUser
         } else if segue.identifier == "hydrationSegue" {
-            // go to profile view and set the current user to display info
             (segue.destination as! HydrationViewController).currentUser = self.currentUser
         }
     }
