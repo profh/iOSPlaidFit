@@ -19,30 +19,28 @@ class StressViewController: UIViewController {
     @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var todayStress: UILabel!
     @IBOutlet weak var avgStress: UILabel!
-    
+    var weeklyStress : [Int] = []
+    var average_stress : String = ""
+    var today_stress : String = ""
     var currentUser: User?
     
     func configureView() {
         if let tStress = self.todayStress {
-            tStress.text = String(getTodayStress())
+            tStress.text = today_stress
         }
-//        if let aStress = self.avgStress {
-//            aStress.text = String(getAverageStress())
-//        }
+        if let aStress = self.avgStress {
+            aStress.text = average_stress
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(currentUser?.first_name)
-        self.configureView()
-        self.setChartValues()
-        // Do any additional setup after loading the view.
+        getWeeklyStress()
     }
     
     func setChartValues() {
-        let dataEntries = getWeeklyStress()
+        let dataEntries = weeklyStress
         let size = dataEntries.count
-        //        let values = (0..<size).map { (i) -> BarChartDataEntry in
         let values = (0..<7).map { (i) -> BarChartDataEntry in
             //            let val = dataEntries[i]
             let val = i
