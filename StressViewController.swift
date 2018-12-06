@@ -41,13 +41,10 @@ class StressViewController: UIViewController {
     func setChartValues() {
         let dataEntries = weeklyStress
         let size = dataEntries.count
-        let values = (0..<7).map { (i) -> BarChartDataEntry in
-            //            let val = dataEntries[i]
-            let val = i
+        let values = (0..<size).map { (i) -> BarChartDataEntry in
+            let val = dataEntries[i]
             return BarChartDataEntry(x: Double(i), y: Double(val))
         }
-        
-        //        let dates = getDates()
         let dates = ["12/1","12/2","12/3","12/4","12/5","12/6","12/6"]
         
         let set1 = BarChartDataSet(values: values, label: "Stress")
@@ -70,71 +67,50 @@ class StressViewController: UIViewController {
         self.barChartView.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
     }
     
-    func getWeeklyStress() -> Array<Int> {
-        let user_url = "http://localhost:3000/v1/token"
-        let headers: HTTPHeaders = [
-            "Authorization": "Token token=1977ec368318a5fddc09f8191aacf39b"
-        ]
-        var weeklyStress : [Int] = []
-        Alamofire.request(user_url, headers:headers).responseJSON { response in
-            if let error = response.error {
-                print("error")
-            } else {
-                if let result = response.result.value as? [String: Any] {
-                    if let weekStress = result["daily_wellness_survey_weekly_objects"] as? [[String: Any]] {
-                        for survey in weekStress {
+    func getWeeklyStress() {
+        if let user_id = currentUser?.id, let api_key = currentUser?.api_key {
+            let user_url = "http://localhost:3000/v1/users/" + String(user_id)
+            let headers: HTTPHeaders = [
+                "Authorization": "Token token=\(api_key)"
+            ]
+            Alamofire.request(user_url, headers: headers).responseJSON { response in
+                if let error = response.error {
+                    print(error.localizedDescription)
+                }
+                if let result = response.result.value {
+                    let JSON = result as! NSDictionary
+                    if let weeklyStress = JSON["daily_wellness_survey_weekly_objects"] as? [[String: Any]] {
+                        for survey in weeklyStress {
                             if let this_stress = survey["life_stress"] {
-                                let stress = this_stress as! Int
-                                weeklyStress.append(stress)
+                                self.weeklyStress.append(this_stress as! Int)
                             }
                         }
                     }
                 }
+                self.setChartValues()
+                self.getAverageStress()
+                self.getTodayStress()
+                self.configureView()
             }
         }
-        return weeklyStress
     }
     
-    func getTodayStress() -> Int {
-        let user_url = "http://localhost:3000/v1/token"
-        let headers: HTTPHeaders = [
-            "Authorization": "Token token=1977ec368318a5fddc09f8191aacf39b"
-        ]
-        var today_stress = 0
-        Alamofire.request(user_url, headers:headers).responseJSON { response in
-            if let error = response.error {
-                print("error")
-            } else {
-                if let result = response.result.value as? [String: Any] {
-                    if let tStress = result["daily_wellness_survey_today_objects"] as? [String: Any] {
-                        today_stress = tStress["life_stress"] as! Int
-                    }
-                }
-            }
+    func getTodayStress() {
+        if weeklyStress.count < 7 {
+            today_stress = "N/A"
+        } else {
+            today_stress = String(weeklyStress[6])
         }
-        return today_stress
     }
     
-    func getAverageStress() -> Int {
-        let weeklyStress = getWeeklyStress()
+    func getAverageStress() {
+        let weeklyStress = self.weeklyStress
         var total_stress = 0
-        var days = 0
+        var days = 1
         for day in weeklyStress {
             total_stress = total_stress + day
             days = days + 1
         }
-        return total_stress/days
+        average_stress = String(total_stress / days)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
