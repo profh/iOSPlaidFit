@@ -48,6 +48,7 @@ class HydrationViewController: UIViewController {
         let dates = ["12/1","12/2","12/3","12/4","12/5","12/6","12/6"]
         
         let set1 = BarChartDataSet(values: values, label: "Hydration")
+        set1.colors = [UIColor(red: 184/255, green: 27/255, blue: 17/255, alpha: 1.0)]
         let data = BarChartData(dataSet: set1)
         
         self.barChartView.data = data
