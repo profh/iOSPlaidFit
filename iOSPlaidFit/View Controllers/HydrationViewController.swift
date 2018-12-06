@@ -18,37 +18,32 @@ class HydrationViewController: UIViewController {
     @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var todayHydrate: UILabel!
     @IBOutlet weak var avgHydrate: UILabel!
-    
+    var weeklyWater : [Int] = []
+    var average_water : String = ""
+    var today_water : String = ""
     var currentUser: User?
     
     func configureView() {
         if let tHydrate = self.todayHydrate {
-            tHydrate.text = String(getTodayHydration())
+            tHydrate.text = today_water
         }
-//        if let aHydrate = self.avgHydrate {
-//            aHydrate.text = String(getAverageHydration())
-//        }
+        if let aHydrate = self.avgHydrate {
+            aHydrate.text = average_water + " ounces"
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(currentUser?.first_name)
-        self.configureView()
-        self.setChartValues()
-        // Do any additional setup after loading the view.
+        getWeeklyHydration()
     }
     
     func setChartValues() {
-        let dataEntries = getWeeklyHydration()
+        let dataEntries = weeklyWater
         let size = dataEntries.count
-        //        let values = (0..<size).map { (i) -> BarChartDataEntry in
-        let values = (0..<7).map { (i) -> BarChartDataEntry in
-            //            let val = dataEntries[i]
-            let val = i
+        let values = (0..<size).map { (i) -> BarChartDataEntry in
+            let val = dataEntries[i]
             return BarChartDataEntry(x: Double(i), y: Double(val))
         }
-        
-        //        let dates = getDates()
         let dates = ["12/1","12/2","12/3","12/4","12/5","12/6","12/6"]
         
         let set1 = BarChartDataSet(values: values, label: "Hydration")
@@ -73,70 +68,50 @@ class HydrationViewController: UIViewController {
         self.barChartView.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
     }
     
-    func getWeeklyHydration() -> Array<Int> {
-        let user_url = "http://localhost:3000/v1/token"
-        let headers: HTTPHeaders = [
-            "Authorization": "Token token=1977ec368318a5fddc09f8191aacf39b"
-        ]
-        var weeklyWater : [Int] = []
-        Alamofire.request(user_url, headers:headers).responseJSON { response in
-            if let error = response.error {
-                print("error")
-            } else {
-                if let result = response.result.value as? [String: Any] {
-                    if let weeklyHydrate = result["daily_wellness_survey_weekly_objects"] as? [[String: Any]] {
-                        for survey in weeklyHydrate {
+    func getWeeklyHydration() {
+        if let user_id = currentUser?.id, let api_key = currentUser?.api_key {
+            let user_url = "http://localhost:3000/v1/users/" + String(user_id)
+            let headers: HTTPHeaders = [
+                "Authorization": "Token token=\(api_key)"
+            ]
+            Alamofire.request(user_url, headers: headers).responseJSON { response in
+                if let error = response.error {
+                    print(error.localizedDescription)
+                }
+                if let result = response.result.value {
+                    let JSON = result as! NSDictionary
+                    if let weeklyHydration = JSON["daily_wellness_survey_weekly_objects"] as? [[String: Any]] {
+                        for survey in weeklyHydration {
                             if let this_hydrate = survey["ounces_of_water_consumed"] {
-                                let hydrate = this_hydrate as! Int
-                                weeklyWater.append(hydrate)
+                                self.weeklyWater.append(this_hydrate as! Int)
                             }
                         }
                     }
                 }
+                self.setChartValues()
+                self.getAverageHydration()
+                self.getTodayHydration()
+                self.configureView()
             }
         }
-        return weeklyWater
     }
     
-    func getTodayHydration() -> Int {
-        let user_url = "http://localhost:3000/v1/token"
-        let headers: HTTPHeaders = [
-            "Authorization": "Token token=1977ec368318a5fddc09f8191aacf39b"
-        ]
-        var today_hydrate = 0
-        Alamofire.request(user_url, headers:headers).responseJSON { response in
-            if let error = response.error {
-                print("error")
-            } else {
-                if let result = response.result.value as? [String: Any] {
-                    if let tHydrate = result["daily_wellness_survey_today_objects"] as? [String: Any] {
-                        today_hydrate = tHydrate["ounces_of_water_consumed"] as! Int
-                    }
-                }
-            }
+    func getTodayHydration() {
+        if weeklyWater.count < 7 {
+            today_water = "N/A"
+        } else {
+            today_water = String(weeklyWater[6]) + " ounces"
         }
-        return today_hydrate
     }
     
-    func getAverageHydration() -> Int {
-        let weeklyHydrate = getWeeklyHydration()
+    func getAverageHydration() {
+        let weeklyHydrate = weeklyWater
         var total_hydrate = 0
-        var days = 0
+        var days = 1
         for day in weeklyHydrate {
             total_hydrate = total_hydrate + day
             days = days + 1
         }
-        return total_hydrate/days
+        average_water = String(total_hydrate / days)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -88,7 +88,7 @@ class SleepViewController: UIViewController {
         if weeklyHours.count < 7 {
             today_sleep = "N/A"
         } else {
-            today_sleep = String(weeklyHours[6])
+            today_sleep = String(weeklyHours[6]) + " hours"
         }
     }
     
@@ -105,7 +105,7 @@ class SleepViewController: UIViewController {
 
     func configureView() {
         if let tSleep = self.todaySleep {
-            tSleep.text = today_sleep + " hours"
+            tSleep.text = today_sleep
         }
         if let aSleep = self.avgSleep {
             aSleep.text = average_sleep + " hours"
