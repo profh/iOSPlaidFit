@@ -34,6 +34,7 @@
 		D1396C02218BDEC70087E0EE /* TeamPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1396C01218BDEC70087E0EE /* TeamPickerDelegate.swift */; };
 		D1396C04218BDEE10087E0EE /* ClassPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1396C03218BDEE10087E0EE /* ClassPickerDelegate.swift */; };
 		D1396C06218BE0730087E0EE /* MajorPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1396C05218BE0730087E0EE /* MajorPickerDelegate.swift */; };
+		D13F0F4C21BAC1D9007753BA /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13F0F4B21BAC1D9007753BA /* CoreData.swift */; };
 		E397E8895364E71A2E5B4DEA /* Pods_iOSPlaidFitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C52ACBBE9489F9C4FC859E /* Pods_iOSPlaidFitTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +98,7 @@
 		D1396C01218BDEC70087E0EE /* TeamPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPickerDelegate.swift; sourceTree = "<group>"; };
 		D1396C03218BDEE10087E0EE /* ClassPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassPickerDelegate.swift; sourceTree = "<group>"; };
 		D1396C05218BE0730087E0EE /* MajorPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorPickerDelegate.swift; sourceTree = "<group>"; };
+		D13F0F4B21BAC1D9007753BA /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,9 +199,9 @@
 			isa = PBXGroup;
 			children = (
 				D1065526218BC58200F55820 /* ViewController.swift */,
-				D1065547218BC68C00F55820 /* HomeViewController.swift */,
-				D106554B218BC6B800F55820 /* SignupViewController.swift */,
 				D106554D218BC6C100F55820 /* LoginViewController.swift */,
+				D106554B218BC6B800F55820 /* SignupViewController.swift */,
+				D1065547218BC68C00F55820 /* HomeViewController.swift */,
 				D1065549218BC6AD00F55820 /* ProfileViewController.swift */,
 				5C166F4521B10D590081FD08 /* ResultsViewController.swift */,
 				D127947C21BAB28D00E8C6EC /* Charts */,
@@ -215,6 +217,7 @@
 				D127947621BAAB7700E8C6EC /* Chart.swift */,
 				D127947821BAACFF00E8C6EC /* DateModel.swift */,
 				D127947A21BAAEB600E8C6EC /* ApiUrl.swift */,
+				D13F0F4B21BAC1D9007753BA /* CoreData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				5C166F5F21B1378B0081FD08 /* SleepViewController.swift in Sources */,
 				D1065525218BC58200F55820 /* AppDelegate.swift in Sources */,
 				5C166F6721B14CE30081FD08 /* SorenessViewController.swift in Sources */,
+				D13F0F4C21BAC1D9007753BA /* CoreData.swift in Sources */,
 				D1065548218BC68C00F55820 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,7 +10,6 @@ import UIKit
 import Foundation
 import SwiftyJSON
 import Alamofire
-import CoreData
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
@@ -24,58 +23,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
     @IBOutlet weak var errorField: UILabel!
     @IBOutlet weak var loginButton: UIButton!
-    
-    // MARK: - Core Data Stuff
-    
-    func saveUser(_ user: User) {
-        // Connect to the context for the container stack
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        // Specifically select the People entity to save this object to
-        let entity = NSEntityDescription.entity(forEntityName: "User", in: context)
-        let newUser = NSManagedObject(entity: entity!, insertInto: context)
-        // Set values one at a time and save
-        newUser.setValue(user.id, forKey: "id")
-        newUser.setValue(user.team_id, forKey: "team_id")
-        newUser.setValue(user.first_name, forKey: "first_name")
-        newUser.setValue(user.last_name, forKey: "last_name")
-        newUser.setValue(user.andrew_id, forKey: "andrew_id")
-        newUser.setValue(user.email, forKey: "email")
-        newUser.setValue(user.phone_number, forKey: "phone_number")
-        newUser.setValue(user.role, forKey: "role")
-        newUser.setValue(user.year, forKey: "year")
-        newUser.setValue(user.major, forKey: "major")
-        newUser.setValue(user.missing_post_boolean, forKey: "missing_post_boolean")
-        newUser.setValue(user.missing_daily_boolean, forKey: "missing_daily_boolean")
-        newUser.setValue(user.api_key, forKey: "api_key")
-        newUser.setValue(user.team_string, forKey: "team_string")
-        do {
-            try context.save()
-            print("successfully saved user!")
-        } catch {
-            print("Failed saving user")
-        }
-    }
-    
-    func loadUser(_ data: NSManagedObject) {
-        let id = data.value(forKey: "id") as! Int
-        let team_id = data.value(forKey: "team_id") as! Int
-        let first_name = data.value(forKey: "first_name") as! String
-        let last_name = data.value(forKey: "last_name") as! String
-        let andrew_id = data.value(forKey: "andrew_id") as! String
-        let email = data.value(forKey: "email") as! String
-        let phone_number = data.value(forKey: "phone_number") as! String
-        let role = data.value(forKey: "role") as! String
-        let year = data.value(forKey: "year") as! String
-        let major = data.value(forKey: "major") as! String
-        let missing_post_boolean = data.value(forKey: "missing_post_boolean") as! Bool
-        let missing_daily_boolean = data.value(forKey: "missing_daily_boolean") as! Bool
-        print("AAAAAAAAAAAAAAAA")
-        print(missing_daily_boolean)
-        let api_key = data.value(forKey: "api_key") as! String
-        let team_string = data.value(forKey: "team_string") as! String
-        self.loggedInUser = User(id: id, team_id: team_id, first_name: first_name, last_name: last_name, andrew_id: andrew_id, email: email, phone_number: phone_number, role: role, year: year, major: major, missing_daily_boolean: missing_daily_boolean, missing_post_boolean: missing_post_boolean, api_key: api_key, team_string: team_string)
-    }
+    let coreData = CoreData()
     
     // MARK: - Functional
     
@@ -91,22 +39,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginButton.isEnabled = false
         loginButton.setTitleColor(UIColor.lightGray, for: .disabled)
         // Loading user from CoreData if exists
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        request.returnsObjectsAsFaults = false
-        print("Here")
-        do {
-            let result = try context.fetch(request)
-            for data in result as! [NSManagedObject] {
-                self.loadUser(data)
-                print("user successfully loaded")
-            }
-            if (loggedInUser != nil) {
-                self.performSegue(withIdentifier: "loginSegue", sender: nil)
-            }
-        } catch {
-            print("Failed")
+        self.loggedInUser = coreData.checkUser(UIApplication.shared.delegate as! AppDelegate)
+        if self.loggedInUser != nil {
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
         }
         // background image
         let backgroundImage = UIImage(named: "pic_background")
@@ -149,7 +84,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.loadingView.stopAnimating()
                 } else {
                     self.loggedInUser = User(id: JSON["id"]! as! Int, team_id: (JSON["team_assignments"] as? [[String:Any]])?.first?["team_id"] as! Int, first_name: JSON["first_name"]! as! String, last_name: JSON["last_name"]! as! String, andrew_id: JSON["andrew_id"]! as! String, email: JSON["email"]! as! String, phone_number: JSON["phone"]! as! String, role: JSON["role"]! as! String, year: JSON["year"]! as! String, major: JSON["major"]! as! String, missing_daily_boolean: JSON["missing_daily_boolean"]! as! Bool, missing_post_boolean: JSON["missing_post_boolean"]! as! Bool, api_key: JSON["api_key"]! as! String, team_string: "")
-                    self.saveUser(self.loggedInUser!)
+                    self.coreData.saveUser(UIApplication.shared.delegate as! AppDelegate, self.loggedInUser!)
                     self.loadingView.stopAnimating() // stop the loading animation after a user has logged in and the API call is done
                     self.performSegue(withIdentifier: "loginSegue", sender: sender)
                 }
