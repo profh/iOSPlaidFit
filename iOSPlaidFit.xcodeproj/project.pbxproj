@@ -28,6 +28,9 @@
 		D106554E218BC6C100F55820 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D106554D218BC6C100F55820 /* LoginViewController.swift */; };
 		D1065550218BC6CF00F55820 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D106554F218BC6CF00F55820 /* User.swift */; };
 		D114CD6021B9F54600BDF497 /* DigitValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114CD5F21B9F54600BDF497 /* DigitValueFormatter.swift */; };
+		D127947721BAAB7700E8C6EC /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127947621BAAB7700E8C6EC /* Chart.swift */; };
+		D127947921BAACFF00E8C6EC /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127947821BAACFF00E8C6EC /* DateModel.swift */; };
+		D127947B21BAAEB600E8C6EC /* ApiUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127947A21BAAEB600E8C6EC /* ApiUrl.swift */; };
 		D1396C02218BDEC70087E0EE /* TeamPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1396C01218BDEC70087E0EE /* TeamPickerDelegate.swift */; };
 		D1396C04218BDEE10087E0EE /* ClassPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1396C03218BDEE10087E0EE /* ClassPickerDelegate.swift */; };
 		D1396C06218BE0730087E0EE /* MajorPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1396C05218BE0730087E0EE /* MajorPickerDelegate.swift */; };
@@ -88,6 +91,9 @@
 		D106554D218BC6C100F55820 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D106554F218BC6CF00F55820 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D114CD5F21B9F54600BDF497 /* DigitValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitValueFormatter.swift; sourceTree = "<group>"; };
+		D127947621BAAB7700E8C6EC /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
+		D127947821BAACFF00E8C6EC /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
+		D127947A21BAAEB600E8C6EC /* ApiUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiUrl.swift; sourceTree = "<group>"; };
 		D1396C01218BDEC70087E0EE /* TeamPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPickerDelegate.swift; sourceTree = "<group>"; };
 		D1396C03218BDEE10087E0EE /* ClassPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassPickerDelegate.swift; sourceTree = "<group>"; };
 		D1396C05218BE0730087E0EE /* MajorPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorPickerDelegate.swift; sourceTree = "<group>"; };
@@ -209,6 +215,9 @@
 			children = (
 				D106554F218BC6CF00F55820 /* User.swift */,
 				D114CD5F21B9F54600BDF497 /* DigitValueFormatter.swift */,
+				D127947621BAAB7700E8C6EC /* Chart.swift */,
+				D127947821BAACFF00E8C6EC /* DateModel.swift */,
+				D127947A21BAAEB600E8C6EC /* ApiUrl.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -414,6 +423,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D127947721BAAB7700E8C6EC /* Chart.swift in Sources */,
 				D1396C02218BDEC70087E0EE /* TeamPickerDelegate.swift in Sources */,
 				D114CD6021B9F54600BDF497 /* DigitValueFormatter.swift in Sources */,
 				D1396C06218BE0730087E0EE /* MajorPickerDelegate.swift in Sources */,
@@ -421,7 +431,9 @@
 				5C166F4621B10D590081FD08 /* ResultsViewController.swift in Sources */,
 				D106554C218BC6B800F55820 /* SignupViewController.swift in Sources */,
 				D1396C04218BDEE10087E0EE /* ClassPickerDelegate.swift in Sources */,
+				D127947921BAACFF00E8C6EC /* DateModel.swift in Sources */,
 				D106552D218BC58200F55820 /* iOSPlaidFit.xcdatamodeld in Sources */,
+				D127947B21BAAEB600E8C6EC /* ApiUrl.swift in Sources */,
 				D1065527218BC58200F55820 /* ViewController.swift in Sources */,
 				5C37C0C22193722800C95AE0 /* PostPracticeSurveyTask.swift in Sources */,
 				5C166F6121B147880081FD08 /* HydrationViewController.swift in Sources */,
