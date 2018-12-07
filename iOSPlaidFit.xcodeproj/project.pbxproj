@@ -27,6 +27,7 @@
 		D106554C218BC6B800F55820 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D106554B218BC6B800F55820 /* SignupViewController.swift */; };
 		D106554E218BC6C100F55820 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D106554D218BC6C100F55820 /* LoginViewController.swift */; };
 		D1065550218BC6CF00F55820 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D106554F218BC6CF00F55820 /* User.swift */; };
+		D114CD6021B9F54600BDF497 /* DigitValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114CD5F21B9F54600BDF497 /* DigitValueFormatter.swift */; };
 		D1396C02218BDEC70087E0EE /* TeamPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1396C01218BDEC70087E0EE /* TeamPickerDelegate.swift */; };
 		D1396C04218BDEE10087E0EE /* ClassPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1396C03218BDEE10087E0EE /* ClassPickerDelegate.swift */; };
 		D1396C06218BE0730087E0EE /* MajorPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1396C05218BE0730087E0EE /* MajorPickerDelegate.swift */; };
@@ -86,6 +87,7 @@
 		D106554B218BC6B800F55820 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		D106554D218BC6C100F55820 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D106554F218BC6CF00F55820 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D114CD5F21B9F54600BDF497 /* DigitValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitValueFormatter.swift; sourceTree = "<group>"; };
 		D1396C01218BDEC70087E0EE /* TeamPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPickerDelegate.swift; sourceTree = "<group>"; };
 		D1396C03218BDEE10087E0EE /* ClassPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassPickerDelegate.swift; sourceTree = "<group>"; };
 		D1396C05218BE0730087E0EE /* MajorPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorPickerDelegate.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				D106554F218BC6CF00F55820 /* User.swift */,
+				D114CD5F21B9F54600BDF497 /* DigitValueFormatter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1396C02218BDEC70087E0EE /* TeamPickerDelegate.swift in Sources */,
+				D114CD6021B9F54600BDF497 /* DigitValueFormatter.swift in Sources */,
 				D1396C06218BE0730087E0EE /* MajorPickerDelegate.swift in Sources */,
 				D106554E218BC6C100F55820 /* LoginViewController.swift in Sources */,
 				5C166F4621B10D590081FD08 /* ResultsViewController.swift in Sources */,

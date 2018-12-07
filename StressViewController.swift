@@ -49,6 +49,7 @@ class StressViewController: UIViewController {
         
         let set1 = BarChartDataSet(values: values, label: "Stress")
         set1.colors = [UIColor(red: 184/255, green: 27/255, blue: 17/255, alpha: 1.0)]
+        set1.valueFormatter = DigitValueFormatter()
         let data = BarChartData(dataSet: set1)
         
         self.barChartView.data = data
