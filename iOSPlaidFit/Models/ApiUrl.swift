@@ -9,23 +9,25 @@
 import Foundation
 import Alamofire
 
+let url = "http://localhost:3000/v1/"
+
 class ApiUrl {
     
     // Login
     
-    let login_url = "http://localhost:3000/v1/token"
+    let login_url = url + "token"
     
     // Get
 
-    let get_user_url = "http://localhost:3000/v1/users/"
-    let get_team_url = "http://localhost:3000/v1/teams/"
-    let get_teams_url = "http://localhost:3000/v1/teams"
+    let get_user_url = url + "users/"
+    let get_team_url = url + "teams/"
+    let get_teams_url = url + "teams"
     
     // Create
     
-    let create_users_url = "http://localhost:3000/v1/users"
-    let create_team_assignments_url = "http://localhost:3000/v1/team_assignments"
-    let create_survey_url = "http:/localhost:3000/v1/surveys"
+    let create_users_url = url + "users"
+    let create_team_assignments_url = url + "team_assignments"
+    let create_survey_url = url + "surveys"
     
     // Headers
 
