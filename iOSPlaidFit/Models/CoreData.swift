@@ -39,6 +39,7 @@ class CoreData {
         let entity = NSEntityDescription.entity(forEntityName: "User", in: context)
         let newUser = NSManagedObject(entity: entity!, insertInto: context)
         // Set values one at a time and save
+        newUser.setValue(Date(), forKey: "last_logged_in")
         newUser.setValue(user.id, forKey: "id")
         newUser.setValue(user.team_id, forKey: "team_id")
         newUser.setValue(user.first_name, forKey: "first_name")
@@ -62,6 +63,16 @@ class CoreData {
     }
     
     func loadUser(_ data: NSManagedObject) -> User {
+        let missing_post_boolean: Bool?
+        let missing_daily_boolean: Bool?
+        let last_logged_in = data.value(forKey: "last_logged_in") as! Date
+        if last_logged_in < Date() {
+            missing_post_boolean = true
+            missing_daily_boolean = true
+        } else {
+            missing_post_boolean = data.value(forKey: "missing_post_boolean") as? Bool
+            missing_daily_boolean = data.value(forKey: "missing_daily_boolean") as? Bool
+        }
         let id = data.value(forKey: "id") as! Int
         let team_id = data.value(forKey: "team_id") as! Int
         let first_name = data.value(forKey: "first_name") as! String
@@ -72,11 +83,10 @@ class CoreData {
         let role = data.value(forKey: "role") as! String
         let year = data.value(forKey: "year") as! String
         let major = data.value(forKey: "major") as! String
-        let missing_post_boolean = data.value(forKey: "missing_post_boolean") as! Bool
-        let missing_daily_boolean = data.value(forKey: "missing_daily_boolean") as! Bool
+        
         let api_key = data.value(forKey: "api_key") as! String
         let team_string = data.value(forKey: "team_string") as! String
-        return User(id: id, team_id: team_id, first_name: first_name, last_name: last_name, andrew_id: andrew_id, email: email, phone_number: phone_number, role: role, year: year, major: major, missing_daily_boolean: missing_daily_boolean, missing_post_boolean: missing_post_boolean, api_key: api_key, team_string: team_string)
+        return User(id: id, team_id: team_id, first_name: first_name, last_name: last_name, andrew_id: andrew_id, email: email, phone_number: phone_number, role: role, year: year, major: major, missing_daily_boolean: missing_daily_boolean!, missing_post_boolean: missing_post_boolean!, api_key: api_key, team_string: team_string)
     }
 
     func deleteUser(_ appDelegate: AppDelegate) {
