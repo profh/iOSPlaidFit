@@ -17,9 +17,9 @@ import UserNotifications
 class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     
     // MARK: - Properties
-    
-    let input_survey_url = "http:/localhost:3000/v1/surveys"
-    let get_team_url = "http://localhost:3000/v1/teams/"
+
+    let create_survey_url = ApiUrl().create_survey_url
+    let get_team_url = ApiUrl().get_team_url
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var daily_wellness_button: UIButton!
@@ -78,7 +78,7 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
                 
             }
             let api_key = currentUser?.api_key as! String
-            let headers: HTTPHeaders = ["Authorization": "Token token=\(api_key)"]
+            let headers = ApiUrl().getAuthHeader(api_key)
             // daily wellness survey has 7 questions
             if resDictionary.count == 7 {
                 sendDailyWellnessSurvey(headers: headers, resDictionary: resDictionary)
@@ -127,7 +127,7 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     }
     
     func pushToAPI(parameters: [String : Any], headers: HTTPHeaders) {
-        Alamofire.request(input_survey_url, method: .post, parameters: parameters, headers: headers).responseJSON{_ in
+        Alamofire.request(create_survey_url, method: .post, parameters: parameters, headers: headers).responseJSON{_ in
             self.saveUser(self.currentUser!)
         }
     }
@@ -170,10 +170,7 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     
     func getTeamName() {
         if let team_id = currentUser?.team_id, let api_key = currentUser?.api_key {
-            print(get_team_url + String(team_id))
-            let headers: HTTPHeaders = [
-                "Authorization": "Token token=" + api_key
-            ]
+            let headers = ApiUrl().getAuthHeader(api_key)
             Alamofire.request(get_team_url + String(team_id), headers: headers).responseJSON{ response in
                 if let result = response.result.value {
                     let JSON = result as! NSDictionary

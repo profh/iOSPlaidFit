@@ -16,7 +16,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - Properties
     
-    let login_url = "http://localhost:3000/v1/token"
+    let login_url = ApiUrl().login_url
     var loggedInUser: User? = nil
     var teams = [(String, Int)]()
     @IBOutlet weak var emailField: UITextField!
@@ -124,13 +124,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginPressed(_ sender: Any) {
         self.errorField.text = ""
         loadingView.startAnimating() // start the loading animation for the duration of the API call
-        // format the string that will be encoded with Base64 encoding and then encode it
-        let loginString = NSString(format: "%@:%@", emailField.text!, passwordField.text!)
-        let loginData: NSData = loginString.data(using: String.Encoding.utf8.rawValue)! as NSData
-        let base64LoginString = loginData.base64EncodedString(options: NSData.Base64EncodingOptions())
-        let headers: HTTPHeaders = [
-            "Authorization": "Basic \(base64LoginString)"
-        ]
+        let headers = ApiUrl().getTokenHeader(email: emailField.text!, password: passwordField.text!)
         Alamofire.request(login_url, headers: headers).responseJSON{ response in
             if let error = response.error {
                 self.errorField.text = error.localizedDescription
@@ -166,12 +160,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func signupPressed(_ sender: Any) {
         if self.teams.isEmpty {
             loadingView.startAnimating() // start the loading animation for the duration of the API call
-            let get_teams_url = "http://localhost:3000/v1/teams"
-            let headers: HTTPHeaders = [
-                // hard-coding token value as user ID 1's value for now
-                // b/c can't authorize creation when signing up a new user
-                "Authorization": "Token token=f30aab90374746dc5ecf203827782989"
-            ]
+            let get_teams_url = ApiUrl().get_teams_url
+            // hard-coding token value as user ID 1's value for now
+            // b/c can't authorize creation when signing up a new user
+            let headers = ApiUrl().getAuthHeader("f30aab90374746dc5ecf203827782989")
             Alamofire.request(get_teams_url, headers: headers).responseJSON{ response in
                 if let error = response.error {
                     self.errorField.text = error.localizedDescription

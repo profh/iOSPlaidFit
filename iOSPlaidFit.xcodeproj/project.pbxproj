@@ -196,9 +196,9 @@
 		D1065551218BC7B500F55820 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D1065526218BC58200F55820 /* ViewController.swift */,
 				D1065547218BC68C00F55820 /* HomeViewController.swift */,
 				D106554B218BC6B800F55820 /* SignupViewController.swift */,
-				D1065526218BC58200F55820 /* ViewController.swift */,
 				D106554D218BC6C100F55820 /* LoginViewController.swift */,
 				D1065549218BC6AD00F55820 /* ProfileViewController.swift */,
 				5C166F4521B10D590081FD08 /* ResultsViewController.swift */,
