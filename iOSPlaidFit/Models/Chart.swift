@@ -8,9 +8,7 @@
 
 import UIKit
 import Foundation
-import SwiftyJSON
 import Alamofire
-import CoreData
 import Charts
 
 class Chart {

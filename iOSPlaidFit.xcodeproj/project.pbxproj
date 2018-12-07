@@ -64,9 +64,9 @@
 		1A99109D9D942A614F849A4C /* Pods-iOSPlaidFit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSPlaidFit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSPlaidFit/Pods-iOSPlaidFit.debug.xcconfig"; sourceTree = "<group>"; };
 		1D69CD85C9E8B099DE258068 /* Pods-iOSPlaidFitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSPlaidFitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSPlaidFitTests/Pods-iOSPlaidFitTests.release.xcconfig"; sourceTree = "<group>"; };
 		5C166F4521B10D590081FD08 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
-		5C166F5E21B1378B0081FD08 /* SleepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SleepViewController.swift; path = ../../SleepViewController.swift; sourceTree = "<group>"; };
+		5C166F5E21B1378B0081FD08 /* SleepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewController.swift; sourceTree = "<group>"; };
 		5C166F6021B147880081FD08 /* HydrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationViewController.swift; sourceTree = "<group>"; };
-		5C166F6421B14A4D0081FD08 /* StressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StressViewController.swift; path = ../../StressViewController.swift; sourceTree = "<group>"; };
+		5C166F6421B14A4D0081FD08 /* StressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressViewController.swift; sourceTree = "<group>"; };
 		5C166F6621B14CE30081FD08 /* SorenessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SorenessViewController.swift; sourceTree = "<group>"; };
 		5C37C0BF2193720200C95AE0 /* DailyWellnessSurveyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWellnessSurveyTask.swift; sourceTree = "<group>"; };
 		5C37C0C12193722800C95AE0 /* PostPracticeSurveyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPracticeSurveyTask.swift; sourceTree = "<group>"; };
@@ -196,16 +196,13 @@
 		D1065551218BC7B500F55820 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5C166F5E21B1378B0081FD08 /* SleepViewController.swift */,
 				D1065547218BC68C00F55820 /* HomeViewController.swift */,
 				D106554B218BC6B800F55820 /* SignupViewController.swift */,
 				D1065526218BC58200F55820 /* ViewController.swift */,
 				D106554D218BC6C100F55820 /* LoginViewController.swift */,
 				D1065549218BC6AD00F55820 /* ProfileViewController.swift */,
 				5C166F4521B10D590081FD08 /* ResultsViewController.swift */,
-				5C166F6021B147880081FD08 /* HydrationViewController.swift */,
-				5C166F6421B14A4D0081FD08 /* StressViewController.swift */,
-				5C166F6621B14CE30081FD08 /* SorenessViewController.swift */,
+				D127947C21BAB28D00E8C6EC /* Charts */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -229,6 +226,17 @@
 				D1065530218BC58300F55820 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D127947C21BAB28D00E8C6EC /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				5C166F5E21B1378B0081FD08 /* SleepViewController.swift */,
+				5C166F6021B147880081FD08 /* HydrationViewController.swift */,
+				5C166F6421B14A4D0081FD08 /* StressViewController.swift */,
+				5C166F6621B14CE30081FD08 /* SorenessViewController.swift */,
+			);
+			path = Charts;
 			sourceTree = "<group>";
 		};
 		D1396C00218BDEAE0087E0EE /* Delegates */ = {
