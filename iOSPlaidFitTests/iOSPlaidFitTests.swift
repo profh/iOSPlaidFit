@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Alamofire
 @testable import iOSPlaidFit
 
 class iOSPlaidFitTests: XCTestCase {
@@ -17,32 +18,46 @@ class iOSPlaidFitTests: XCTestCase {
     var badPhone2User:User!
     var badRoleUser:User!
     var badYearUser:User!
+    var email1:String!
+    var password1:String!
+    var api_key1:String!
     
     override func setUp() {
         super.setUp()
         
-        goodUser = User(id: 1, team_id: 1, first_name: "John", last_name: "Smith", andrew_id: "jsmith", email: "jsmith@gmail.com", phone_number: "1234567890", role: "Player", year: "Senior", missing_daily_boolean: false, missing_post_boolean: false, api_key: "abcd1234")
+        goodUser = User(id: 1, team_id: 1, first_name: "John", last_name: "Smith", andrew_id: "jsmith", email: "jsmith@gmail.com", phone_number: "1234567890", role: "Player", year: "Senior", major: "Engineering", missing_daily_boolean: false, missing_post_boolean: false, api_key: "abcd1234", team_string: "Men's Golf")
         
-        badEmailUser = User(id: 2, team_id: 1, first_name: "John", last_name: "Smith", andrew_id: "jsmith", email: "jsmith@gmail", phone_number: "5555555555", role: "Player", year: "Senior", missing_daily_boolean: false, missing_post_boolean: false, api_key: "abcd1234")
+        badEmailUser = User(id: 2, team_id: 1, first_name: "John", last_name: "Smith", andrew_id: "jsmith", email: "jsmith@gmail", phone_number: "5555555555", role: "Player", year: "Senior", major: "Business", missing_daily_boolean: false, missing_post_boolean: false, api_key: "abcd1234", team_string: "Women's Tennis")
         
-        badPhone1User = User(id: 3, team_id: 1, first_name: "John", last_name: "Smith", andrew_id: "jsmith", email: "jsmith@gmail.com", phone_number: "12345678901", role: "Player", year: "Senior", missing_daily_boolean: false, missing_post_boolean: false, api_key: "abcd1234")
+        badPhone1User = User(id: 3, team_id: 1, first_name: "John", last_name: "Smith", andrew_id: "jsmith", email: "jsmith@gmail.com", phone_number: "12345678901", role: "Player", year: "Senior", major: "Information Systems", missing_daily_boolean: false, missing_post_boolean: false, api_key: "abcd1234", team_string: "Men's Soccer")
         
-        badPhone2User = User(id: 4, team_id: 1, first_name: "John", last_name: "Smith", andrew_id: "jsmith", email: "jsmith@gmail.com", phone_number: "Phone Number", role: "Player", year: "Senior", missing_daily_boolean: false, missing_post_boolean: false, api_key: "abcd1234")
+        badPhone2User = User(id: 4, team_id: 1, first_name: "John", last_name: "Smith", andrew_id: "jsmith", email: "jsmith@gmail.com", phone_number: "Phone Number", role: "Player", year: "Senior", major: "Other", missing_daily_boolean: false, missing_post_boolean: false, api_key: "abcd1234", team_string: "Men's Swimming & Diving")
         
-        badRoleUser = User(id: 5, team_id: 1, first_name: "John", last_name: "Smith", andrew_id: "jsmith", email: "jsmith@gmail.com", phone_number: "5555555555", role: "Parent", year: "Senior", missing_daily_boolean: false, missing_post_boolean: false, api_key: "abcd1234")
+        badRoleUser = User(id: 5, team_id: 1, first_name: "John", last_name: "Smith", andrew_id: "jsmith", email: "jsmith@gmail.com", phone_number: "5555555555", role: "Parent", year: "Senior", major: "Computer Science", missing_daily_boolean: false, missing_post_boolean: false, api_key: "abcd1234", team_string: "Men's Golf")
         
-        badYearUser = User(id: -1, team_id: 1, first_name: "John", last_name: "Smith", andrew_id: "jsmith", email: "jsmith@gmail.com", phone_number: "5555555555", role: "User", year: "Dropout", missing_daily_boolean: false, missing_post_boolean: false, api_key: "abcd1234")
+        badYearUser = User(id: -1, team_id: 1, first_name: "John", last_name: "Smith", andrew_id: "jsmith", email: "jsmith@gmail.com", phone_number: "5555555555", role: "User", year: "Dropout", major: "Other", missing_daily_boolean: false, missing_post_boolean: false, api_key: "abcd1234", team_string: "Men's Golf")
+        
+        // Set up stuff for API header tests
+        email1 = "wchu27@gmail.com"
+        password1 = "secret"
+        api_key1 = "osdjfioasfio23ob23awekc11"
     }
 
     override func tearDown() {
         super.tearDown()
-        
         goodUser = nil
         badEmailUser = nil
         badPhone1User = nil
         badPhone2User = nil
         badRoleUser = nil
         badYearUser = nil
+    }
+    
+    func testAPIHeaders() {
+        let res1: HTTPHeaders = ["Authorization":"Basic d2NodTI3QGdtYWlsLmNvbTpzZWNyZXQ="]
+        let res2: HTTPHeaders = ["Authorization":"Token token=osdjfioasfio23ob23awekc11"]
+        XCTAssertEqual(res1, ApiUrl().getTokenHeader(email: email1, password: password1))
+        XCTAssertEqual(res2, ApiUrl().getAuthHeader(api_key1))
     }
     
     func testEmail() {
@@ -76,11 +91,18 @@ class iOSPlaidFitTests: XCTestCase {
         assert(!(years.contains(badUserYear)))
     }
     
+    func testDates() {
+        let dates = DateModel().getDates()
+        XCTAssertEqual(["12/1", "12/2", "12/3", "12/4", "12/5", "12/6", "12/7"], dates)
+    }
+    
     func testAll() {
         testEmail()
         testPhone()
         testRole()
         testYear()
+        testAPIHeaders()
+        testDates()
     }
 
     func testPerformanceExample() {
