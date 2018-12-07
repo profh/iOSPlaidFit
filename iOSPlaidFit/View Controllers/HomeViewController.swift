@@ -11,7 +11,6 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 import ResearchKit
-import CoreData
 import UserNotifications
 
 class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
@@ -26,6 +25,7 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     @IBOutlet weak var post_practice_button: UIButton!
     @IBOutlet weak var results_button: UIButton!
     let center = UNUserNotificationCenter.current()
+    let coreData = CoreData()
     var currentUser: User? {
         didSet {
             // Update the view.
@@ -128,7 +128,7 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     
     func pushToAPI(parameters: [String : Any], headers: HTTPHeaders) {
         Alamofire.request(create_survey_url, method: .post, parameters: parameters, headers: headers).responseJSON{_ in
-            self.saveUser(self.currentUser!)
+            coreData.saveUser(UIApplication.shared.delegate as! AppDelegate, self.currentUser!)
         }
     }
     
@@ -265,39 +265,6 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
             }
         }
         return true
-    }
-    
-    // MARK: - Core Data Stuff
-    
-    func saveUser(_ user: User) {
-        // Connect to the context for the container stack
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        // Specifically select the People entity to save this object to
-        let entity = NSEntityDescription.entity(forEntityName: "User", in: context)
-        let newUser = NSManagedObject(entity: entity!, insertInto: context)
-        // Set values one at a time and save
-        newUser.setValue(user.id, forKey: "id")
-        newUser.setValue(user.team_id, forKey: "team_id")
-        newUser.setValue(user.first_name, forKey: "first_name")
-        newUser.setValue(user.last_name, forKey: "last_name")
-        newUser.setValue(user.andrew_id, forKey: "andrew_id")
-        newUser.setValue(user.email, forKey: "email")
-        newUser.setValue(user.phone_number, forKey: "phone_number")
-        newUser.setValue(user.role, forKey: "role")
-        newUser.setValue(user.year, forKey: "year")
-        newUser.setValue(user.major, forKey: "major")
-        print(user.missing_daily_boolean!)
-        newUser.setValue(user.missing_post_boolean, forKey: "missing_post_boolean")
-        newUser.setValue(user.missing_daily_boolean, forKey: "missing_daily_boolean")
-        newUser.setValue(user.api_key, forKey: "api_key")
-        newUser.setValue(user.team_string, forKey: "team_string")
-        do {
-            try context.save()
-            print("successfully saved user!")
-        } catch {
-            print("Failed saving user")
-        }
     }
 
 }
