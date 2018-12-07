@@ -79,5 +79,20 @@ class CoreData {
         return User(id: id, team_id: team_id, first_name: first_name, last_name: last_name, andrew_id: andrew_id, email: email, phone_number: phone_number, role: role, year: year, major: major, missing_daily_boolean: missing_daily_boolean, missing_post_boolean: missing_post_boolean, api_key: api_key, team_string: team_string)
     }
 
+    func deleteUser(_ appDelegate: AppDelegate) {
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                // if the contact we are deleting is the same as this one in CoreData {
+                context.delete(data)
+                try context.save()
+            }
+        } catch {
+            print("Failed")
+        }
+    }
     
 }

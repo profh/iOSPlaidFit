@@ -128,7 +128,7 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     
     func pushToAPI(parameters: [String : Any], headers: HTTPHeaders) {
         Alamofire.request(create_survey_url, method: .post, parameters: parameters, headers: headers).responseJSON{_ in
-            coreData.saveUser(UIApplication.shared.delegate as! AppDelegate, self.currentUser!)
+            self.coreData.saveUser(UIApplication.shared.delegate as! AppDelegate, self.currentUser!)
         }
     }
     
@@ -220,30 +220,13 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    func deleteUser() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        request.returnsObjectsAsFaults = false
-        do {
-            let result = try context.fetch(request)
-            for data in result as! [NSManagedObject] {
-                // if the contact we are deleting is the same as this one in CoreData {
-                context.delete(data)
-                try context.save()
-            }
-        } catch {
-            print("Failed")
-        }
-    }
 
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "logoutSegue" {
             // go back to login screen and clear the current user
-            self.deleteUser()
+            coreData.deleteUser(UIApplication.shared.delegate as! AppDelegate)
             self.tearDownNotifications()
             self.currentUser = nil
             _ = navigationController?.popToRootViewController(animated: true)
