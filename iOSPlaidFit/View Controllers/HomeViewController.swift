@@ -105,6 +105,7 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
             // hardcoding season as Fall for now
             "season" : "Fall"
         ]
+        self.currentUser?.missing_daily_boolean = false
         pushToAPI(parameters: parameters, headers: headers)
     }
     
@@ -121,22 +122,12 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
             "season" : "Fall",
             "practice_id" : 1
         ]
+        self.currentUser?.missing_post_boolean = false
         pushToAPI(parameters: parameters, headers: headers)
     }
     
     func pushToAPI(parameters: [String : Any], headers: HTTPHeaders) {
-        Alamofire.request(input_survey_url, method: .post, parameters: parameters, headers: headers).responseJSON{ response in
-            if response.result.value != nil {
-                if let survey_type = parameters["survey_type"] as? String {
-                    if survey_type == "Post-Practice" {
-                        self.currentUser?.missing_post_boolean = false
-                    } else {
-                        self.currentUser?.missing_daily_boolean = false
-                    }
-                }
-                
-            }
-        }
+        Alamofire.request(input_survey_url, method: .post, parameters: parameters, headers: headers).responseJSON{_ in }
     }
     
     func configureView() {
@@ -209,6 +200,14 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if let user: User = self.currentUser {
+            if let name = self.nameLabel {
+                name.text = "Welcome, " + user.first_name! + "!"
+            }
+            print("--------------")
+            print(user.missing_daily_boolean)
+            print(user.missing_post_boolean)
+        }
         daily_wellness_button.isEnabled = (currentUser?.missing_daily_boolean)!
         post_practice_button.isEnabled = (currentUser?.missing_post_boolean)!
     }
