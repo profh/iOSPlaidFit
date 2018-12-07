@@ -18,8 +18,8 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     
     // MARK: - Properties
     
-    let input_survey_url = "http:/localhost:3000/v1/surveys"
-    let get_team_url = "http://localhost:3000/v1/teams/"
+    let input_survey_url = "http:/128.237.212.128:3000/v1/surveys"
+    let get_team_url = "http://128.237.212.128:3000/v1/teams/"
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var daily_wellness_button: UIButton!
@@ -127,7 +127,9 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     }
     
     func pushToAPI(parameters: [String : Any], headers: HTTPHeaders) {
-        Alamofire.request(input_survey_url, method: .post, parameters: parameters, headers: headers).responseJSON{_ in }
+        Alamofire.request(input_survey_url, method: .post, parameters: parameters, headers: headers).responseJSON{_ in
+            self.saveUser(self.currentUser!)
+        }
     }
     
     func configureView() {
@@ -196,20 +198,26 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
         let dateString = dateFormatter.string(from: currentDate)
         self.dateLabel.numberOfLines = 2
         self.dateLabel.text = dateString
+        if let user: User = self.currentUser {
+            print("----------")
+            print(user.missing_daily_boolean!)
+            daily_wellness_button.isEnabled = user.missing_daily_boolean!
+            post_practice_button.isEnabled = user.missing_post_boolean!
+        } else {
+            print("failed to load user in viewDidLoad")
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let user: User = self.currentUser {
-            if let name = self.nameLabel {
-                name.text = "Welcome, " + user.first_name! + "!"
-            }
-            print("--------------")
-            print(user.missing_daily_boolean)
-            print(user.missing_post_boolean)
+            print("=========")
+            print(user.missing_daily_boolean!)
+            daily_wellness_button.isEnabled = user.missing_daily_boolean!
+            post_practice_button.isEnabled = user.missing_post_boolean!
+        } else {
+            print("failed to load user in viewDidAppear")
         }
-        daily_wellness_button.isEnabled = (currentUser?.missing_daily_boolean)!
-        post_practice_button.isEnabled = (currentUser?.missing_post_boolean)!
     }
     
     override func didReceiveMemoryWarning() {
@@ -260,6 +268,39 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
             }
         }
         return true
+    }
+    
+    // MARK: - Core Data Stuff
+    
+    func saveUser(_ user: User) {
+        // Connect to the context for the container stack
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        // Specifically select the People entity to save this object to
+        let entity = NSEntityDescription.entity(forEntityName: "User", in: context)
+        let newUser = NSManagedObject(entity: entity!, insertInto: context)
+        // Set values one at a time and save
+        newUser.setValue(user.id, forKey: "id")
+        newUser.setValue(user.team_id, forKey: "team_id")
+        newUser.setValue(user.first_name, forKey: "first_name")
+        newUser.setValue(user.last_name, forKey: "last_name")
+        newUser.setValue(user.andrew_id, forKey: "andrew_id")
+        newUser.setValue(user.email, forKey: "email")
+        newUser.setValue(user.phone_number, forKey: "phone_number")
+        newUser.setValue(user.role, forKey: "role")
+        newUser.setValue(user.year, forKey: "year")
+        newUser.setValue(user.major, forKey: "major")
+        print(user.missing_daily_boolean!)
+        newUser.setValue(user.missing_post_boolean, forKey: "missing_post_boolean")
+        newUser.setValue(user.missing_daily_boolean, forKey: "missing_daily_boolean")
+        newUser.setValue(user.api_key, forKey: "api_key")
+        newUser.setValue(user.team_string, forKey: "team_string")
+        do {
+            try context.save()
+            print("successfully saved user!")
+        } catch {
+            print("Failed saving user")
+        }
     }
 
 }

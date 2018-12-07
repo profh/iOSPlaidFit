@@ -16,12 +16,12 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - Properties
 
-    let create_users_url = "http://localhost:3000/v1/users"
-    let create_team_assignments_url = "http://localhost:3000/v1/team_assignments"
+    let create_users_url = "http://128.237.212.128:3000/v1/users"
+    let create_team_assignments_url = "http://128.237.212.128:3000/v1/team_assignments"
     let headers: HTTPHeaders = [
         // hard-coding token value as user ID 1's value for now
         // b/c can't authorize creation when signing up a new user
-        "Authorization": "Token token=67172692c3151f106ff5d9babdefb5f0"
+        "Authorization": "Token token=1d43751903ce62e707efdf23c3d75de8"
     ]
     var loggedInUser: User? = nil
     var teams = [(String, Int)]()

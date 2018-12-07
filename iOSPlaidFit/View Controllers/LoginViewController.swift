@@ -16,7 +16,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - Properties
     
-    let login_url = "http://localhost:3000/v1/token"
+    let login_url = "http://128.237.212.128:3000/v1/token"
     var loggedInUser: User? = nil
     var teams = [(String, Int)]()
     @IBOutlet weak var emailField: UITextField!
@@ -70,6 +70,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let major = data.value(forKey: "major") as! String
         let missing_post_boolean = data.value(forKey: "missing_post_boolean") as! Bool
         let missing_daily_boolean = data.value(forKey: "missing_daily_boolean") as! Bool
+        print("AAAAAAAAAAAAAAAA")
+        print(missing_daily_boolean)
         let api_key = data.value(forKey: "api_key") as! String
         let team_string = data.value(forKey: "team_string") as! String
         self.loggedInUser = User(id: id, team_id: team_id, first_name: first_name, last_name: last_name, andrew_id: andrew_id, email: email, phone_number: phone_number, role: role, year: year, major: major, missing_daily_boolean: missing_daily_boolean, missing_post_boolean: missing_post_boolean, api_key: api_key, team_string: team_string)
@@ -99,6 +101,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             for data in result as! [NSManagedObject] {
                 self.loadUser(data)
                 print("user successfully loaded")
+            }
+            if (loggedInUser != nil) {
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
             }
         } catch {
@@ -162,11 +166,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func signupPressed(_ sender: Any) {
         if self.teams.isEmpty {
             loadingView.startAnimating() // start the loading animation for the duration of the API call
-            let get_teams_url = "http://localhost:3000/v1/teams"
+            let get_teams_url = "http://128.237.212.128:3000/v1/teams"
             let headers: HTTPHeaders = [
                 // hard-coding token value as user ID 1's value for now
                 // b/c can't authorize creation when signing up a new user
-                "Authorization": "Token token=67172692c3151f106ff5d9babdefb5f0"
+                "Authorization": "Token token=1d43751903ce62e707efdf23c3d75de8"
             ]
             Alamofire.request(get_teams_url, headers: headers).responseJSON{ response in
                 if let error = response.error {
