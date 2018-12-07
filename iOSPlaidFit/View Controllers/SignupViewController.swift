@@ -10,19 +10,16 @@ import UIKit
 import Foundation
 import SwiftyJSON
 import Alamofire
-import CoreData
 
 class SignupViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - Properties
 
-    let create_users_url = "http://128.237.212.128:3000/v1/users"
-    let create_team_assignments_url = "http://128.237.212.128:3000/v1/team_assignments"
-    let headers: HTTPHeaders = [
-        // hard-coding token value as user ID 1's value for now
-        // b/c can't authorize creation when signing up a new user
-        "Authorization": "Token token=f30aab90374746dc5ecf203827782989"
-    ]
+    let create_users_url = ApiUrl().create_users_url
+    let create_team_assignments_url = ApiUrl().create_team_assignments_url
+    // hard-coding token value as user ID 1's value for now
+    // b/c can't authorize creation when signing up a new user
+    let headers = ApiUrl().getAuthHeader("f30aab90374746dc5ecf203827782989")
     var loggedInUser: User? = nil
     var teams = [(String, Int)]()
     @IBOutlet weak var andrewIdField: UITextField!
@@ -39,6 +36,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var pwImage: UIImageView!
     @IBOutlet weak var pwConfImage: UIImageView!
     @IBOutlet weak var contentView: UIView!
+    let coreData = CoreData()
     
     // MARK: - Picker Delegates
     
@@ -168,7 +166,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         ]
         Alamofire.request(create_team_assignments_url, method: .post, parameters: parameters, headers: headers).responseJSON{ response in
             if response.result.value != nil { // team assignment was created successfully
-                self.saveUser(self.loggedInUser!)
+                self.coreData.saveUser(UIApplication.shared.delegate as! AppDelegate, self.loggedInUser!)
                 self.performSegue(withIdentifier: "signupSegue", sender: sender)
             }
         }
@@ -241,38 +239,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             }
         }
         return true
-    }
-    
-    // MARK: - Core Data Stuff
-    
-    func saveUser(_ user: User) {
-        // Connect to the context for the container stack
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        // Specifically select the People entity to save this object to
-        let entity = NSEntityDescription.entity(forEntityName: "User", in: context)
-        let newUser = NSManagedObject(entity: entity!, insertInto: context)
-        // Set values one at a time and save
-        newUser.setValue(user.id, forKey: "id")
-        newUser.setValue(user.team_id, forKey: "team_id")
-        newUser.setValue(user.first_name, forKey: "first_name")
-        newUser.setValue(user.last_name, forKey: "last_name")
-        newUser.setValue(user.andrew_id, forKey: "andrew_id")
-        newUser.setValue(user.email, forKey: "email")
-        newUser.setValue(user.phone_number, forKey: "phone_number")
-        newUser.setValue(user.role, forKey: "role")
-        newUser.setValue(user.year, forKey: "year")
-        newUser.setValue(user.major, forKey: "major")
-        newUser.setValue(user.missing_post_boolean, forKey: "missing_post_boolean")
-        newUser.setValue(user.missing_daily_boolean, forKey: "missing_daily_boolean")
-        newUser.setValue(user.api_key, forKey: "api_key")
-        newUser.setValue(user.team_string, forKey: "team_string")
-        do {
-            try context.save()
-            print("successfully saved user!")
-        } catch {
-            print("Failed saving user")
-        }
     }
 
 }

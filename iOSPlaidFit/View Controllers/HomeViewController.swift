@@ -11,21 +11,21 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 import ResearchKit
-import CoreData
 import UserNotifications
 
 class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     
     // MARK: - Properties
-    
-    let input_survey_url = "http:/128.237.212.128:3000/v1/surveys"
-    let get_team_url = "http://128.237.212.128:3000/v1/teams/"
+
+    let create_survey_url = ApiUrl().create_survey_url
+    let get_team_url = ApiUrl().get_team_url
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var daily_wellness_button: UIButton!
     @IBOutlet weak var post_practice_button: UIButton!
     @IBOutlet weak var results_button: UIButton!
     let center = UNUserNotificationCenter.current()
+    let coreData = CoreData()
     var currentUser: User? {
         didSet {
             // Update the view.
@@ -78,7 +78,7 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
                 
             }
             let api_key = currentUser?.api_key as! String
-            let headers: HTTPHeaders = ["Authorization": "Token token=\(api_key)"]
+            let headers = ApiUrl().getAuthHeader(api_key)
             // daily wellness survey has 7 questions
             if resDictionary.count == 7 {
                 sendDailyWellnessSurvey(headers: headers, resDictionary: resDictionary)
@@ -127,8 +127,8 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     }
     
     func pushToAPI(parameters: [String : Any], headers: HTTPHeaders) {
-        Alamofire.request(input_survey_url, method: .post, parameters: parameters, headers: headers).responseJSON{_ in
-            self.saveUser(self.currentUser!)
+        Alamofire.request(create_survey_url, method: .post, parameters: parameters, headers: headers).responseJSON{_ in
+            self.coreData.saveUser(UIApplication.shared.delegate as! AppDelegate, self.currentUser!)
         }
     }
     
@@ -170,10 +170,7 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     
     func getTeamName() {
         if let team_id = currentUser?.team_id, let api_key = currentUser?.api_key {
-            print(get_team_url + String(team_id))
-            let headers: HTTPHeaders = [
-                "Authorization": "Token token=" + api_key
-            ]
+            let headers = ApiUrl().getAuthHeader(api_key)
             Alamofire.request(get_team_url + String(team_id), headers: headers).responseJSON{ response in
                 if let result = response.result.value {
                     let JSON = result as! NSDictionary
@@ -223,30 +220,13 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    func deleteUser() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        request.returnsObjectsAsFaults = false
-        do {
-            let result = try context.fetch(request)
-            for data in result as! [NSManagedObject] {
-                // if the contact we are deleting is the same as this one in CoreData {
-                context.delete(data)
-                try context.save()
-            }
-        } catch {
-            print("Failed")
-        }
-    }
 
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "logoutSegue" {
             // go back to login screen and clear the current user
-            self.deleteUser()
+            coreData.deleteUser(UIApplication.shared.delegate as! AppDelegate)
             self.tearDownNotifications()
             self.currentUser = nil
             _ = navigationController?.popToRootViewController(animated: true)
@@ -268,39 +248,6 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
             }
         }
         return true
-    }
-    
-    // MARK: - Core Data Stuff
-    
-    func saveUser(_ user: User) {
-        // Connect to the context for the container stack
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        // Specifically select the People entity to save this object to
-        let entity = NSEntityDescription.entity(forEntityName: "User", in: context)
-        let newUser = NSManagedObject(entity: entity!, insertInto: context)
-        // Set values one at a time and save
-        newUser.setValue(user.id, forKey: "id")
-        newUser.setValue(user.team_id, forKey: "team_id")
-        newUser.setValue(user.first_name, forKey: "first_name")
-        newUser.setValue(user.last_name, forKey: "last_name")
-        newUser.setValue(user.andrew_id, forKey: "andrew_id")
-        newUser.setValue(user.email, forKey: "email")
-        newUser.setValue(user.phone_number, forKey: "phone_number")
-        newUser.setValue(user.role, forKey: "role")
-        newUser.setValue(user.year, forKey: "year")
-        newUser.setValue(user.major, forKey: "major")
-        print(user.missing_daily_boolean!)
-        newUser.setValue(user.missing_post_boolean, forKey: "missing_post_boolean")
-        newUser.setValue(user.missing_daily_boolean, forKey: "missing_daily_boolean")
-        newUser.setValue(user.api_key, forKey: "api_key")
-        newUser.setValue(user.team_string, forKey: "team_string")
-        do {
-            try context.save()
-            print("successfully saved user!")
-        } catch {
-            print("Failed saving user")
-        }
     }
 
 }
