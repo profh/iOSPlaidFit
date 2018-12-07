@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "red_error.png",
+      "filename" : "warning.png",
       "scale" : "1x"
     },
     {

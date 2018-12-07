@@ -21,7 +21,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     let headers: HTTPHeaders = [
         // hard-coding token value as user ID 1's value for now
         // b/c can't authorize creation when signing up a new user
-        "Authorization": "Token token=11ac8b97e0895f273674aa69c703ccc1"
+        "Authorization": "Token token=67172692c3151f106ff5d9babdefb5f0"
     ]
     var loggedInUser: User? = nil
     var teams = [(String, Int)]()
@@ -210,8 +210,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
                 pwImage.image = UIImage(named: "green_confirm")
                 pwConfImage.image = UIImage(named: "green_confirm")
             } else {
-                pwImage.image = UIImage(named: "red_error")
-                pwConfImage.image = UIImage(named: "red_error")
+                pwImage.image = UIImage(named: "warning")
+                pwConfImage.image = UIImage(named: "warning")
                 signupButton.isEnabled = false
             }
         } else {
