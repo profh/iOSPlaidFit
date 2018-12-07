@@ -166,7 +166,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             let headers: HTTPHeaders = [
                 // hard-coding token value as user ID 1's value for now
                 // b/c can't authorize creation when signing up a new user
-                "Authorization": "Token token=1977ec368318a5fddc09f8191aacf39b"
+                "Authorization": "Token token=11ac8b97e0895f273674aa69c703ccc1"
             ]
             Alamofire.request(get_teams_url, headers: headers).responseJSON{ response in
                 if let error = response.error {
