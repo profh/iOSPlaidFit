@@ -90,7 +90,7 @@ class SorenessViewController: UIViewController {
     
     func getWeeklySoreness() {
         if let user_id = currentUser?.id, let api_key = currentUser?.api_key {
-            let user_url = "http://128.237.212.128:3000/v1/users/" + String(user_id)
+            let user_url = "http://localhost:3000/v1/users/" + String(user_id)
             let headers: HTTPHeaders = [
                 "Authorization": "Token token=\(api_key)"
             ]

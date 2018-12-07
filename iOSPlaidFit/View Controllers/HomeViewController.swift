@@ -18,8 +18,8 @@ class HomeViewController: UIViewController, ORKTaskViewControllerDelegate {
     
     // MARK: - Properties
     
-    let input_survey_url = "http:/128.237.212.128:3000/v1/surveys"
-    let get_team_url = "http://128.237.212.128:3000/v1/teams/"
+    let input_survey_url = "http:/localhost:3000/v1/surveys"
+    let get_team_url = "http://localhost:3000/v1/teams/"
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var daily_wellness_button: UIButton!
