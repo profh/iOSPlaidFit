@@ -336,22 +336,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="cRy-zN-h12">
-                                <rect key="frame" x="16" y="61" width="343" height="536"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">PlaidFit is a continuation of a 67-373 project from the Spring 2018 semester. It was developed by Evan Byrd and Winston Chu as a course project for 67-442. The original goal of the project was to implement a health-tracking fitness application that CMU Athletics can use to monitor athletes’ metrics for health and well-being, such as stress, hydration, and sleep. Student-athletes can use this application to send such metrics to the server so that coaches and trainers can visualize that data and then make the correct decisions so that those student-athletes can perform at their highest potential. The main functionality of PlaidFit allows our users to login (or signup), take the surveys each day, and view their own results. We hope that PlaidFit will cause positive results for the entirety of the CMU Athletics Department and allow CMU’s student-athletes to continue to perform at their highest level while staying healthy. </mutableString>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="3"/>
-                                </userDefinedRuntimeAttributes>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cdf-Ia-kb9">
-                                <rect key="frame" x="132" y="612" width="111" height="35"/>
+                                <rect key="frame" x="131" y="612" width="111" height="35"/>
                                 <color key="backgroundColor" red="0.92102748155593872" green="0.75033491849899292" blue="0.59853947162628174" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="35R-e4-zND"/>
-                                    <constraint firstAttribute="width" constant="110" id="kbg-aZ-6Ab"/>
+                                    <constraint firstAttribute="width" constant="111" id="KBC-8n-Pca"/>
+                                    <constraint firstAttribute="height" constant="35" id="bXz-rM-sut"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <state key="normal" title="Close">
@@ -364,16 +354,26 @@
                                     <action selector="close:" destination="DkR-9w-D2Z" eventType="touchUpInside" id="81S-o4-oh8"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRy-zN-h12">
+                                <rect key="frame" x="16" y="37" width="343" height="560"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <mutableString key="text">PlaidFit is a continuation of a 67-373 project from the Spring 2018 semester. It was developed by Evan Byrd and Winston Chu as a course project for 67-442 during the Fall 2018 semester. The original goal of the project was to implement a health-tracking fitness application that CMU Athletics can use to monitor athletes’ metrics for health and well-being, such as stress, hydration, and sleep. Student-athletes can use this application to send such metrics to the server so that coaches and trainers can visualize that data and then make the correct decisions so that those student-athletes can perform at their highest potential. The main functionality of PlaidFit allows our users to login (or signup), take the surveys each day, and view their own results. We hope that PlaidFit will cause positive results for the entirety of the CMU Athletics Department and allow CMU’s student-athletes to continue to perform at their highest level while staying healthy. </mutableString>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="3"/>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Cdf-Ia-kb9" secondAttribute="bottom" constant="20" symbolic="YES" id="8Ua-yU-4AV"/>
-                            <constraint firstItem="Cdf-Ia-kb9" firstAttribute="top" secondItem="cRy-zN-h12" secondAttribute="bottom" constant="15" id="CDS-Ea-Mof"/>
-                            <constraint firstItem="cRy-zN-h12" firstAttribute="leading" secondItem="pxs-pY-quO" secondAttribute="leadingMargin" id="EKR-Pe-EWe"/>
-                            <constraint firstItem="cRy-zN-h12" firstAttribute="trailing" secondItem="pxs-pY-quO" secondAttribute="trailingMargin" id="JLW-km-MDz"/>
-                            <constraint firstItem="cRy-zN-h12" firstAttribute="top" secondItem="qJp-Gr-HFr" secondAttribute="top" constant="41" id="Pf6-JB-2fK"/>
-                            <constraint firstItem="Cdf-Ia-kb9" firstAttribute="leading" secondItem="qJp-Gr-HFr" secondAttribute="leading" constant="132" id="WK2-TE-3NL"/>
-                            <constraint firstItem="cRy-zN-h12" firstAttribute="centerX" secondItem="Cdf-Ia-kb9" secondAttribute="centerX" id="t8Z-xC-btJ"/>
+                            <constraint firstItem="cRy-zN-h12" firstAttribute="top" secondItem="qJp-Gr-HFr" secondAttribute="top" constant="17" id="32B-iU-bfQ"/>
+                            <constraint firstItem="qJp-Gr-HFr" firstAttribute="trailing" secondItem="Cdf-Ia-kb9" secondAttribute="trailing" constant="133" id="97I-sA-nUd"/>
+                            <constraint firstAttribute="bottom" secondItem="Cdf-Ia-kb9" secondAttribute="bottom" constant="20" symbolic="YES" id="9We-ed-Jvn"/>
+                            <constraint firstItem="Cdf-Ia-kb9" firstAttribute="top" secondItem="cRy-zN-h12" secondAttribute="bottom" constant="15" id="AxM-10-PfS"/>
+                            <constraint firstItem="Cdf-Ia-kb9" firstAttribute="leading" secondItem="qJp-Gr-HFr" secondAttribute="leading" constant="131" id="cXD-Pi-ifu"/>
+                            <constraint firstItem="cRy-zN-h12" firstAttribute="leading" secondItem="pxs-pY-quO" secondAttribute="leadingMargin" id="ho2-Tq-sWc"/>
+                            <constraint firstItem="cRy-zN-h12" firstAttribute="trailing" secondItem="pxs-pY-quO" secondAttribute="trailingMargin" id="mZ3-me-QMP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qJp-Gr-HFr"/>
                     </view>
@@ -451,7 +451,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlaidFit_white" translatesAutoresizingMaskIntoConstraints="NO" id="tyk-Up-X4Z">
-                                <rect key="frame" x="16" y="82" width="343" height="137"/>
+                                <rect key="frame" x="16" y="38" width="343" height="137"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="137" id="ec6-D6-jPh"/>
                                 </constraints>
@@ -460,7 +460,7 @@
                                 <rect key="frame" x="177" y="315" width="21" height="37"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5l-i3-n50">
-                                <rect key="frame" x="337" y="227" width="22" height="22"/>
+                                <rect key="frame" x="337" y="183" width="22" height="22"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <segue destination="DkR-9w-D2Z" kind="show" id="QGo-1I-pSg"/>
@@ -1187,7 +1187,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="profile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5r-as-mbD">
-                                <rect key="frame" x="16" y="193" width="343" height="35"/>
+                                <rect key="frame" x="16" y="149" width="343" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="zsV-Yx-Dyb"/>
                                 </constraints>
@@ -1196,19 +1196,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlaidFit_white" translatesAutoresizingMaskIntoConstraints="NO" id="ZvO-bg-w4h">
-                                <rect key="frame" x="16" y="103" width="184" height="80"/>
+                                <rect key="frame" x="16" y="59" width="184" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Lbd-XD-O99"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plaidfit_banner" translatesAutoresizingMaskIntoConstraints="NO" id="Yoi-9V-OEn">
-                                <rect key="frame" x="0.0" y="64" width="375" height="31"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="y1b-Wh-7QG"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uev-gC-9yi">
-                                <rect key="frame" x="215" y="117" width="144" height="52"/>
+                                <rect key="frame" x="215" y="73" width="144" height="52"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="144" id="BuS-YC-DQM"/>
@@ -1225,7 +1225,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="athlete" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ptq-82-vxB">
-                                <rect key="frame" x="16" y="249" width="343" height="35"/>
+                                <rect key="frame" x="16" y="205" width="343" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Ybl-7H-Hqw"/>
                                 </constraints>
@@ -1234,7 +1234,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxB-OV-Rgg">
-                                <rect key="frame" x="16" y="292" width="343" height="204"/>
+                                <rect key="frame" x="16" y="248" width="343" height="248"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="204" id="Gn0-qg-ZMf"/>
@@ -1244,13 +1244,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Andrew ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vE0-yo-H9o">
-                                <rect key="frame" x="35" y="336" width="89" height="23"/>
+                                <rect key="frame" x="35" y="299.5" width="89" height="30"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="andrew id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4JG-y4-63Z">
-                                <rect key="frame" x="132" y="336" width="208" height="23"/>
+                                <rect key="frame" x="132" y="299.5" width="208" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="208" id="Qhf-Jz-ilC"/>
                                 </constraints>
@@ -1259,25 +1259,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UwP-8o-0Np">
-                                <rect key="frame" x="35" y="367" width="47" height="23"/>
+                                <rect key="frame" x="35" y="337.5" width="47" height="30.5"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yj3-sD-6Fm">
-                                <rect key="frame" x="89" y="367" width="251" height="23"/>
+                                <rect key="frame" x="89" y="337.5" width="251" height="30.5"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSX-E0-nVB">
-                                <rect key="frame" x="35" y="398" width="53" height="23"/>
+                                <rect key="frame" x="35" y="376" width="53" height="30.5"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaO-j0-JR3">
-                                <rect key="frame" x="96" y="398" width="244" height="23"/>
+                                <rect key="frame" x="96" y="376" width="244" height="30.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="244" id="wqb-fy-Kuv"/>
                                 </constraints>
@@ -1286,37 +1286,37 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Sr-ml-8EH">
-                                <rect key="frame" x="35" y="429" width="46" height="23"/>
+                                <rect key="frame" x="35" y="414.5" width="46" height="30"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="class" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1rJ-DH-CHO">
-                                <rect key="frame" x="89" y="429" width="251" height="23"/>
+                                <rect key="frame" x="89" y="414.5" width="251" height="30"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Major:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lI-yR-eqc">
-                                <rect key="frame" x="35" y="460" width="54" height="23"/>
+                                <rect key="frame" x="35" y="452.5" width="54" height="30.5"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="major" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tgr-dW-CMh">
-                                <rect key="frame" x="96" y="460" width="244" height="23"/>
+                                <rect key="frame" x="96" y="452.5" width="244" height="30.5"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m54-fr-pif">
-                                <rect key="frame" x="35" y="305" width="46" height="23"/>
+                                <rect key="frame" x="35" y="261" width="46" height="30.5"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z22-0p-7AA">
-                                <rect key="frame" x="89" y="305" width="251" height="23"/>
+                                <rect key="frame" x="89" y="261" width="251" height="30.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="251" id="jo5-Lm-hIx"/>
                                 </constraints>
